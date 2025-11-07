@@ -10,8 +10,7 @@
                                 <img src="{{ asset('assets/clients/img/logo.png') }}" alt="Logo">
                             </div>
                         </div>
-                        <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is
-                            dummy text of the printing.</p>
+                        <p>Rau củ quả tươi mỗi ngày - an toàn, sạch và đầy dinh dưỡng cho bữa ăn <br>của mọi gia đình.</p>
                         <div class="footer-address">
                             <ul>
                                 <li>

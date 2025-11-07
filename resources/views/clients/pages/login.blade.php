@@ -21,7 +21,7 @@
                         <form action="#" class="ltn__form-box contact-form-box" method="POST" id="login-form">
                             @csrf
 
-                            <input type="email" name="email" placeholder="Email*" required>
+                            <input type="email" name="email" placeholder="Email*" required value="{{old('email')}}">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

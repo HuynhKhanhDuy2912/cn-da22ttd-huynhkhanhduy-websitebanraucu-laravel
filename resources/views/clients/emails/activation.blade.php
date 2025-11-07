@@ -10,63 +10,110 @@
             margin: 0;
             padding: 0;
         }
-        .container {
+        .email-wrapper {
+            width: 100%;
+            padding: 40px 0;
+            background-color: #f4f4f7;
+        }
+        .email-content {
             max-width: 600px;
-            margin: 40px auto;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 30px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
-        .logo {
+        .header {
+            background: #28a745;
+            color: #ffffff;
             text-align: center;
-            margin-bottom: 30px;
+            padding: 30px 20px;
         }
-        .logo img {
-            max-width: 150px;
+        .header img {
+            max-width: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
         }
-        h1 {
-            color: #333333;
+        .header h1 {
+            margin: 0;
             font-size: 24px;
-            margin-bottom: 20px;
+            font-weight: 600;
         }
-        p {
-            color: #555555;
+        .body {
+            padding: 30px 40px;
+            color: #333333;
+        }
+        .body h2 {
+            font-size: 22px;
+            color: #28a745;
+        }
+        .body p {
             font-size: 16px;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: #555555;
         }
-        .btn-activate {
+        .btn {
             display: inline-block;
-            margin: 20px 0;
-            padding: 12px 25px;
             background-color: #28a745;
             color: #ffffff !important;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
+            padding: 14px 28px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            background-color: #218838;
         }
         .footer {
-            margin-top: 30px;
+            background: #f1f1f1;
+            text-align: center;
+            padding: 15px;
             font-size: 14px;
-            color: #999999;
+            color: #777777;
+        }
+        .footer a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="{{ asset('assets/clients/img/logo.png')}}" alt="Logo Website">
-        </div>
+    <div class="email-wrapper">
+        <div class="email-content">
+            <!-- Header -->
+            <div class="header">
+                {{-- <img src="" alt="Logo Website" onerror="this.style.display='none'"> --}}
+                <h1>Veggie Market</h1>
+            </div>
 
-        <h1>Xin chào, {{$user->name}} </h1>
-        <p>Cảm ơn bạn đã đăng ký tài khoản tại website của chúng tôi. Để kích hoạt tài khoản, vui lòng nhấn vào nút bên dưới:</p>
-        <a href="{{url('/activate/'.$token)}}" class="btn-activate">Kích hoạt tài khoản</a>
-        <p>Trân trọng,</p>
-        <p>Đội ngũ hỗ trợ khách hàng</p>
+            <!-- Body -->
+            <div class="body">
+                <h2>Xin chào, {{ $user->name }} 🌿</h2>
+                <p>
+                    Cảm ơn bạn đã đăng ký tài khoản tại <strong>Veggie Market</strong>.<br>
+                    Để kích hoạt tài khoản của bạn, vui lòng nhấn vào nút bên dưới:
+                </p>
 
-        <div class="footer">
-            Nếu bạn không yêu cầu kích hoạt tài khoản, vui lòng bỏ qua email này.
+                <p style="text-align:center;">
+                    <a href="{{ url('/activate/'.$token) }}" class="btn">Kích hoạt tài khoản</a>
+                </p>
+
+                <p>
+                    Nếu bạn không yêu cầu đăng ký tài khoản, vui lòng bỏ qua email này.<br>
+                    Trân trọng,<br>
+                    <strong>Đội ngũ hỗ trợ khách hàng</strong>
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                © {{ date('Y') }} Veggie Market • 
+                <a href="{{ url('/') }}">Trang chủ</a>
+            </div>
         </div>
     </div>
 </body>

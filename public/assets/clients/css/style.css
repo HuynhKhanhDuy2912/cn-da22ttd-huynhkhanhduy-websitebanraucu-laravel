@@ -4129,16 +4129,17 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   -webkit-transition: opacity .2s ease .1s,visibility .2s ease .1s,top .2s ease .1s;
   -o-transition: opacity .2s ease .1s,visibility .2s ease .1s,top .2s ease .1s;
   transition: opacity .2s ease .1s,visibility .2s ease .1s,top .2s ease .1s;
-  min-width: 230px;
-  padding: 15px 0;
+  min-width: 160px;
+  padding: 10px 0;
   -webkit-box-shadow: var(--ltn__box-shadow-4);
   box-shadow: var(--ltn__box-shadow-4);
   background-color: #fff;
-  left: inherit;
+  left: 50%;
+  transform: translateX(-50%);
   right: inherit;
   opacity: 0;
   visibility: hidden;
-  text-align: left;
+  text-align: center;
   z-index: 999;
   border-top: 5px solid var(--ltn__secondary-color); }
 
@@ -4595,8 +4596,11 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   box-shadow: var(--ltn__box-shadow-4);
   border-top: 1px solid #ececec;
   top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 0;
   margin: 0;
+  margin-top: 3px;
   -webkit-transition: opacity .2s ease .1s,visibility .2s ease .1s,top .2s ease .1s;
   -o-transition: opacity .2s ease .1s,visibility .2s ease .1s,top .2s ease .1s;
   transition: opacity .2s ease .1s,visibility .2s ease .1s,top .2s ease .1s;
@@ -7758,7 +7762,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   .ltn__section-title-2 .section-subtitle {
     text-transform: uppercase; }
   .ltn__section-title-2 .section-title {
-    font-size: 72px;
+    font-size: 44px;
     font-weight: 700;
     margin-bottom: 15px;
     line-height: 1; }
@@ -7804,7 +7808,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 @media (max-width: 1599px) {
   .ltn__section-title-2 .section-title {
-    font-size: 60px; } }
+    font-size: 55px; } }
 
 @media (max-width: 1399px) {
   .ltn__section-title-2 .section-title {
@@ -7816,7 +7820,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   .section-title {
     font-size: 30px; }
   .ltn__section-title-2 .section-title {
-    font-size: 50px; } }
+    font-size: 44px; } }
 
 @media (max-width: 991px) {
   .section-title {

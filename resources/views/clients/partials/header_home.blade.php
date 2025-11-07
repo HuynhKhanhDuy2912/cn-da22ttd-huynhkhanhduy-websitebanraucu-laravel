@@ -1,4 +1,3 @@
-
 <!-- HEADER AREA START (header-5) -->
 <header class="ltn__header-area ltn__header-5 ltn__header-transparent-- gradient-color-4---">
     <!-- ltn__header-top-area start -->
@@ -9,7 +8,8 @@
                     <div class="ltn__top-bar-menu">
                         <ul>
                             <li><a href="locations.html"><i class="icon-placeholder"></i> Thành Thới, Vĩnh Long</a></li>
-                            <li><a href="mailto:duy2912www@gmail.com?Subject=Contact%20with%20to%20you"><i class="icon-mail"></i> duy2912www@gmail.com</a></li>
+                            <li><a href="mailto:duy2912www@gmail.com?Subject=Contact%20with%20to%20you"><i
+                                        class="icon-mail"></i> duy2912www@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -21,10 +21,14 @@
                                     <!-- ltn__social-media -->
                                     <div class="ltn__social-media">
                                         <ul>
-                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                            </li>
+                                            <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -45,7 +49,7 @@
                 <div class="col">
                     <div class="site-logo-wrap">
                         <div class="site-logo">
-                            <a href="index.html"><img src="{{ asset('assets/clients/img/logo.png')}}" alt="Logo"></a>
+                            <a href="\"><img src="{{ asset('assets/clients/img/logo.png') }}" alt="Logo"></a>
                         </div>
                     </div>
                 </div>
@@ -54,8 +58,9 @@
                         <nav>
                             <div class="ltn__main-menu">
                                 <ul>
-                                    <li class="menu-icon"><a href="#">Trang chủ</a> </li>
-                                    <li class="menu-icon"><a href="#">Về chúng tôi</a>
+                                    <li class="menu-icon"><a ref="\">Trang chủ</a> </li>                                    
+                                    <li class="menu-icon"><a href="{{ route('faq') }}">Cửa hàng</a></li>
+                                    <li class="menu-icon"><a href="javascript:void(0)">Về chúng tôi</a>
                                         <ul>
                                             <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
                                             <li><a href="{{ route('service') }}">Dịch vụ</a></li>
@@ -63,9 +68,8 @@
                                             <li><a href="{{ route('faq') }}">FAQ</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-icon"><a href="shop.html">Cửa hàng</a></li>
-                                    <li><a href="contact.html">Liên hệ</a></li>
-                                    <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                    <li><a href="{{ route('faq') }}">Liên hệ</a></li>
+                                    <li class="special-link"><a href="{{ route('faq') }}">Nhận báo giá</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -82,7 +86,7 @@
                         </div>
                         <div class="header-search-1-form">
                             <form id="#" method="get" action="#">
-                                <input type="text" name="search" value="" placeholder="Search here..." />
+                                <input type="text" name="search" value="" placeholder="Tìm kiếm..." />
                                 <button type="submit">
                                     <span><i class="icon-search"></i></span>
                                 </button>
@@ -95,10 +99,14 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
-                                    <li><a href="{{route('login')}}">Đăng nhập</a></li>
-                                    <li><a href="{{route('register')}}">Đăng kí</a></li>
-                                    <li><a href="{{route('account')}}">Tài khoản</a></li>
-                                    <li><a href="wishlist.html">Yêu thích</a></li>
+                                    @if (Auth::check())
+                                        <li><a href="{{ route('account') }}"><i class="far fa-user"></i> Tài khoản</a></li>
+                                        <li><a href="wishlist.html"><i class="far fa-heart"></i> Yêu thích</a></li>
+                                        <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+                                    @else
+                                        <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                                        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Đăng kí</a></li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul>
@@ -121,8 +129,8 @@
                                 <path d="M300,320 L540,320" id="middle"></path>
                                 <path
                                     d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
-                                    id="bottom"
-                                    transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                                    id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) ">
+                                </path>
                             </svg>
                         </a>
                     </div>

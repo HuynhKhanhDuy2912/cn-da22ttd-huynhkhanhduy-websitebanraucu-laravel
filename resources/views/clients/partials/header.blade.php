@@ -44,7 +44,7 @@
                 <div class="col">
                     <div class="site-logo-wrap">
                         <div class="site-logo">
-                            <a href="{{url('/')}}"><img src="{{ asset('assets/clients/img/logo-2.png')}}" alt="Logo"></a>
+                            <a href="\"><img src="{{ asset('assets/clients/img/logo-2.png')}}" alt="Logo"></a>
                         </div>
                     </div>
                 </div>
@@ -53,8 +53,9 @@
                         <nav>
                             <div class="ltn__main-menu">
                                 <ul>
-                                    <li class="menu-icon"><a href="{{url('/')}}">Trang chủ</a> </li>
-                                    <li class="menu-icon"><a href="#">Về chúng tôi</a>
+                                    <li class="menu-icon"><a href="\">Trang chủ</a> </li>                                    
+                                    <li class="menu-icon"><a href="{{ route('faq') }}">Cửa hàng</a></li>
+                                    <li class="menu-icon"><a href="javascript:void(0)">Về chúng tôi</a>
                                         <ul>
                                             <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
                                             <li><a href="{{ route('service') }}">Dịch vụ</a></li>
@@ -62,9 +63,8 @@
                                             <li><a href="{{ route('faq') }}">FAQ</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-icon"><a href="shop.html">Cửa hàng</a></li>
-                                    <li><a href="contact.html">Liên hệ</a></li>
-                                    <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                    <li><a href="{{ route('faq') }}">Liên hệ</a></li>
+                                    <li class="special-link"><a href="{{ route('faq') }}">Nhận báo giá</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -81,7 +81,7 @@
                         </div>
                         <div class="header-search-1-form">
                             <form id="#" method="get" action="#">
-                                <input type="text" name="search" value="" placeholder="Search here..." />
+                                <input type="text" name="search" value="" placeholder="Tìm kiếm..." />
                                 <button type="submit">
                                     <span><i class="icon-search"></i></span>
                                 </button>
@@ -94,10 +94,14 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
-                                    <li><a href="{{route('login')}}">Đăng nhập</a></li>
-                                    <li><a href="{{route('register')}}">Đăng kí</a></li>
-                                    <li><a href="{{route('account')}}">Tài khoản</a></li>
-                                    <li><a href="wishlist.html">Yêu thích</a></li>
+                                    @if (Auth::check())
+                                        <li><a href="{{ route('account') }}"><i class="far fa-user"></i> Tài khoản</a></li>
+                                        <li><a href="wishlist.html"><i class="far fa-heart"></i> Yêu thích</a></li>
+                                        <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+                                    @else
+                                        <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                                        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Đăng kí</a></li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul>
