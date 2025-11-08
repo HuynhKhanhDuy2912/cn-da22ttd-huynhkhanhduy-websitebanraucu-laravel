@@ -238,33 +238,107 @@ $(document).ready(function () {
         let isValid = true;
 
         //Delete old error
-        $('.error-message').remove();
+        $(".error-message").remove();
 
-        let fullName = $('#full_name').val().trim();
-        let address = $('#address').val().trim();
-        let city = $('#city').val().trim();
-        let phone = $('#phone').val().trim();
+        let fullName = $("#full_name").val().trim();
+        let address = $("#address").val().trim();
+        let city = $("#city").val().trim();
+        let phone = $("#phone").val().trim();
 
-        if(fullName.length < 3)
-        {
+        if (fullName.length < 3) {
             isValid = false;
-            $('#full_name').after(
+            $("#full_name").after(
                 '<p class = "error-message text-danger">Họ tên không được ít hơn 3 ký tự.</p>'
             );
         }
 
         let phoneRegex = /^[0-9]{10,11}$/;
-        if(!phoneRegex.test(phone))
-        {
+        if (!phoneRegex.test(phone)) {
             isValid = false;
-            $('#phone').after(
+            $("#phone").after(
                 '<p class = "error-message text-danger">Số điện thoại không hợp lệ.</p>'
             );
         }
 
-        if(isValid)
-        {
+        if (isValid) {
             this.submit();
         }
     });
+
+    /********************************
+            PAGE PRODUCT
+    ********************************/
+
+    function fetchProduct() {
+        let category_id = $(".category-filter.active").data("id") || "";
+        let minPrice = $(".slider-range").slider("values", 0);
+        let maxPrice = $(".slider-range").slider("values", 1);
+        let sort_by = $("#sort-by").val();
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "products/filter",
+            type: "GET",
+            data: {
+                category_id: category_id,
+                min_price: minPrice,
+                max_price: maxPrice,
+                sort_by: sort_by,
+            },
+            beforeSend: function () {
+                $("#loading-spinner").show();
+                $("#liton_product_grid").hide();
+            },
+            success: function (response) {
+                $("#liton_product_grid").html(response.products);
+            },
+            complete: function () {
+                $("#loading-spinner").hide();
+                $("#liton_product_grid").show();
+            },
+            error: function () {
+                alert("Có lỗi xảy ra với ajax fetchProduct");
+            },
+        });
+    }
+
+    //search by category
+    $(".category-filter").click(function () {
+        $(".category-filter").removeClass("active");
+        $(this).addClass("active");
+        fetchProduct();
+    });
+
+    //search by sort
+    $(document).on("change", "#sort-by", function () {
+        fetchProduct();
+    });
+
+    //search by price
+    $(".slider-range").slider({
+        range: true,
+        min: 0,
+        max: 500000,
+        values: [0, 500000],
+        slide: function (event, ui) {
+            $(".amount").val(
+                ui.values[0] + "VNĐ" + " - " + ui.values[1] + "VNĐ"
+            );
+        },
+        change: function (event, ui) {
+            fetchProduct();
+        },
+    });
+    $(".amount").val(
+        $(".slider-range").slider("values", 0) +
+            "VNĐ" +
+            " - " +
+            $(".slider-range").slider("values", 1) +
+            "VNĐ"
+    );
 });

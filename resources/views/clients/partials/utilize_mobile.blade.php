@@ -24,7 +24,7 @@
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
                     </ul>
                 </li>
-                <li><a href="shop.html">Cửa hàng</a></li>
+                <li><a href="{{ route('products.index') }}">Cửa hàng</a></li>
                 <li><a href="contact.html">Liên hệ</a></li>
             </ul>
         </div>
@@ -51,7 +51,6 @@
                     <a href="{{ route('about') }}" title="Giỏ hàng">
                         <span class="utilize-btn-icon">
                             <i class="fas fa-shopping-cart"></i>
-                            <sup>5</sup>
                         </span>
                         Giỏ hàng
                     </a>

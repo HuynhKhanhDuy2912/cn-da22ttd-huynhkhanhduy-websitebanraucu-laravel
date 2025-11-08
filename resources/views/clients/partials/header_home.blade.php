@@ -8,8 +8,9 @@
                     <div class="ltn__top-bar-menu">
                         <ul>
                             <li><a href="locations.html"><i class="icon-placeholder"></i> Thành Thới, Vĩnh Long</a></li>
-                            <li><a href="mailto:duy2912www@gmail.com?Subject=Contact%20with%20to%20you"><i
-                                        class="icon-mail"></i> duy2912www@gmail.com</a></li>
+                            <li><a href="mailto:duy2912www@gmail.com?Subject=Contact%20with%20to%20you">
+                                <i class="icon-mail"></i> duy2912www@gmail.com</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -26,8 +27,6 @@
                                             <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
                                             </li>
                                             <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                            </li>
-                                            <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -58,8 +57,10 @@
                         <nav>
                             <div class="ltn__main-menu">
                                 <ul>
-                                    <li class="menu-icon"><a ref="\">Trang chủ</a> </li>                                    
-                                    <li class="menu-icon"><a href="{{ route('faq') }}">Cửa hàng</a></li>
+                                    <li class="menu-icon"><a
+                                            ref="\">Trang chủ</a></li>                                    
+                                    <li class="menu-icon"><a
+                                                href="{{ route('products.index') }}">Cửa hàng</a></li>
                                     <li class="menu-icon"><a href="javascript:void(0)">Về chúng tôi</a>
                                         <ul>
                                             <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
@@ -115,7 +116,6 @@
                     <div class="mini-cart-icon">
                         <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                             <i class="icon-shopping-cart"></i>
-                            <sup>2</sup>
                         </a>
                     </div>
                     <!-- mini-cart -->
