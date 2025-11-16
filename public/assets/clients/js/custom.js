@@ -269,6 +269,17 @@ $(document).ready(function () {
             PAGE PRODUCT
     ********************************/
 
+    let currentPage = 1;
+
+    $(document).on("click", ".panigation-link", function (e) {
+        e.preventDefault();
+        let pageUrl = $(this).attr("href");
+        let page = pageUrl.split("page=")[1];
+        currentPage = page;
+        fetchProduct();
+    });
+
+    //Product load function (combining filter + pagination)
     function fetchProduct() {
         let category_id = $(".category-filter.active").data("id") || "";
         let minPrice = $(".slider-range").slider("values", 0);
@@ -282,7 +293,7 @@ $(document).ready(function () {
         });
 
         $.ajax({
-            url: "products/filter",
+            url: "products/filter?page=" + currentPage,
             type: "GET",
             data: {
                 category_id: category_id,
@@ -296,6 +307,16 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $("#liton_product_grid").html(response.products);
+                $(".ltn__pagination").html(response.panigation);
+
+                // Cập nhật số sản phẩm
+                $(".showing-product-number span").text(
+                    "Hiển thị " +
+                        response.count +
+                        " trong tổng số " +
+                        response.total +
+                        " sản phẩm"
+                );
             },
             complete: function () {
                 $("#loading-spinner").hide();
@@ -307,19 +328,21 @@ $(document).ready(function () {
         });
     }
 
-    //search by category
+    //Search by category
     $(".category-filter").click(function () {
         $(".category-filter").removeClass("active");
         $(this).addClass("active");
+        currentPage = 1;
         fetchProduct();
     });
 
-    //search by sort
+    //Search by sort
     $(document).on("change", "#sort-by", function () {
+        currentPage = 1;
         fetchProduct();
     });
 
-    //search by price
+    //Search by price
     $(".slider-range").slider({
         range: true,
         min: 0,
@@ -331,6 +354,7 @@ $(document).ready(function () {
             );
         },
         change: function (event, ui) {
+            currentPage = 1;
             fetchProduct();
         },
     });
@@ -341,4 +365,217 @@ $(document).ready(function () {
             $(".slider-range").slider("values", 1) +
             "VNĐ"
     );
+
+    //Warnning of addToCart and wishlist modal
+    window.showLoginWarning = function () {
+        toastr.error("Vui lòng đăng nhập để thực hiện chức năng này!");
+
+        setTimeout(function () {
+            window.location.href = "/login";
+        }, 1300);
+    };
+
+    /********************************
+            PAGE PRODUCT DETAIL
+    ********************************/
+
+    //Change quanity
+    if (window.location.pathname !== "/cart") {
+        $(document).on("click", ".qtybutton", function () {
+            var $button = $(this);
+            var $input = $button.siblings("input");
+            var oldValue = parseInt($input.val());
+            var maxStock = parseInt($input.data("max"));
+
+            if ($button.hasClass("inc")) {
+                if (oldValue < maxStock) {
+                    $input.val(oldValue + 1);
+                }
+            } else {
+                if (oldValue > 1) $input.val(oldValue - 1);
+            }
+        });
+    } else {
+        $(document).on("click", ".qtybutton", function () {
+            let $button = $(this);
+            let $input = $button.siblings("input");
+            let oldValue = parseInt($input.val());
+            let maxStock = parseInt($input.data("max"));
+            let productId = $input.data("id");
+            let newValue = oldValue;
+
+            if ($button.hasClass("inc") && oldValue < maxStock) {
+                newValue = oldValue + 1;
+            } else if ($button.hasClass("dec") && oldValue > 1) {
+                newValue = oldValue - 1;
+            }
+
+            if (newValue != oldValue) {
+                updateCart(productId, newValue, $input);
+            }
+        });
+    }
+
+    //Add to cart
+    $(document).on("click", ".add-to-cart-btn", function (e) {
+        e.preventDefault();
+
+        let productId = $(this).data("id");
+        let quantity = $(this)
+            .closest("li")
+            .prev()
+            .find(".cart-plus-minus-box")
+            .val();
+
+        quantity = quantity ? quantity : 1;
+
+        //console.log(productId,quantity)
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/cart/add",
+            type: "POST",
+            data: {
+                product_id: productId,
+                quantity: quantity,
+            },
+            success: function (response) {
+                $("#add_to_cart_modal-" + productId).modal("show");
+                $("#quick_view_modal-" + productId).modal("hide");
+                $("#cart_count").html(response.cart_count);
+            },
+            error: function (xhr) {
+                if (xhr.status === 401) {
+                    toastr.error(xhr.responseJSON.message);
+
+                    setTimeout(function () {
+                        window.location.href = "/login";
+                    }, 1300);
+                }
+            },
+        });
+    });
+
+    /********************************
+            PAGE MINI-CART
+    ********************************/
+
+    //Show MiniCart
+    $(".mini-cart-icon").on("click", function (e) {
+        $.ajax({
+            url: "/mini-cart",
+            type: "GET",
+            success: function (response) {
+                if (response.status) {
+                    $("#ltn__utilize-cart-menu .ltn__utilize-menu-inner").html(
+                        response.html
+                    );
+                    $("#ltn__utilize-cart-menu").addClass("ltn__utilize-open");
+                } else {
+                    toastr.error("Không thể tải giỏ hàng");
+                }
+            },
+        });
+    });
+
+    $(document).on("click", ".ltn__utilize-close", function () {
+        $("#ltn__utilize-cart-menu").removeClass("ltn__utilize-open");
+        $(".ltn__utilize-overlay").hide();
+    });
+
+    //Delete product from MiniCart
+    $(document).on("click", ".mini-cart-item-delete", function () {
+        let productId = $(this).data("id");
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/cart/delete",
+            type: "POST",
+            data: { product_id: productId },
+            success: function (response) {
+                if (response.status) {
+                    $("#cart_count").html(response.cart_count);
+                    $(".mini-cart-icon").click();
+                }
+            },
+        });
+    });
+
+    /********************************
+            PAGE CART
+    ********************************/
+
+   //Handle update quantity product in cart
+    function updateCart(productId, quantity, $input) {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/cart/update",
+            type: "POST",
+            data: {
+                product_id: productId,
+                quantity: quantity,
+            },
+            success: function (response) {
+                // console.log(response);
+                $input.val(response.quantity);
+                $input
+                    .closest("tr")
+                    .find(".cart-product-subtotal")
+                    .text(response.subTotal);
+                $(".cart-total").text(response.total);
+                $(".cart-grand-total").text(response.grandTotal);
+            },
+            error: function (xhr) {
+                alert(xhr.responseJSON.error);
+            },
+        });
+    }
+
+    //Handle delete product in cart
+    $(".remove-from-cart").on("click", function (e) {
+        let productId = $(this).data('id');
+        let row = $(this).closest('tr');
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/cart/delete-cart",
+            type: "POST",
+            data: {
+                product_id: productId
+            },
+            success: function (response) {
+                // console.log(response);
+                row.remove();
+                $(".cart-total").text(response.total);
+                $(".cart-grand-total").text(response.grandTotal);
+                if($('.remove-from-cart').length === 0)
+                {
+                    location.reload();
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseJSON.error);
+            },
+        });
+    });
 });

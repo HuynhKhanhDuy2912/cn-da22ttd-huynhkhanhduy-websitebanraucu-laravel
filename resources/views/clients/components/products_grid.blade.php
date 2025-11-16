@@ -6,13 +6,8 @@
                 <div class="col-xl-4 col-sm-6 col-6">
                     <div class="ltn__product-item ltn__product-item-3 text-center">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="{{ $product->image_url }}"
+                            <a href="{{ route('products.detail', $product->slug) }}"><img src="{{ $product->image_url }}"
                                     alt="{{ $product->name }}"></a>
-                            {{-- <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badge">New</li>
-                                </ul>
-                            </div> --}}
                             <div class="product-hover-action">
                                 <ul>
                                     <li>
@@ -22,15 +17,29 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" title="Thêm vào giỏ hàng" data-bs-toggle="modal"
-                                            data-bs-target="#add_to_cart_modal-{{ $product->id }}">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
+                                        @if (Auth::check())
+                                            <a href="#" class="add-to-cart-btn" title="Thêm vào giỏ hàng"
+                                                data-bs-toggle="modal" data-id="{{ $product->id }}"
+                                                data-bs-target="#add_to_cart_modal-{{ $product->id }}">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        @else
+                                            <a href="javascript:void(0)" onclick="showLoginWarning()">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        @endif
                                     </li>
                                     <li>
-                                        <a href="#" title="Yêu thích" data-bs-toggle="modal"
+                                        @if (Auth::check())
+                                            <a href="#" title="Yêu thích" data-bs-toggle="modal"
                                             data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
                                             <i class="far fa-heart"></i></a>
+                                        @else
+                                            <a href="javascript:void(0)" onclick="showLoginWarning()">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        @endif
+                                        
                                     </li>
                                 </ul>
                             </div>
@@ -41,9 +50,10 @@
                                     <li><a href="#"><i class="fas fa-star"></i></a></li>
                                 </ul>
                             </div>
-                            <h2 class="product-title"><a href="product-details.html">{{$product->name}}</a></h2>
+                            <h2 class="product-title"><a
+                                    href="{{ route('products.detail', $product->slug) }}">{{ $product->name }}</a></h2>
                             <div class="product-price">
-                                <span>{{number_format($product->price, 0, ',', '.')}} VNĐ</span>
+                                <span>{{ number_format($product->price, 0, ',', '.') }} VNĐ/{{ $product->unit }}</span>
                             </div>
                         </div>
                     </div>
@@ -53,3 +63,6 @@
     </div>
 </div>
 
+@foreach ($products as $product)
+    @include('clients.components.includes.include_modal')
+@endforeach

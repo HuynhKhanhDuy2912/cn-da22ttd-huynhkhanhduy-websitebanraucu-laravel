@@ -16,14 +16,20 @@ class RedirectIfNotAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->is('admin') || $request->is('admin/*')){
-            if(!Auth::guard('admin')->check()){
+        if ($request->is('admin') || $request->is('admin/*')) {
+            if (!Auth::guard('admin')->check()) {
                 toastr()->error('Vui lòng đăng nhập để vào trang quản trị.');
             }
-        }
-        else {
+        } else {
             if (!Auth::guard('web')->check()) {
-                toastr()->error('Vui lòng đăng nhập để thực hiện chức năng này.');
+
+                if ($request->ajax()) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Vui lòng đăng nhập để thực hiện chức năng này!'
+                    ], 401);
+                }
+                toastr()->error('Vui lòng đăng nhập để thực hiện chức năng này!');
                 return redirect()->route('login');
             }
         }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
+use App\Models\CartItem;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -15,6 +17,7 @@ class ProductController extends Controller
 
         $products = Product::with('firstImage')->where('status', 'in_stock')->paginate(9);
 
+        /** @var \App\Models\Product $product */
         foreach ($products as $product) {
             $product->image_url = $product->firstImage?->Image
                 ? asset('storage/uploads/products/' . $product->firstImage->image) : asset('storage/uploads/products/product-default.png');
@@ -60,13 +63,29 @@ class ProductController extends Controller
 
         $products = $query->paginate(9);
         
+        /** @var \App\Models\Product $product */
         foreach ($products as $product) {
             $product->image_url = $product->firstImage?->Image
                 ? asset('storage/uploads/products/' . $product->firstImage->image) : asset('storage/uploads/products/product-default.png');
         }
 
+        
         return response()->json([
             'products' => view('clients.components.products_grid', compact('products'))->render(),
+            'panigation' => $products->links('clients.components.pagination.pagination-custom')->toHtml(),
+            'count' => $products->count(),   
+            'total' => $products->total()
         ]);
+    }
+
+    public function detail($slug)
+    {
+        $product = Product::with(['category', 'images'])->where('slug', $slug)->firstOrFail();
+
+        //Get product in the same category
+        $relatedProducts = Product::where('category_id', $product->category_id)
+        ->where('id', '!=', $product->id)
+        ->limit(9)->get();
+        return view('clients.pages.product_detail', compact('product','relatedProducts'));
     }
 }

@@ -81,78 +81,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="ltn__team-item">
-                    <div class="team-img">
-                        <img src="{{asset('assets/clients/img/team/5.jpg')}}" alt="Image">
-                    </div>
-                    <div class="team-info">
-                        <h6 class="ltn__secondary-color">Organic Farmer</h6>
-                        <h4><a href="team-details.html">Aiden Benjamin</a></h4>
-                        <div class="ltn__social-media">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="ltn__team-item">
-                    <div class="team-img">
-                        <img src="{{asset('assets/clients/img/team/6.jpg')}}" alt="Image">
-                    </div>
-                    <div class="team-info">
-                        <h6 class="ltn__secondary-color">Organic Farmer</h6>
-                        <h4><a href="team-details.html">James Carter</a></h4>
-                        <div class="ltn__social-media">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="ltn__team-item">
-                    <div class="team-img">
-                        <img src="{{asset('assets/clients/img/team/7.jpg')}}" alt="Image">
-                    </div>
-                    <div class="team-info">
-                        <h6 class="ltn__secondary-color">Organic Farmer</h6>
-                        <h4><a href="team-details.html">William Gabriel</a></h4>
-                        <div class="ltn__social-media">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="ltn__team-item">
-                    <div class="team-img">
-                        <img src="{{asset('assets/clients/img/team/8.jpg')}}" alt="Image">
-                    </div>
-                    <div class="team-info">
-                        <h6 class="ltn__secondary-color">Organic Farmer</h6>
-                        <h4><a href="team-details.html">Adam Joseph</a></h4>
-                        <div class="ltn__social-media">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -216,14 +144,14 @@
 <!-- CALL TO ACTION END -->
 
 <!-- PROGRESS BAR AREA START -->
-<div class="ltn__progress-bar-area pt-115 pb-120">
+<div class="ltn__progress-bar-area pt-115 pb-80">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <div class="ltn__progress-bar-wrap">
                     <div class="section-title-area ltn__section-title-2">
                         <h6 class="section-subtitle ltn__secondary-color">// kỹ năng</h6>
-                        <h1 class="section-title">Đội ngũ chuyên nghiệp và tận tâm nhất<span>.</span></h1>
+                        <h1 class="section-title">Đội ngũ chuyên nghiệp và tận tâm nhất</h1>
                         <p>Chúng tôi tự hào với đội ngũ có tay nghề cao, luôn nỗ lực mang đến cho khách hàng nguồn rau củ tươi sạch, an toàn và chất lượng nhất.</p>
                     </div>
                     <div class="ltn__progress-bar-inner">

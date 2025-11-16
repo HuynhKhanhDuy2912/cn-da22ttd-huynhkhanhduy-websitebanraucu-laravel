@@ -98,7 +98,7 @@
                     <div class="ltn__drop-menu user-menu">
                         <ul>
                             <li>
-                                <a href="#"><i class="icon-user"></i></a>
+                                <a href="javascript:void(0)"><i class="icon-user"></i></a>
                                 <ul>
                                     @if (Auth::check())
                                         <li><a href="{{ route('account') }}"><i class="far fa-user"></i> Tài khoản</a></li>
@@ -116,6 +116,11 @@
                     <div class="mini-cart-icon">
                         <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                             <i class="icon-shopping-cart"></i>
+                            <sup id="cart_count">
+                                @auth
+                                    {{\App\Models\CartItem::where('user_id',auth()->id())->count()}}
+                                @endauth
+                            </sup>
                         </a>
                     </div>
                     <!-- mini-cart -->
@@ -144,68 +149,29 @@
 
 <!-- Utilize Cart Menu Start -->
 <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
-    <div class="ltn__utilize-menu-inner ltn__scrollbar">
-        <div class="ltn__utilize-menu-head">
-            <span class="ltn__utilize-menu-title">Cart</span>
-            <button class="ltn__utilize-close">x</button>
-        </div>
-        <div class="mini-cart-product-area ltn__scrollbar">
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/1.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">Red Hot Tomato</a></h6>
-                    <span class="mini-cart-quantity">1 x $65.00</span>
-                </div>
+    @if (Auth::check())
+        <div class="ltn__utilize-menu-inner ltn__scrollbar"></div>
+    @else
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <span class="ltn__utilize-menu-title" style="font-size: 20px">Giỏ hàng</span>
+                <button class="ltn__utilize-close">x</button>
             </div>
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/2.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">Vegetables Juices</a></h6>
-                    <span class="mini-cart-quantity">1 x $85.00</span>
-                </div>
+            <div class="mini-cart-product-area ltn__scrollbar" style="margin-top: 255px; margin-bottom: 150px;">
+                <h5>Không có sản phẩm nào trong giỏ hàng</h5>
             </div>
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/3.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">Orange Sliced Mix</a></h6>
-                    <span class="mini-cart-quantity">1 x $92.00</span>
-                </div>
-            </div>
-            <div class="mini-cart-item clearfix">
-                <div class="mini-cart-img">
-                    <a href="#"><img src="img/product/4.png" alt="Image"></a>
-                    <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                </div>
-                <div class="mini-cart-info">
-                    <h6><a href="#">Orange Fresh Juice</a></h6>
-                    <span class="mini-cart-quantity">1 x $68.00</span>
+            <div class="mini-cart-footer">
+                <div class="btn-wrapper" >
+                    <a href="{{route('cart.index')}}" class="theme-btn-1 btn btn-effect-1" style="font-size: 15px; padding: 15px 25px;">Xem giỏ hàng</a>
                 </div>
             </div>
         </div>
-        <div class="mini-cart-footer">
-            <div class="mini-cart-sub-total">
-                <h5>Subtotal: <span>$310.00</span></h5>
-            </div>
-            <div class="btn-wrapper">
-                <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
-            </div>
-            <p>Free Shipping on All Orders Over $100!</p>
-        </div>
-
-    </div>
+    @endif
 </div>
 <!-- Utilize Cart Menu End -->
 
+<!-- Utilize Mobile Menu Start -->
 @include('clients.partials.utilize_mobile')
 
 <div class="ltn__utilize-overlay"></div>
+<!-- Utilize Mobile Menu End -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Clients\AccountController;
 use App\Http\Controllers\Clients\AuthController;
 use App\Http\Controllers\Clients\ForgotPasswordController;
@@ -58,10 +59,24 @@ Route::middleware(['auth.custom'])->group(function(){
         Route::post('/addresses', [AccountController::class, 'addAddress'])->name('account.addresses.add');
         Route::put('/addresses/{id}', [AccountController::class, 'updateDefaultAddress'])->name('account.addresses.update');
         Route::delete('/addresses/{id}', [AccountController::class, 'deleteAddress'])->name('account.addresses.delete');
-
     });
+
+    //AddToCart
+    Route::post('cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 });
 
+//Product
 Route::get('/products',[ProductController::class, 'index'])->name('products.index');
 Route::get('/products/filter',[ProductController::class, 'filter'])->name('products.filter');
 
+//Product Detail
+Route::get('/product/{slug}',[ProductController::class, 'detail'])->name('products.detail');
+
+//MiniCart
+Route::get('/mini-cart',[CartController::class, 'loadMiniCart'])->name('cart.mini');
+Route::post('/cart/delete',[CartController::class, 'deleteMiniCart'])->name('cart.delete');
+
+//Cart
+Route::get('/cart',[CartController::class, 'viewCart'])->name('cart.index');
+Route::post('/cart/update',[CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/delete-cart',[CartController::class, 'deleteCartittem'])->name('cart.deleteItem');

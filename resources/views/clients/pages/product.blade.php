@@ -7,7 +7,7 @@
     <div class="ltn__product-area ltn__product-gutter">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 order-lg-2 mb-120">
+                <div class="col-lg-8 order-lg-2 mb-80">
                     <div class="ltn__shop-options">
                         <ul>
                             <li>
@@ -28,6 +28,13 @@
                                     </select>
                                 </div>
                             </li>
+                            <li>
+                                <div class="showing-product-number text-right text-end">
+                                    <span style="font-size: 15px !important">
+                                        Hiển thị {{ $products->lastItem() }} trong tổng số {{ $products->total() }} sản phẩm
+                                    </span>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -38,19 +45,11 @@
                     </div>
                     <div class="ltn__pagination-area text-center">
                         <div class="ltn__pagination">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">...</a></li>
-                                <li><a href="#">10</a></li>
-                                <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                            </ul>
+                            {!!$products->links('clients.components.pagination.pagination-custom')!!}
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4  mb-120">
+                <div class="col-lg-4  mb-80">
                     <aside class="sidebar ltn__shop-sidebar">
                         <!-- Search Widget -->
                         <div class="widget ltn__search-widget">

@@ -1,6 +1,6 @@
 <!-- MODAL AREA START (Wishlist Modal) -->
 <div class="ltn__modal-area ltn__add-to-cart-modal-area">
-    <div class="modal fade" id="liton_wishlist_modal" tabindex="-1">
+    <div class="modal fade" id="liton_wishlist_modal-{{ $product->id }}" tabindex="-1">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -14,23 +14,13 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="modal-product-img">
-                                        <img src="img/product/7.png" alt="#">
+                                        <img src="{{ $product->image_url }}" alt="#">
                                     </div>
                                     <div class="modal-product-info">
-                                        <h5><a href="product-details.html">Vegetables Juices</a></h5>
-                                        <p class="added-cart"><i class="fa fa-check-circle"></i> Successfully
-                                            added to your Wishlist</p>
-                                        <div class="btn-wrapper">
-                                            <a href="wishlist.html" class="theme-btn-1 btn btn-effect-1">View
-                                                Wishlist</a>
-                                        </div>
-                                    </div>
-                                    <!-- additional-info -->
-                                    <div class="additional-info d-none">
-                                        <p>We want to give you <b>10% discount</b> for your first order, <br>
-                                            Use discount code at checkout</p>
-                                        <div class="payment-method">
-                                            <img src="img/icons/payment.png" alt="#">
+                                        <h5><a href="{{route('products.detail', $product->slug)}}">{{ $product->name }}</a></h5>
+                                        <p class="added-cart"><i class="fa fa-check-circle"></i> Đã thêm vào danh sách yêu thích</p>
+                                        <div class="btn-wrapper" style="text-align: center">
+                                            <a href="#" class="theme-btn-1 btn btn-effect-1">Xem</a>
                                         </div>
                                     </div>
                                 </div>

@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area text-center">
-                        <h1 class="section-title">Đăng nhập <br>Vào tài khoản của tôi</h1>
+                        <h1 class="section-title">Đăng nhập <br>vào tài khoản của bạn</h1>
                         <p>Vui lòng đăng nhập thông tin của bạn để truy cập tài khoản và bắt đầu mua sản phẩm tươi sống.</p>
                     </div>
                 </div>
