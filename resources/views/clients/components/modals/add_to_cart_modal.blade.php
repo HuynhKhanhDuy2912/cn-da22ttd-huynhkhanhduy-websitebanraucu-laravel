@@ -21,7 +21,7 @@
                                         <p class="added-cart"><i class="fa fa-check-circle"></i> Thêm vào giỏ hàng thành công</p>
                                         <div class="btn-wrapper">
                                             <a href="{{route('cart.index')}}" class="theme-btn-1 btn btn-effect-1">Xem</a>
-                                            <a href="checkout.html"
+                                            <a href="{{ route('checkout') }}"
                                                 class="theme-btn-2 btn btn-effect-2">Thanh toán</a>
                                         </div>
                                     </div>

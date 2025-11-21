@@ -142,24 +142,7 @@
 
 <!-- Utilize Cart Menu Start -->
 <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
-    @if (Auth::check())
-        <div class="ltn__utilize-menu-inner ltn__scrollbar"></div>
-    @else
-        <div class="ltn__utilize-menu-inner ltn__scrollbar">
-            <div class="ltn__utilize-menu-head">
-                <span class="ltn__utilize-menu-title" style="font-size: 20px">Giỏ hàng</span>
-                <button class="ltn__utilize-close">x</button>
-            </div>
-            <div class="mini-cart-product-area ltn__scrollbar" style="margin-top: 255px; margin-bottom: 150px;">
-                <h5>Không có sản phẩm nào trong giỏ hàng</h5>
-            </div>
-            <div class="mini-cart-footer">
-                <div class="btn-wrapper" >
-                    <a href="{{route('cart.index')}}" class="theme-btn-1 btn btn-effect-1" style="font-size: 15px; padding: 15px 25px;">Xem giỏ hàng</a>
-                </div>
-            </div>
-        </div>
-    @endif
+    <div class="ltn__utilize-menu-inner ltn__scrollbar"></div>
 </div>
 <!-- Utilize Cart Menu End -->
 

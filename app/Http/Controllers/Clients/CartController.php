@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Clients;
 
+use App\Http\Controllers\Controller;
 use App\Models\CartItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -128,7 +129,7 @@ class CartController extends Controller
     }
 
     //Handle delete product in cart
-    public function deleteCartittem(Request $request)
+    public function deleteCartItem(Request $request)
     {
         $productId = $request->product_id;        
         CartItem::where('user_id', Auth::id())->with('product')->where('product_id', $productId)->delete();
@@ -137,9 +138,13 @@ class CartController extends Controller
         $total = $this->calculateCartTotal();
         $grandTotal = $total + 25000;
 
+        //Count item
+        $cartCount = CartItem::where('user_id', Auth::id())->count();
+
         return response()->json([
             'total' => number_format($total, 0, ',', '.'),
             'grandTotal' => number_format($grandTotal, 0, ',', '.'),
+            'cart_count' => $cartCount
         ]);
     }
 

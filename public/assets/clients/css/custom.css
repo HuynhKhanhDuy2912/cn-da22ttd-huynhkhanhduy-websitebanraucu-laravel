@@ -106,3 +106,16 @@
     border-color: #ff0000;
     color: #fff;
 }
+
+/*Checkout*/
+.select-address{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#btn-new-address{
+    padding: 15px 15px;
+    font-size: 14px;
+}

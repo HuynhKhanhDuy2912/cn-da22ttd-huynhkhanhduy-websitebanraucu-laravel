@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\AccountController;
 use App\Http\Controllers\Clients\AuthController;
+use App\Http\Controllers\Clients\CheckoutController;
 use App\Http\Controllers\Clients\ForgotPasswordController;
 use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Clients\ProductController;
@@ -29,13 +30,13 @@ Route::get('/faq', function () {
 
 
 //guest
-Route::middleware('guest')->group(function(){
+Route::middleware('guest')->group(function () {
 
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('post-register');
 
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('post-login');  
+    Route::post('/login', [AuthController::class, 'login'])->name('post-login');
 
     Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.request');
     Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
@@ -45,13 +46,13 @@ Route::middleware('guest')->group(function(){
 });
 
 
-Route::get('/activate/{token}',[AuthController::class, 'activate'])->name('activate');
+Route::get('/activate/{token}', [AuthController::class, 'activate'])->name('activate');
 
 
-Route::middleware(['auth.custom'])->group(function(){
+Route::middleware(['auth.custom'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::prefix('account')->group(function(){
+    Route::prefix('account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('account');
         Route::put('/update', [AccountController::class, 'update'])->name('account.update');
         Route::post('/change-password', [AccountController::class, 'changePassword'])->name('account.change-password');
@@ -61,22 +62,25 @@ Route::middleware(['auth.custom'])->group(function(){
         Route::delete('/addresses/{id}', [AccountController::class, 'deleteAddress'])->name('account.addresses.delete');
     });
 
-    //AddToCart
+    //Cart
     Route::post('cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
+    Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::post('/cart/delete-cart', [CartController::class, 'deleteCartItem'])->name('cart.deleteItem');
+
+    //Checkout
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::get('/checkout/get-address', [CheckoutController::class, 'getAddress'])->name('checkout.getAddress');
+    Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
 });
 
 //Product
-Route::get('/products',[ProductController::class, 'index'])->name('products.index');
-Route::get('/products/filter',[ProductController::class, 'filter'])->name('products.filter');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/filter', [ProductController::class, 'filter'])->name('products.filter');
 
 //Product Detail
-Route::get('/product/{slug}',[ProductController::class, 'detail'])->name('products.detail');
+Route::get('/product/{slug}', [ProductController::class, 'detail'])->name('products.detail');
 
 //MiniCart
-Route::get('/mini-cart',[CartController::class, 'loadMiniCart'])->name('cart.mini');
-Route::post('/cart/delete',[CartController::class, 'deleteMiniCart'])->name('cart.delete');
-
-//Cart
-Route::get('/cart',[CartController::class, 'viewCart'])->name('cart.index');
-Route::post('/cart/update',[CartController::class, 'updateCart'])->name('cart.update');
-Route::post('/cart/delete-cart',[CartController::class, 'deleteCartittem'])->name('cart.deleteItem');
+Route::get('/mini-cart', [CartController::class, 'loadMiniCart'])->name('cart.mini');
+Route::post('/cart/delete', [CartController::class, 'deleteMiniCart'])->name('cart.delete');

@@ -515,7 +515,7 @@ $(document).ready(function () {
             PAGE CART
     ********************************/
 
-   //Handle update quantity product in cart
+    //Handle update quantity product in cart
     function updateCart(productId, quantity, $input) {
         $.ajaxSetup({
             headers: {
@@ -548,8 +548,8 @@ $(document).ready(function () {
 
     //Handle delete product in cart
     $(".remove-from-cart").on("click", function (e) {
-        let productId = $(this).data('id');
-        let row = $(this).closest('tr');
+        let productId = $(this).data("id");
+        let row = $(this).closest("tr");
 
         $.ajaxSetup({
             headers: {
@@ -561,16 +561,44 @@ $(document).ready(function () {
             url: "/cart/delete-cart",
             type: "POST",
             data: {
-                product_id: productId
+                product_id: productId,
             },
             success: function (response) {
                 // console.log(response);
                 row.remove();
                 $(".cart-total").text(response.total);
                 $(".cart-grand-total").text(response.grandTotal);
-                if($('.remove-from-cart').length === 0)
-                {
+                $("#cart_count").html(response.cart_count);
+                if ($(".remove-from-cart").length === 0) {
                     location.reload();
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseJSON.error);
+            },
+        });
+    });
+
+    /********************************
+            PAGE CHECKOUT
+    ********************************/
+    $("#list_address").change(function () {
+        var addressId = $(this).val();
+
+        $.ajax({
+            url: "/checkout/get-address",
+            type: "GET",
+            data: {
+                address_id : addressId,
+            },
+            success: function (response) {
+                if(response.success)
+                {
+                    $('input[name="ltn__name"]').val(response.data.full_name);
+                    $('input[name="ltn__phone"]').val(response.data.phone);
+                    $('input[name="ltn__address"]').val(response.data.address);
+                    $('input[name="ltn__city"]').val(response.data.city);
+                    $('input[name="address_id"]').val(response.data.id);
                 }
             },
             error: function (xhr) {
