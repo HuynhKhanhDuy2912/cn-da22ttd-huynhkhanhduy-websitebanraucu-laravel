@@ -95,43 +95,12 @@
                     data-bg="{{ asset('assets/clients/img/bg/2.jpg')}}">
                     <div class="row">
                         <!-- Tiêu đề -->
-                        <div class="col-xl-5 col-lg-12 align-self-center">
+                        <div class="col-lg-12 align-self-center">
                             <div class="ltn__service-form-brief">
                                 <div class="section-title-area ltn__section-title-2 mb-0">
                                     <h6 class="section-subtitle white-color">// Đăng Ký Ngay</h6>
-                                    <h1 class="section-title white-color">Nhận Ưu Đãi Hoặc Dịch Vụ Miễn Phí Từ Chúng Tôi<span>!</span></h1>
+                                    <h1 class="section-title-1 white-color">Nhận Ưu Đãi Hoặc Dịch Vụ Miễn Phí Từ Chúng Tôi!</h1>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Form -->
-                        <div class="col-xl-7 col-lg-12 align-self-center">
-                            <div class="ltn__service-form-wrap ltn__service-form-color-white">
-                                <form action="#" class="ltn__service-form-box">
-                                    <ul>
-                                        <li>
-                                            <select class="nice-select">
-                                                <option>Chọn loại dịch vụ</option>
-                                                <option>Giao rau tận nhà</option>
-                                                <option>Đặt combo rau sạch</option>
-                                                <option>Tư vấn chế độ ăn lành mạnh</option>
-                                                <option>Đặt hàng theo tuần</option>
-                                            </select>
-                                        </li>
-                                        <li>
-                                            <div class="input-item input-item-date mb-0 ltn__custom-icon">
-                                                <input type="text" name="date" placeholder="Chọn ngày đăng ký">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="btn-wrapper">
-                                                <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">
-                                                    Kiểm Tra Dịch Vụ
-                                                </button>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </form>
                             </div>
                         </div>
                     </div> <!-- /row -->

@@ -27,7 +27,7 @@
 
                                             <a data-bs-toggle="tab" href="#liton_tab_password">Đổi mật khẩu <i
                                                     class="fas fa-lock"></i></a>
-                                            <a href="{{ route('logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                            <a href="{{ route('logout') }}">Đăng xuất<i class="fas fa-sign-out-alt"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                                 <div class="table-responsive">
                                                     <table class="table">
                                                         <thead>
-                                                            <tr>
+                                                            <tr class="text-center">
                                                                 <th>Đơn hàng</th>
                                                                 <th>Ngày đặt</th>
                                                                 <th>Trạng thái</th>
@@ -114,13 +114,25 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Jun 22, 2019</td>
-                                                                <td>Pending</td>
-                                                                <td>$3000</td>
-                                                                <td><a href="cart.html">View</a></td>
-                                                            </tr>
+                                                            @foreach ($orders as $order)
+                                                                <tr class="text-center">
+                                                                    <td>{{ $loop->iteration }}</td>
+                                                                    <td>{{ $order->created_at->format('d/m/Y') }}</td>
+                                                                    <td>
+                                                                        @if ($order->status == 'pending')
+                                                                            <span class="badge bg-warning">Chờ xác nhận</span>
+                                                                        @elseif($order->status == 'processing')
+                                                                            <span class="badge bg-primary">Đang xử lý</span>
+                                                                        @elseif($order->status == 'completed')
+                                                                            <span class="badge bg-success">Hoàn thành</span>
+                                                                        @elseif($order->status == 'canceled')
+                                                                            <span class="badge bg-danger">Đã hủy</span>
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>{{ number_format($order->total_price, 0, ',', '.') }} đ</td>
+                                                                    <td><a href="{{ route('order.show', $order->id) }}" class="btn btn-sm btn-info" style="padding: 10px;">Xem chi tiết</a></td>
+                                                                </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>

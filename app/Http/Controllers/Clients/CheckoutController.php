@@ -78,10 +78,12 @@ class CheckoutController extends Controller
 
                 //Delete the number of products sold
                 $product = $item->product;
-                $product->stock  -= $item->quantity;
-                if ($product->stock  < 0) {
-                    $product->stock  = 0;
+
+                if($product->stock < $item->quantity)
+                {
+                    throw new \Exception("Sản phẩm {$product->name} không đủ hàng trong kho.");
                 }
+                $product->stock  -= $item->quantity;                
                 $product->save();
             }
 
@@ -133,10 +135,12 @@ class CheckoutController extends Controller
 
                 //Delete the number of products sold
                 $product = $item->product;
-                $product->stock  -= $item->quantity;
-                if ($product->stock  < 0) {
-                    $product->stock  = 0;
+
+                if($product->stock < $item->quantity)
+                {
+                    throw new \Exception("Sản phẩm {$product->name} không đủ hàng trong kho.");
                 }
+                $product->stock  -= $item->quantity;                
                 $product->save();
             }
 
