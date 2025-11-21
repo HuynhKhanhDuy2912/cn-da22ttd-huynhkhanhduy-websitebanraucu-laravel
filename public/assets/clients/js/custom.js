@@ -589,11 +589,10 @@ $(document).ready(function () {
             url: "/checkout/get-address",
             type: "GET",
             data: {
-                address_id : addressId,
+                address_id: addressId,
             },
             success: function (response) {
-                if(response.success)
-                {
+                if (response.success) {
                     $('input[name="ltn__name"]').val(response.data.full_name);
                     $('input[name="ltn__phone"]').val(response.data.phone);
                     $('input[name="ltn__address"]').val(response.data.address);
@@ -606,4 +605,65 @@ $(document).ready(function () {
             },
         });
     });
+
+    //Handle Paypal
+    function togglePayment() {
+        if ($("#payment_paypal").is(":checked")) {
+            $("#paypal-button-container").show();
+            $("#order_button_cash").hide();
+        } else {
+            $("#paypal-button-container").hide();
+            $("#order_button_cash").show();
+        }
+    }
+    togglePayment();
+
+    $('input[name="payment_method"]').on("change", togglePayment);
+
+    var totalPriceText = $(".totalPrice_Checkout").text().trim();
+    var totalPriceNumber = parseFloat(
+        totalPriceText.replace(/\./g, "").replace(" đ", "")
+    );
+
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [
+                    {
+                        amount: {
+                            value: (totalPriceNumber / 25000).toFixed(2),
+                        },
+                    },
+                ],
+            });
+        },
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+                //Send information checkout to server
+                fetch("/checkout/paypal",{
+                    method:  "POST",
+                    headers: {
+                        "Content-Type":"application/json",
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID,
+                        payerID: data.payerID,
+                        transactionID: details.id,
+                        amount: details.purchase_units[0].amount.value,
+                        address_id: $("#list_address").val(),
+                    }),
+                })
+                .then((response) => response.json())
+                .then((data) =>{
+                    if(data.success){
+                        toastr.success('Thanh toán thành công!');
+                        window.location.href = "/account";
+                    }else{
+                        alert("Có lỗi xẩy ra vui lòng thử lại!")
+                    }
+                })
+            });
+        },
+    }).render("#paypal-button-container");
 });

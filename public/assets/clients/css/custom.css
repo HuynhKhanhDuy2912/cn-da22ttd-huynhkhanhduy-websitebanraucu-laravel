@@ -119,3 +119,9 @@
     padding: 15px 15px;
     font-size: 14px;
 }
+
+#order_button_cash{
+    min-width: 100%;
+    border-radius: 5px;
+    padding: 14px 40px;
+}
