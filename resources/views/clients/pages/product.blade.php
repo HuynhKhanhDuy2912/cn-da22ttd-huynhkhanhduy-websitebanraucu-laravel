@@ -90,7 +90,7 @@
                                 <li>
                                     <div class="top-rated-product-item clearfix">
                                         <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/1.png"
+                                            <a href="{{ route('products.detail', $product->slug) }}"><img src="img/product/1.png"
                                                     alt="#"></a>
                                         </div>
                                         <div class="top-rated-product-info">
@@ -103,7 +103,7 @@
                                                     <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h6><a href="product-details.html">Mixel Solid Seat Cover</a></h6>
+                                            <h6><a href="{{ route('products.detail', $product->slug) }}">Mixel Solid Seat Cover</a></h6>
                                             <div class="product-price">
                                                 <span>$49.00</span>
                                                 <del>$65.00</del>

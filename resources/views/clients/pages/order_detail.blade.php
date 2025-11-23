@@ -66,20 +66,10 @@
                 <p>Số điện thoại:<b> {{ $order->shippingAddress->phone }} </b></p>
             </div>
 
-            <div class="d-flex button-actions-row">
-                <button class="theme-btn-1 btn btn-effect-1 mt-3"><a href="{{ route('account') }}">Quay lại</a></button>
 
-                @if($order->status == 'pending')
-                    <form action="{{ route('order.cancel', $order->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm mt-3">Hủy đơn hàng</button>
-                    </form>
-                @endif
-            </div>
-            
             @if($order->status == 'completed')
                 <h4 class="mt-4">Đánh giá sản phẩm</h4>
-                <table class="table order-items-table">
+                <table class="table order-items-table w-100 table-fixed">
                     <thead>
                         <tr class="text-center">
                             <th>Ảnh</th>
@@ -102,6 +92,18 @@
                     </tbody>
                 </table>
             @endif
+                
+            <div class="d-flex button-actions-row">
+                @if($order->status == 'pending')
+                    <form action="{{ route('order.cancel', $order->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm mt-3 me-3">Hủy đơn hàng</button>
+                    </form>
+                @endif
+
+                <a href="{{ route('account') }}"><button class="btn btn-warning mt-3">Quay lại</button></a>
+            </div>
+            
         </div>
     </div>
 @endsection

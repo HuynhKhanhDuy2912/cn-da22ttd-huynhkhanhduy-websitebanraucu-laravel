@@ -11,6 +11,8 @@ class Product extends Model
 
     protected $fillable = ['name','slug', 'category_id', 'description', 'price', 'stock', 'status', 'unit'];
 
+    protected $appends = ['image_url', 'average_rating'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -29,5 +31,21 @@ class Product extends Model
     public function firstImage()
     {
         return $this->hasOne(ProductImage::class)->orderBy('id','ASC');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getAverageRatingAttribute()
+    {
+        // return $this->reviews->avg('rating') ?? 0;
+        return (float) ($this->reviews->avg('rating') ?? 0);
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return $this->firstImage?->image ? asset('strorage/'. $this->firstImage->image) : asset('storage/uploads/products/product-default.png');
     }
 }

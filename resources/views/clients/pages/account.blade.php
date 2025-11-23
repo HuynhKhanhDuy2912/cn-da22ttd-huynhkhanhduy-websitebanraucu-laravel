@@ -130,7 +130,7 @@
                                                                         @endif
                                                                     </td>
                                                                     <td>{{ number_format($order->total_price, 0, ',', '.') }} đ</td>
-                                                                    <td><a href="{{ route('order.show', $order->id) }}" class="btn btn-sm btn-info" style="padding: 10px;">Xem chi tiết</a></td>
+                                                                    <td><a href="{{ route('order.show', $order->id) }}" class="btn btn-sm btn-view-detail bg-secondary">Xem chi tiết</a></td>
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>

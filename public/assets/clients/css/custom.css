@@ -190,7 +190,17 @@
 }
 
 .button-actions-row {
-    display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 20px;
+}
+
+.table-fixed td,
+.table-fixed th {
+    width: 33.33%;
+}
+
+.btn-view-detail{
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 3px;
 }

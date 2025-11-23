@@ -512,7 +512,7 @@ $(document).ready(function () {
     });
 
     /********************************
-            PAGE CART
+              PAGE CART
     ********************************/
 
     //Handle update quantity product in cart
@@ -625,45 +625,140 @@ $(document).ready(function () {
         totalPriceText.replace(/\./g, "").replace(" đ", "")
     );
 
-    paypal.Buttons({
-        createOrder: function (data, actions) {
-            return actions.order.create({
-                purchase_units: [
-                    {
-                        amount: {
-                            value: (totalPriceNumber / 25000).toFixed(2),
+    paypal
+        .Buttons({
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [
+                        {
+                            amount: {
+                                value: (totalPriceNumber / 25000).toFixed(2),
+                            },
                         },
-                    },
-                ],
+                    ],
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    //Send information checkout to server
+                    fetch("/checkout/paypal", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                                "content"
+                            ),
+                        },
+                        body: JSON.stringify({
+                            orderID: data.orderID,
+                            payerID: data.payerID,
+                            transactionID: details.id,
+                            amount: details.purchase_units[0].amount.value,
+                            address_id: $("#list_address").val(),
+                        }),
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.success) {
+                                toastr.success("Thanh toán thành công!");
+                                window.location.href = "/account";
+                            } else {
+                                alert("Có lỗi xẩy ra vui lòng thử lại!");
+                            }
+                        });
+                });
+            },
+        })
+        .render("#paypal-button-container");
+
+    /********************************
+          HANDLE RATING PRODUCT
+    ********************************/
+    if (window.location.pathname.startsWith("/product")) {
+        let selectedRating = 0;
+
+        //Handle hover star
+        $(".rating-star").hover(
+            function () {
+                let value = $(this).data("value");
+                highlightStars(value);
+            },
+            function () {
+                highlightStars(selectedRating);
+            }
+        );
+
+        $(".rating-star").click(function (e) {
+            e.preventDefault();
+            selectedRating = $(this).data("value");
+            $("#rating-value").val(selectedRating);
+            highlightStars(selectedRating);
+        });
+
+        function highlightStars(value) {
+            $(".rating-star i").each(function () {
+                let starValue = $(this).parent().data("value");
+                if (starValue <= value) {
+                    $(this).removeClass("far").addClass("fas"); //Show star
+                } else {
+                    $(this).removeClass("fas").addClass("far"); //Show star empty
+                }
             });
-        },
-        onApprove: function (data, actions) {
-            return actions.order.capture().then(function (details) {
-                //Send information checkout to server
-                fetch("/checkout/paypal",{
-                    method:  "POST",
-                    headers: {
-                        "Content-Type":"application/json",
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                    },
-                    body: JSON.stringify({
-                        orderID: data.orderID,
-                        payerID: data.payerID,
-                        transactionID: details.id,
-                        amount: details.purchase_units[0].amount.value,
-                        address_id: $("#list_address").val(),
-                    }),
-                })
-                .then((response) => response.json())
-                .then((data) =>{
-                    if(data.success){
-                        toastr.success('Thanh toán thành công!');
-                        window.location.href = "/account";
-                    }else{
-                        alert("Có lỗi xẩy ra vui lòng thử lại!")
-                    }
-                })
+        }
+
+        //Handle submit rating with AJAX
+        $("#review-form").submit(function (e) {
+            e.preventDefault();
+
+            let productId = $(this).data("product-id");
+            let rating = $("#rating-value").val();
+            let content = $("#review-content").val();
+
+            if (rating == 0) {
+                $("#rating-error").html(
+                    '<div class="alert alert-danger">Vui lòng chọn số sao!</div>'
+                );
+                return;
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
             });
-        },
-    }).render("#paypal-button-container");
+
+            $.ajax({
+                url: "/review",
+                type: "POST",
+                data: {
+                    product_id: productId,
+                    rating: rating,
+                    comment: content,
+                },
+                success: function (response) {
+                    $("#review-content").val("");
+                    highlightStars(0);
+                    selectedRating = 0;
+                    $(".ltn__comment-reply-area").hide();
+                    toastr.success(response.message);
+                    loadReviews(productId);
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.error);
+                },
+            });
+        });
+
+        function loadReviews(productId) {
+            $.ajax({
+                url: "/review/" + productId,
+                type: "GET",
+                success: function (response) {
+                    $(".ltn__comment-inner").html(response);
+                },
+            });
+        }
+    }
 });

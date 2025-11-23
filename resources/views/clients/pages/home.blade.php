@@ -220,13 +220,10 @@
                                                     </div>
                                                     <div class="product-info">
                                                         <div class="product-ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                                <li class="review-total"> <a href="#"> (24)</a></li>
-                                                            </ul>
+                                                            @include('clients.components.includes.rating', ['product' => $product])
                                                         </div>
                                                         <h2 class="product-title"><a
-                                                                href="product-details.html">{{ $product->name }}</a></h2>
+                                                                href="{{ route('products.detail', $product->slug) }}">{{ $product->name }}</a></h2>
                                                         <div class="product-price">
                                                             <span>{{ number_format($product->price, 0, ',', '.') }}VNĐ/{{ $product->unit }}</span>
                                                         </div>
@@ -333,12 +330,9 @@
                             </div>
                             <div class="product-info">
                                 <div class="product-ratting">
-                                    <ul>
-                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                        <li class="review-total"> <a href="#"> (24)</a></li>
-                                    </ul>
+                                    @include('clients.components.includes.rating', ['product' => $product])
                                 </div>
-                                <h2 class="product-title"><a href="product-details.html">{{ $product->name }}</a></h2>
+                                <h2 class="product-title"><a href="{{ route('products.detail', $product->slug) }}">{{ $product->name }}</a></h2>
                                 <div class="product-price">
                                     <span>{{ number_format($product->price, 0, ',', '.') }}VNĐ</span>
                                 </div>

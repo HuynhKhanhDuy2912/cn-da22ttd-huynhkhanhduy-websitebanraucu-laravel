@@ -808,8 +808,8 @@ mark {
 }
 
 hr {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    /* margin-top: 50px;
+    margin-bottom: 50px; */
     border-top: 1px solid var(--border-color-12);
 }
 
@@ -8891,6 +8891,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     .ltn__comment-reply-area
     form {
     padding: 30px;
+    border-radius: 5px;
 }
 
 /* product-details-menu-1 */
@@ -11036,12 +11037,14 @@ blockquote::before {
 
 .ltn__commenter-img {
     float: left;
-    margin-right: 30px;
+    margin-right: 15px;
     max-width: 100px;
 }
 
 .ltn__commenter-img img {
     border-radius: 100%;
+    width: 80px;
+    height: 80px;
 }
 
 .ltn__commenter-comment {
@@ -11119,7 +11122,7 @@ blockquote::before {
 
 .ltn__comment-inner .product-ratting ul {
     padding: 0;
-    margin: 0;
+    margin: 0px 3px;
 }
 .ltn__comment-inner .product-ratting ul li {
     padding: 0;
