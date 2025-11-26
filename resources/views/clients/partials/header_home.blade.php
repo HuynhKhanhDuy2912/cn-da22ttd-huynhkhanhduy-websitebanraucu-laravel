@@ -69,8 +69,8 @@
                                             <li><a href="{{ route('faq') }}">FAQ</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('faq') }}">Liên hệ</a></li>
-                                    <li class="special-link"><a href="{{ route('faq') }}">Nhận báo giá</a></li>
+                                    <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
+                                    <li class="special-link"><a href="{{ route('contact.index') }}">Nhận báo giá</a></li>
                                 </ul>
                             </div>
                         </nav>

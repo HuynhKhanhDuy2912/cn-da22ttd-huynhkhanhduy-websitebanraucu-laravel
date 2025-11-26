@@ -58,7 +58,7 @@
                                 <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
                                 <li><a href="{{ route('products.index') }}">Sản phẩm</a></li>
                                 <li><a href="{{ route('faq') }}">FAQ</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
+                                <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -86,9 +86,9 @@
                                 <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                                 <li><a href="{{ route('account') }}">Tài khoản</a></li>
                                 <li><a href="wishlist.html">Danh sách yêu thích</a></li>
-                                <li><a href="order-tracking.html">Theo dõi đơn hàng</a></li>
+                                <li><a href="{{ route('account') }}">Theo dõi đơn hàng</a></li>
                                 <li><a href="{{ route('faq') }}">FAQ</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
+                                <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>

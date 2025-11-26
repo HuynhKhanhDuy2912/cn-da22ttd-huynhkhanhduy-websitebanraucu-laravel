@@ -4,6 +4,7 @@ use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\AccountController;
 use App\Http\Controllers\Clients\AuthController;
 use App\Http\Controllers\Clients\CheckoutController;
+use App\Http\Controllers\Clients\ContactController;
 use App\Http\Controllers\Clients\ForgotPasswordController;
 use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Clients\OrderController;
@@ -95,3 +96,7 @@ Route::get('/product/{slug}', [ProductController::class, 'detail'])->name('produ
 //MiniCart
 Route::get('/mini-cart', [CartController::class, 'loadMiniCart'])->name('cart.mini');
 Route::post('/cart/delete', [CartController::class, 'deleteMiniCart'])->name('cart.delete');
+
+//Contact
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'sendContact'])->name('contact');

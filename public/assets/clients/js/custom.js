@@ -761,4 +761,46 @@ $(document).ready(function () {
             });
         }
     }
+
+    /********************************
+              PAGE CONTACT
+    ********************************/
+    $("#contact-form").on("submit", function(e){
+        let name = $('input[name="name"]').val();
+        let email = $('input[name="email"]').val();
+        let phone = $('input[name="phone"]').val();
+        let message = $('textarea[name="message"]').val();
+        let errorMessage = "";
+
+        if(name.length < 3)
+        {
+            errorMessage += "Họ và tên phải có ít nhất 3 ký tự. <br>"
+        }
+
+        if(phone.length != 10)
+        {
+            errorMessage += "Số điện thoại phải đủ 10 số <br>"
+        }
+
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            errorMessage += "Email không hợp lệ. <br>";
+        }
+
+        if (message == "")
+        {
+            errorMessage += "Bạn chưa nhập tin nhắn.<br>"
+        }
+
+        if(errorMessage != "")
+        {
+            toastr.error(errorMessage, "Lỗi");
+            e.preventDefault();
+        }
+    });
+
+
+
+
+
 });

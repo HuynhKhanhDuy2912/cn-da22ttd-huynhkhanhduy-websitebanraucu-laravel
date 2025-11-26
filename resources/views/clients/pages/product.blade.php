@@ -83,14 +83,14 @@
                                 <div class="slider-range"></div>
                             </div>
                         </div>
-                        <!-- Top Rated Product Widget -->
+                        {{-- <!-- Top Rated Product Widget -->
                         <div class="widget ltn__top-rated-product-widget">
                             <h4 class="ltn__widget-title ltn__widget-title-border">Sản phẩm được đánh giá cao nhất</h4>
                             <ul>
                                 <li>
                                     <div class="top-rated-product-item clearfix">
                                         <div class="top-rated-product-img">
-                                            <a href="{{ route('products.detail', $product->slug) }}"><img src="img/product/1.png"
+                                            <a href="{{ route('products.detail', $products->slug) }}"><img src="img/product/1.png"
                                                     alt="#"></a>
                                         </div>
                                         <div class="top-rated-product-info">
@@ -103,7 +103,7 @@
                                                     <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h6><a href="{{ route('products.detail', $product->slug) }}">Mixel Solid Seat Cover</a></h6>
+                                            <h6><a href="{{ route('products.detail', $products->slug) }}">Mixel Solid Seat Cover</a></h6>
                                             <div class="product-price">
                                                 <span>$49.00</span>
                                                 <del>$65.00</del>
@@ -112,7 +112,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <!-- Banner Widget -->
                         <div class="widget ltn__banner-widget">
                             <a href="{{route('products.index')}}"><img src="{{asset('assets/clients/img/banner/banner-1.jpg')}}" alt="#"></a>
