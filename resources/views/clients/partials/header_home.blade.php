@@ -87,7 +87,7 @@
                         </div>
                         <div class="header-search-1-form">
                             <form id="#" method="GET" action="{{ route('search') }}">
-                                <input type="text" name="keyword" value="" placeholder="Tìm kiếm sản phẩm..." />
+                                <input type="text" name="keyword" value="{{ request('keyword') }}" value="" placeholder="Tìm kiếm sản phẩm..." />
                                 <button type="submit">
                                     <span><i class="icon-search"></i></span>
                                 </button>

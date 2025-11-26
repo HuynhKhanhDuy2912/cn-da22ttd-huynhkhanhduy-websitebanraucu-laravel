@@ -25,7 +25,7 @@ class HomeController extends Controller
             ->selectRaw('SUM(order_items.quantity) as total_sold')
             ->groupBy('products.id', 'products.name', 'products.slug', 'products.category_id', 'products.description', 'products.price', 'products.stock', 'products.status', 'products.unit', 'products.created_at', 'products.updated_at')
             ->orderByDesc('total_sold')
-            ->limit(12)->get();
+            ->limit(8)->get();
 
         return view('clients.pages.home', compact('categories', 'bestSelling'));
     }

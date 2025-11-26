@@ -271,7 +271,12 @@ $(document).ready(function () {
 
     let currentPage = 1;
 
-    $(document).on("click", ".panigation-link", function (e) {
+    $(document).on("click", ".pagination-link", function (e) {
+        let isSearchPage = window.location.href.includes("search");
+
+        if (isSearchPage) {
+            return;
+        }
         e.preventDefault();
         let pageUrl = $(this).attr("href");
         let page = pageUrl.split("page=")[1];
@@ -307,7 +312,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $("#liton_product_grid").html(response.products);
-                $(".ltn__pagination").html(response.panigation);
+                $(".ltn__pagination").html(response.pagination);
 
                 // Cập nhật số sản phẩm
                 $(".showing-product-number span").text(
@@ -358,6 +363,7 @@ $(document).ready(function () {
             fetchProduct();
         },
     });
+
     $(".amount").val(
         $(".slider-range").slider("values", 0) +
             "VNĐ" +
@@ -816,11 +822,10 @@ $(document).ready(function () {
             url: "/wishlist/add",
             type: "POST",
             data: {
-                product_id: productId
+                product_id: productId,
             },
             success: function (response) {
-                if(response.status)
-                {
+                if (response.status) {
                     $("#liton_wishlist_modal" + productId).modal("show");
                 }
             },
@@ -829,7 +834,6 @@ $(document).ready(function () {
             },
         });
     });
-
 
     $(document).on("click", ".wishlist-product-remove", function (e) {
         e.preventDefault();
@@ -847,11 +851,10 @@ $(document).ready(function () {
             url: "/wishlist/remove",
             type: "POST",
             data: {
-                product_id: productId
+                product_id: productId,
             },
             success: function (response) {
-                if(response.status)
-                {
+                if (response.status) {
                     row.remove();
                     location.reload();
                 }
