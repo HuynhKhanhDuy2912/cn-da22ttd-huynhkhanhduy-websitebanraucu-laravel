@@ -79,8 +79,8 @@
                             </div>
                         </div>
                         <div class="header-search-1-form">
-                            <form id="#" method="get" action="#">
-                                <input type="text" name="search" value="" placeholder="Tìm kiếm..." />
+                            <form id="#" method="GET" action="{{ route('search') }}">
+                                <input type="text" name="keywword" value="" placeholder="Tìm kiếm sản phẩm..." />
                                 <button type="submit">
                                     <span><i class="icon-search"></i></span>
                                 </button>
@@ -95,7 +95,7 @@
                                 <ul>
                                     @if (Auth::check())
                                         <li><a href="{{ route('account') }}"><i class="far fa-user"></i> Tài khoản</a></li>
-                                        <li><a href="wishlist.html"><i class="far fa-heart"></i> Yêu thích</a></li>
+                                        <li><a href="{{ route('wishlist') }}"><i class="far fa-heart"></i> Yêu thích</a></li>
                                         <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
                                     @else
                                         <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>

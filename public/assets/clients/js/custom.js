@@ -620,10 +620,12 @@ $(document).ready(function () {
 
     $('input[name="payment_method"]').on("change", togglePayment);
 
+    const EXCHANGE_RATE = 25000;
     var totalPriceText = $(".totalPrice_Checkout").text().trim();
     var totalPriceNumber = parseFloat(
         totalPriceText.replace(/\./g, "").replace(" đ", "")
     );
+    var totalUSD = (totalPriceNumber / EXCHANGE_RATE).toFixed(2);
 
     paypal
         .Buttons({
@@ -632,7 +634,8 @@ $(document).ready(function () {
                     purchase_units: [
                         {
                             amount: {
-                                value: (totalPriceNumber / 25000).toFixed(2),
+                                // value: (totalPriceNumber / 25000).toFixed(2),
+                                value: totalUSD,
                             },
                         },
                     ],
@@ -765,21 +768,19 @@ $(document).ready(function () {
     /********************************
               PAGE CONTACT
     ********************************/
-    $("#contact-form").on("submit", function(e){
+    $("#contact-form").on("submit", function (e) {
         let name = $('input[name="name"]').val();
         let email = $('input[name="email"]').val();
         let phone = $('input[name="phone"]').val();
         let message = $('textarea[name="message"]').val();
         let errorMessage = "";
 
-        if(name.length < 3)
-        {
-            errorMessage += "Họ và tên phải có ít nhất 3 ký tự. <br>"
+        if (name.length < 3) {
+            errorMessage += "Họ và tên phải có ít nhất 3 ký tự. <br>";
         }
 
-        if(phone.length != 10)
-        {
-            errorMessage += "Số điện thoại phải đủ 10 số <br>"
+        if (phone.length != 10) {
+            errorMessage += "Số điện thoại phải đủ 10 số <br>";
         }
 
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -787,20 +788,77 @@ $(document).ready(function () {
             errorMessage += "Email không hợp lệ. <br>";
         }
 
-        if (message == "")
-        {
-            errorMessage += "Bạn chưa nhập tin nhắn.<br>"
+        if (message == "") {
+            errorMessage += "Bạn chưa nhập tin nhắn.<br>";
         }
 
-        if(errorMessage != "")
-        {
+        if (errorMessage != "") {
             toastr.error(errorMessage, "Lỗi");
             e.preventDefault();
         }
     });
 
+    /********************************
+              PAGE WISHLIST
+    ********************************/
+    $(document).on("click", ".add-to-wishlist", function (e) {
+        e.preventDefault();
+
+        let productId = $(this).data("id");
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/wishlist/add",
+            type: "POST",
+            data: {
+                product_id: productId
+            },
+            success: function (response) {
+                if(response.status)
+                {
+                    $("#liton_wishlist_modal" + productId).modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert("Có lỗi xảy ra với ajax addWishlist");
+            },
+        });
+    });
 
 
+    $(document).on("click", ".wishlist-product-remove", function (e) {
+        e.preventDefault();
 
+        let productId = $(this).data("id");
+        let row = $(this).closest("tr");
 
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/wishlist/remove",
+            type: "POST",
+            data: {
+                product_id: productId
+            },
+            success: function (response) {
+                if(response.status)
+                {
+                    row.remove();
+                    location.reload();
+                }
+            },
+            error: function (xhr) {
+                alert("Có lỗi xảy ra với ajax removeWishlist");
+            },
+        });
+    });
 });

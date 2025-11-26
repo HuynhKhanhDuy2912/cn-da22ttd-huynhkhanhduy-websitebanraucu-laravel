@@ -11,8 +11,8 @@
                                     <img src="{{asset('assets/clients/img/icons/icon-img/11.png')}}" alt="#">
                                 </div>
                                 <div class="ltn__feature-info">
-                                    <h4>Sản phẩm được tuyển chọn</h4>
-                                    <p>Cung cấp Sản phẩm được tuyển chọn cho tất cả sản phẩm trên 100 đô la</p>
+                                    <h4>Sản phẩm tuyển chọn</h4>
+                                    <p>Chúng tôi cam kết chất lượng hàng đầu với những sản phẩm đã được chọn lọc kỹ càng.</p>
                                 </div>
                             </div>
                         </div>
@@ -22,8 +22,8 @@
                                     <img src="{{asset('assets/clients/img/icons/icon-img/12.png')}}" alt="#">
                                 </div>
                                 <div class="ltn__feature-info">
-                                    <h4>Làm thủ công</h4>
-                                    <p>Chúng tôi đảm bảo chất lượng sản phẩm là mục tiêu chính của chúng tôi</p>
+                                    <h4>Chế biến thủ công</h4>
+                                    <p>Sản phẩm được chế biến bằng tay, không chất bảo quản, giữ trọn hương vị tự nhiên.</p>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="ltn__feature-info">
                                     <h4>Thực phẩm tự nhiên</h4>
-                                    <p>Trả lại sản phẩm trong vòng 3 ngày cho bất kỳ sản phẩm nào bạn mua</p>
+                                    <p>Sản phẩm 100% từ thiên nhiên, không hóa chất độc hại, đảm bảo tươi ngon và an toàn.</p>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +44,8 @@
                                     <img src="{{asset('assets/clients/img/icons/icon-img/14.png')}}" alt="#">
                                 </div>
                                 <div class="ltn__feature-info">
-                                    <h4>Giao hàng tận nhà miễn phí</h4>
-                                    <p>Chúng tôi đảm bảo chất lượng sản phẩm mà bạn có thể dễ dàng tin tưởng</p>
+                                    <h4>Giao hàng miễn phí</h4>
+                                    <p>Tiết kiệm chi phí vận chuyển với dịch vụ giao hàng tận nơi miễn phí, nhanh chóng.</p>
                                 </div>
                             </div>
                         </div>

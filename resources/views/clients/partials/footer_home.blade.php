@@ -44,7 +44,7 @@
                             <ul>
                                 <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                                 <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
@@ -58,7 +58,7 @@
                                 <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
                                 <li><a href="{{ route('products.index') }}">Sản phẩm</a></li>
                                 <li><a href="{{ route('faq') }}">FAQ</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
+                                <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
                         <h4 class="footer-title">Dịch vụ</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="order-tracking.html">Theo dõi đơn hàng</a></li>
-                                <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                                <li><a href="{{ route('account') }}">Theo dõi đơn hàng</a></li>
+                                <li><a href="{{ route('wishlist') }}">Danh sách yêu thích</a></li>
                                 <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                                 <li><a href="{{ route('account') }}">Tài khoản</a></li>
                                 <li><a href="{{ route('about') }}">Điều khoản & Điều kiện</a></li>
@@ -85,10 +85,10 @@
                             <ul>
                                 <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                                 <li><a href="{{ route('account') }}">Tài khoản</a></li>
-                                <li><a href="wishlist.html">Danh sách yêu thích</a></li>
-                                <li><a href="order-tracking.html">Theo dõi đơn hàng</a></li>
+                                <li><a href="{{ route('wishlist') }}">Danh sách yêu thích</a></li>
+                                <li><a href="{{ route('account') }}">Theo dõi đơn hàng</a></li>
                                 <li><a href="{{ route('faq') }}">FAQ</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
+                                <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                 <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                     <div class="footer-widget footer-newsletter-widget">
                         <h4 class="footer-title">Bảng tin</h4>
-                        <p>Đăng ký nhận Bản tin hàng tuần của chúng tôi và nhận thông tin cập nhật qua email.
+                        <p>Đăng ký nhận bảng tin hàng tuần của chúng tôi và nhận thông tin cập nhật qua email.
                         </p>
                         <div class="footer-newsletter">
                             <div id="mc_embed_signup">
@@ -114,7 +114,6 @@
                                             </div>
                                             <div class="response" id="mce-success-response" style="display:none"></div>
                                         </div>
-                                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                         <div style="position: absolute; left: -5000px;" aria-hidden="true">
                                             <input type="text" name="b_dde0a42ff09e8d43cad40dc82_72d274d15d"
                                                 tabindex="-1" value="">

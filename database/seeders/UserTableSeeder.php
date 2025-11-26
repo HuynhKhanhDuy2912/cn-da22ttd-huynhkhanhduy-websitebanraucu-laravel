@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AdminStaffTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,12 +20,11 @@ class AdminStaffTableSeeder extends Seeder
         'status'        => 'active',
         'phone_number'  => '0999999999',
         'avatar'        => '',
-        'address'       => 'Vinh Long, Viet Nam',
+        'address'       => 'Vĩnh Long, Việt Nam',
         'role_id'       => 1,
         'created_at'    => now(),
         'updated_at'    => now()
         ]);
-
 
         User::create([
         'name'          => 'Staff',
@@ -34,10 +33,23 @@ class AdminStaffTableSeeder extends Seeder
         'status'        => 'active',
         'phone_number'  => '0999999998',
         'avatar'        => '', 
-        'address'       => 'Vinh Long, Viet Nam',
+        'address'       => 'Vĩnh Long, Việt Nam',
         'role_id'       => 2,
         'created_at'    => now(),
         'updated_at'    => now()
+        ]);
+
+        User::create([
+        'name'         => 'Nguyen Van A',
+        'email'        => 'nguyenvana@gmail.com',
+        'password'     => bcrypt('123456'),
+        'status'       => 'pending',
+        'phone_number' => '0364852853',
+        'avatar'       => '',
+        'address'      => 'Vĩnh Long, Việt Nam',
+        'role_id'      => 3,
+        'created_at'   => now(),
+        'updated_at'   => now()
         ]);
     }
 }

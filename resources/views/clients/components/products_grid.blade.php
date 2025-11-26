@@ -31,15 +31,15 @@
                                     </li>
                                     <li>
                                         @if (Auth::check())
-                                            <a href="#" title="Yêu thích" data-bs-toggle="modal"
+                                            <a href="#" class="add-to-wishlist" title="Yêu thích" 
+                                            data-bs-toggle="modal" data-id = "{{ $product->id }}"
                                             data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
                                             <i class="far fa-heart"></i></a>
                                         @else
                                             <a href="javascript:void(0)" onclick="showLoginWarning()">
                                                 <i class="far fa-heart"></i>
                                             </a>
-                                        @endif
-                                        
+                                        @endif                                        
                                     </li>
                                 </ul>
                             </div>

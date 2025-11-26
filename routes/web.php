@@ -11,6 +11,8 @@ use App\Http\Controllers\Clients\OrderController;
 use App\Http\Controllers\Clients\ProductController;
 use App\Http\Controllers\Clients\ResetPasswordController;
 use App\Http\Controllers\Clients\ReviewController;
+use App\Http\Controllers\Clients\SearchController;
+use App\Http\Controllers\Clients\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -84,6 +86,11 @@ Route::middleware(['auth.custom'])->group(function () {
     //Review
     Route::post('/review', [ReviewController::class, 'createReview']);
     Route::get('/review/{product}', [ReviewController::class, 'index']);
+
+    //Wishlist
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+    Route::post('wishlist/add', [WishlistController::class, 'addToWishList']);
+    Route::post('wishlist/remove', [WishlistController::class, 'removeWishListItem']);
 });
 
 //Product
@@ -100,3 +107,6 @@ Route::post('/cart/delete', [CartController::class, 'deleteMiniCart'])->name('ca
 //Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'sendContact'])->name('contact');
+
+//Search
+Route::get('/search', [SearchController::class, 'index'])->name('search');

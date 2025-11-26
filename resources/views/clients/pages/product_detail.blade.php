@@ -37,7 +37,9 @@
                             <div class="col-md-6">
                                 <div class="modal-product-info shop-details-info pl-0">
                                     <div class="product-ratting">
-                                        @include('clients.components.includes.rating', ['product' => $product])
+                                        @include('clients.components.includes.rating', [
+                                            'product' => $product,
+                                        ])
                                     </div>
                                     <h3>{{ $product->name }}</h3>
                                     <div class="product-price">
@@ -93,7 +95,8 @@
                                     <div class="ltn__social-media">
                                         <ul>
                                             <li>Chia sẻ:</li>
-                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
                                             <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                                             <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                                             <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -148,7 +151,9 @@
                                     <!-- comment-area -->
                                     <div class="ltn__comment-area mb-30">
                                         <div class="ltn__comment-inner">
-                                            @include('clients.components.includes.review-list', ['product' => $product])
+                                            @include('clients.components.includes.review-list', [
+                                                'product' => $product,
+                                            ])
                                         </div>
                                     </div>
                                     <!-- comment-reply -->
@@ -237,7 +242,8 @@
                                         </li>
                                         <li>
                                             @if (Auth::check())
-                                                <a href="#" title="Yêu thích" data-bs-toggle="modal"
+                                                <a href="#" class="add-to-wishlist" title="Yêu thích"
+                                                    data-bs-toggle="modal" data-id = "{{ $product->id }}"
                                                     data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
                                                     <i class="far fa-heart"></i></a>
                                             @else
@@ -245,7 +251,6 @@
                                                     <i class="far fa-heart"></i>
                                                 </a>
                                             @endif
-
                                         </li>
                                     </ul>
                                 </div>

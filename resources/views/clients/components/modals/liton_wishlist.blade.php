@@ -20,7 +20,7 @@
                                         <h5><a href="{{route('products.detail', $product->slug)}}">{{ $product->name }}</a></h5>
                                         <p class="added-cart"><i class="fa fa-check-circle"></i> Đã thêm vào danh sách yêu thích</p>
                                         <div class="btn-wrapper" style="text-align: center">
-                                            <a href="#" class="theme-btn-1 btn btn-effect-1">Xem</a>
+                                            <a href="{{ route('wishlist') }}" class="theme-btn-1 btn btn-effect-1">Xem</a>
                                         </div>
                                     </div>
                                 </div>

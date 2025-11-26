@@ -44,7 +44,7 @@
                             <ul>
                                 <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                                 <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
@@ -68,8 +68,8 @@
                         <h4 class="footer-title">Dịch vụ</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="order-tracking.html">Theo dõi đơn hàng</a></li>
-                                <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                                <li><a href="{{ route('account') }}">Theo dõi đơn hàng</a></li>
+                                <li><a href="{{ route('wishlist') }}">Danh sách yêu thích</a></li>
                                 <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                                 <li><a href="{{ route('account') }}">Tài khoản</a></li>
                                 <li><a href="{{ route('about') }}">Điều khoản & Điều kiện</a></li>
@@ -85,7 +85,7 @@
                             <ul>
                                 <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                                 <li><a href="{{ route('account') }}">Tài khoản</a></li>
-                                <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                                <li><a href="{{ route('wishlist') }}">Danh sách yêu thích</a></li>
                                 <li><a href="{{ route('account') }}">Theo dõi đơn hàng</a></li>
                                 <li><a href="{{ route('faq') }}">FAQ</a></li>
                                 <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
@@ -96,13 +96,12 @@
                 <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                     <div class="footer-widget footer-newsletter-widget">
                         <h4 class="footer-title">Bảng tin</h4>
-                        <p>Đăng ký nhận Bản tin hàng tuần của chúng tôi và nhận thông tin cập nhật qua email.</p>
+                        <p>Đăng ký nhận bảng tin hàng tuần của chúng tôi và nhận thông tin cập nhật qua email.</p>
                         <div class="footer-newsletter">
                             <form action="#">
                                 <input type="email" name="email" placeholder="Email*">
                                 <div class="btn-wrapper">
-                                    <button class="theme-btn-1 btn" type="submit"><i
-                                            class="fas fa-location-arrow"></i></button>
+                                    <button class="theme-btn-1 btn" type="submit"><i class="fas fa-location-arrow"></i></button>
                                 </div>
                             </form>
                         </div>
