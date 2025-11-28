@@ -921,11 +921,31 @@ $(document).ready(function () {
                 .addClass("fa-microphone");
             isRecognizing = false;
         };
-    }
-    else
-    {
+    } else {
         console.log("Speecch recognition not supported in this browser.");
-        toastr.error("Trình duyệt của bạn không hỗ trợ nhận diện giọng nói.")
+        toastr.error("Trình duyệt của bạn không hỗ trợ nhận diện giọng nói.");
     }
 
+    /********************************
+    HANDLE SETUP PASSWORD TOGGLE
+    ********************************/
+    function setupPasswordToggle(inputId, toggleId) {
+        const inputElement = document.getElementById(inputId);
+        const toggleElement = document.getElementById(toggleId);
+
+        if (inputElement && toggleElement) {
+            toggleElement.addEventListener("click", function () {
+                const type =
+                    inputElement.getAttribute("type") === "password"
+                        ? "text"
+                        : "password";
+                inputElement.setAttribute("type", type);
+                this.classList.toggle("fa-eye");
+                this.classList.toggle("fa-eye-slash");
+            });
+        }
+    }
+
+    setupPasswordToggle("password", "togglePassword");
+    setupPasswordToggle("confirmpassword", "toggleConfirmPassword");
 });

@@ -21,20 +21,27 @@
                         <form action="#" class="ltn__form-box contact-form-box" method="POST" id="login-form">
                             @csrf
 
-                            <input type="email" name="email" placeholder="Email*" required value="{{old('email')}}">
+                            <div style="position: relative;">
+                                <input type="email" name="email" placeholder="Email*" required value="{{old('email')}}" style="padding-left: 40px;">
+                                <i class="fa fa-envelope" style="position: absolute; top: 33px; left: 15px; transform: translateY(-50%); color: #888;"></i>
+                            </div>
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
 
-                            <input type="password" name="password" placeholder="Mật khẩu*" required>
+                            <div style="position: relative;">
+                                <input type="password" name="password" placeholder="Mật khẩu*" required style="padding-left: 40px;" id="password">
+                                <i class="fa fa-lock" style="position: absolute; top: 33px; left: 15px; transform: translateY(-50%); color: #888;"></i>
+                                <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; top: 33px; right: 15px; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
+                            </div>
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
 
-                            <div class="btn-wrapper mt-0">
+                            <div class="btn-wrapper mt-0 text-center">
                                 <button class="theme-btn-1 btn btn-block" type="submit">ĐĂNG NHẬP</button>
                             </div>
-                            <div class="go-to-btn mt-20">
+                            <div class="go-to-btn mt-20 text-end fw-bold">
                                 <a href="{{route('password.request')}}"><small>BẠN QUÊN MẬT KHẨU?</small></a>
                             </div>
                         </form>
