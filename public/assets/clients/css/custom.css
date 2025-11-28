@@ -233,3 +233,17 @@
     display: block;
     margin: 0 auto;
 }
+
+/*Search*/
+#voice-search{
+    position: absolute;
+    right: 50px;
+    text-align: center;
+    top: 21px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#voice-search:hover{
+    color: #28a745;
+}

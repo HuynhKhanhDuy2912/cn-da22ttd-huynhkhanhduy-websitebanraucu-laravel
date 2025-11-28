@@ -25,17 +25,21 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="showing-product-number text-right text-end">
-                                                        <span style="font-size: 15px !important">
-                                                            Hiển thị {{ $products->lastItem() }} trong tổng số
-                                                            {{ $products->total() }} sản phẩm
-                                                        </span>
-                                                    </div>
+                                                    @if ($products->total() == 0)
+                                                        <div class="showing-product-number text-right text-end"></div>
+                                                    @else
+                                                        <div class="showing-product-number text-right text-end">
+                                                            <span style="font-size: 15px !important">
+                                                                Hiển thị {{ $products->lastItem() }} trong tổng số
+                                                                {{ $products->total() }} sản phẩm
+                                                            </span>
+                                                        </div>
+                                                    @endif
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="row">
-                                            @foreach ($products as $product)
+                                            @forelse ($products as $product)
                                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
                                                     <div class="ltn__product-item ltn__product-item-3 text-center">
                                                         <div class="product-img">
@@ -97,7 +101,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @empty
+                                                <div class="col-12 text-center my-5">
+                                                    <h4>Không có sản phẩm phù hợp với từ khóa bạn đã nhập. Thử các từ khóa phổ biến hơn để có thêm lựa chọn nhé!</h4>
+                                                </div>
+                                            @endforelse
                                         </div>
                                         <div class="ltn__pagination-area text-center">
                                             <div class="ltn__pagination">
