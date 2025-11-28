@@ -111,3 +111,4 @@ Route::post('/contact', [ContactController::class, 'sendContact'])->name('contac
 //Search
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
+require __DIR__.'/admin.php';
