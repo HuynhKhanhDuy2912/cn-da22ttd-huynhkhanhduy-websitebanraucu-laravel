@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -17,5 +18,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/dashboard', function () {
             return view('admin.pages.dashboard');
         })->name('admin.dashboard');
+    });
+
+    Route::middleware(['permission:manage_users'])->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
     });
 });

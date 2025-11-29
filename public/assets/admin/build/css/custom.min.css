@@ -10,6 +10,8 @@
         url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular")
             format("svg");
 }
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap");
+
 .glyphicon {
     position: relative;
     top: 1px;
@@ -908,15 +910,15 @@
     margin-bottom: 35px;
 }
 .menu_section h3 {
-    padding-left: 23px;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 18px;
     margin-bottom: 0;
     margin-top: 0;
     text-shadow: 1px 1px #000;
+    text-align: center;
 }
 .menu_section > ul {
     margin-top: 10px;
@@ -1311,8 +1313,6 @@ table.no-margin .progress {
     position: relative;
     min-height: 1px;
     float: left;
-    padding-right: 10px;
-    padding-left: 10px;
 }
 .row {
     margin-right: -10px;
@@ -1458,8 +1458,10 @@ a:focus {
 }
 .nav.side-menu > li > a,
 .nav.child_menu > li > a {
-    color: #e7e7e7;
+    color: #ffffff;
     font-weight: 500;
+    font-size: 15px;
+    font-family: "Rajdhani", sans-serif;
 }
 .nav.child_menu li li:hover,
 .nav.child_menu li li.active {
@@ -1580,7 +1582,7 @@ a:focus {
 }
 .nav.child_menu > li > a {
     color: rgba(255, 255, 255, 0.75);
-    font-size: 12px;
+    font-size: 14px;
     padding: 9px;
 }
 .panel_toolbox {
@@ -1830,13 +1832,16 @@ legend {
 }
 .profile_details .profile_view .left {
     margin-top: 20px;
+    padding-left: 5px;
 }
 .profile_details .profile_view .left p {
     margin-bottom: 3px;
 }
 .profile_details .profile_view .right {
     margin-top: 0px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .profile_details .profile_view .img-circle {
     border: 1px solid #e6e9ed;
@@ -3049,15 +3054,15 @@ a.btn-danger {
     color: #fff;
 }
 .btn-success {
-    background: #26b99a;
-    border: 1px solid #169f85;
+    background: #2fb249;
+    border: 1px solid #2fb249;
 }
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active,
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
-    background: #169f85;
+    background: #228c37;
 }
 .btn-dark {
     color: #e9edef;
@@ -4980,6 +4985,12 @@ ul.notifications {
 }
 .img-circle {
     border-radius: 50%;
+}
+.fixed-avatar {
+    width: 100px;        
+    height: 100px;       
+    object-fit: cover;   
+    border-radius: 50%;  
 }
 .display-layout {
     display: -webkit-box;

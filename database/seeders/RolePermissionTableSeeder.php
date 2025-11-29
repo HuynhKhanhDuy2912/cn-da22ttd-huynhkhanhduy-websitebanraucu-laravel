@@ -26,7 +26,7 @@ class RolePermissionTableSeeder extends Seeder
         //Staff
         $staffPermissions = $permissions->whereIn('name',[
             'manage_products',
-            'manage_contact'
+            'manage_contacts'
         ]);
 
         $staffRole->permissions()->sync($staffPermissions);
