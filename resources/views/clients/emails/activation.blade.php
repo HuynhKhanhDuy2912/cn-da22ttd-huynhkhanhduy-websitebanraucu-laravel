@@ -87,14 +87,14 @@
             <!-- Header -->
             <div class="header">
                 {{-- <img src="" alt="Logo Website" onerror="this.style.display='none'"> --}}
-                <h1>Veggie Market</h1>
+                <h1>Veggie Shop</h1>
             </div>
 
             <!-- Body -->
             <div class="body">
                 <h2>Xin chào, {{ $user->name }} 🌿</h2>
                 <p>
-                    Cảm ơn bạn đã đăng ký tài khoản tại <strong>Veggie Market</strong>.<br>
+                    Cảm ơn bạn đã đăng ký tài khoản tại <strong>Veggie Shop</strong>.<br>
                     Để kích hoạt tài khoản của bạn, vui lòng nhấn vào nút bên dưới:
                 </p>
 
@@ -111,8 +111,7 @@
 
             <!-- Footer -->
             <div class="footer">
-                © {{ date('Y') }} Veggie Market • 
-                <a href="{{ url('/') }}">Trang chủ</a>
+                © {{ date('Y') }} Veggie Shop.
             </div>
         </div>
     </div>
