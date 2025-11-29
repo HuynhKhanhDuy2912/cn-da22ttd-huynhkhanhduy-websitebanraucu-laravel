@@ -40,8 +40,8 @@
                     @if ($adminUser->role->permissions->contains('name','manage_categories'))
                         <li><a><i class="fa fa-th"></i> Quản lý danh mục <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="#">Thêm danh mục</a></li>
-                                <li><a href="#">Danh sách danh mục</a></li>
+                                <li><a href="{{ route('admin.category.index') }}">Danh sách danh mục</a></li>
+                                <li><a href="{{ route('admin.category.showAddCateForm') }}">Thêm danh mục</a></li>                                
                             </ul>
                         </li>
                     @endif                

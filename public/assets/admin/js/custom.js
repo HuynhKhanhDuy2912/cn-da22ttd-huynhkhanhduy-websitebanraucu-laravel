@@ -45,6 +45,7 @@ $(document).ready(function () {
         });
     });
 
+    // Change user status (ban or delete)
     $(document).on("click", ".changeStatus", function () {
         let button = $(this);
         let userId = button.data("userid");
@@ -78,5 +79,28 @@ $(document).ready(function () {
                 alert("Đã xảy ra lỗi khi thay đổi trạng thái!");
             },
         });
+    });
+
+    $('.btn-reset').on('click', function() {
+        let form =$(this).closest('form');
+        form.trigger('reset');
+        form.find('input[type="file"]').val('');
+        form.find('#image-preview').html('').attr('src', '');
+    });
+
+    /********************************
+        MANAGEMENT CATEGORIES
+    ********************************/
+    $('#category-image').on('change', function() {
+        let file = this.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            $('#image-preview').attr('src', '');
+        }       
     });
 });
