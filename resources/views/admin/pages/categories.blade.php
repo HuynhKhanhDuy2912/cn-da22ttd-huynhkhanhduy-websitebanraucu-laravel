@@ -48,7 +48,7 @@
                                                 </tr>
                                             </thead>
 
-                                            <tbody>                                                
+                                            <tbody>
                                                 @foreach ($categories as $category)
                                                     <tr>
                                                         <td class="text-center">
@@ -63,13 +63,78 @@
                                                         <td>{{ $category->slug }}</td>
                                                         <td>{{ $category->description }}</td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-warning" style="margin-top: 10px;"><i class="fa fa-edit" style="font-size: 15px;"> Chỉnh sửa</i></button>
+                                                            <button class="btn btn-primary btn-update-category"
+                                                                data-toggle="modal"
+                                                                data-target="#modalUpdate-{{ $category->id }}"><i
+                                                                    class="fa fa-edit"></i> Chỉnh sửa
+                                                            </button>
                                                         </td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-danger" style="margin-top: 10px;"><i class="fa fa-trash" style="font-size: 15px;"> Xóa</i></button>
+                                                            <button class="btn btn-danger btn-delete-category" data-id ="{{ $category->id }}"><i
+                                                                    class="fa fa-trash"></i>  Xóa
+                                                            </button>
                                                         </td>
                                                     </tr>
-                                                    
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="modalUpdate-{{ $category->id }}"
+                                                        tabindex="-1" aria-labelledby="categoruModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Cập nhật danh mục</h5>
+                                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        <div class="item form-group">
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align text-left"
+                                                                                for="category-name" style="white-space: nowrap;">Tên danh mục: 
+                                                                            </label>
+                                                                            <div class="col-md-9 col-sm-9">
+                                                                                <input type="text" id="category-name" name="name" 
+                                                                                class="form-control" value="{{ $category->name }}" required>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="item form-group">
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                                for="category-description">Mô tả:
+                                                                            </label>
+                                                                            <div class="col-md-9 col-sm-9 ">
+                                                                                <input type="text" id="category-description" name="description"
+                                                                                class="form-control" value="{{ $category->description }}" required>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="item form-group">
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                                for="category-image">Hình ảnh:
+                                                                            </label>
+
+                                                                            <div class="col-md-6 col-sm-6 text-center">
+                                                                                <img src="{{ asset('storage/'.$category->image) }}" alt="{{ $category->name }}"
+                                                                                    id="image-preview-{{ $category->id }}" class="image-preview">
+
+                                                                                <input type="file" id="category-image-{{ $category->id }}" data-id ="{{ $category->id }}"
+                                                                                    name="image" accept="image/*" class="category-image" />
+
+                                                                                <label class="custom-file-upload" for="category-image-{{ $category->id }}">
+                                                                                    <i class="fa fa-cloud-upload"></i> Chọn ảnh
+                                                                                </label>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">                                                                    
+                                                                    <button type="button" class="btn btn-success btn-update-submit-category" data-id="{{ $category->id }}">Cập nhật</button>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 @endforeach
                                             </tbody>
                                         </table>

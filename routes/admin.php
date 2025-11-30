@@ -30,5 +30,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/categories/add', [CategoryController::class, 'showFormAddCate'])->name('admin.category.showAddCateForm');
         Route::post('/categories/add', [CategoryController::class, 'addCategory'])->name('admin.category.add');
         Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category.index');
+        Route::post('/categories/update', [CategoryController::class, 'updateCategory']);
+        Route::post('/categories/delete', [CategoryController::class, 'deleteCategory']);
     });
 });

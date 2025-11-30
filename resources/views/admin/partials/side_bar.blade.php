@@ -2,7 +2,7 @@
     <div class="left_col scroll-view">
         <div class="navbar nav_title">
             <a href="{{ route('admin.dashboard') }}" class="site_title">
-                <i class="fa fa-leaf" style="font-size: 24px; color: #28a745; border: 1px solid #28a745"></i> 
+                <i class="fa fa-leaf" style="font-size: 24px; color: #05ff24; border: 1px solid #05ff24"></i> 
                 <span>VEGGIE SHOP!</span>
             </a>
         </div>

@@ -66,7 +66,9 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status) {
                     toastr.success(response.message);
-                    status == "banned" ? button.text("Đã chặn") : button.text("Đã xóa");
+                    status == "banned"
+                        ? button.text("Đã chặn")
+                        : button.text("Đã xóa");
                     button.addClass("disabled").prop("disabled", true);
                     setTimeout(function () {
                         location.reload();
@@ -81,26 +83,120 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-reset').on('click', function() {
-        let form =$(this).closest('form');
-        form.trigger('reset');
-        form.find('input[type="file"]').val('');
-        form.find('#image-preview').html('').attr('src', '');
+    $(".btn-reset").on("click", function () {
+        let form = $(this).closest("form");
+        form.trigger("reset");
+        form.find('input[type="file"]').val("");
+        form.find("#image-preview").html("").attr("src", "");
     });
 
     /********************************
         MANAGEMENT CATEGORIES
     ********************************/
-    $('#category-image').on('change', function() {
+
+   // Preview category image before upload - Add Category
+    $("#category-image").on("change", function () {
         let file = this.files[0];
         if (file) {
             let reader = new FileReader();
-            reader.onload = function(e) {
-                $('#image-preview').attr('src', e.target.result);
+            reader.onload = function (e) {
+                $("#image-preview").attr("src", e.target.result);
             };
             reader.readAsDataURL(file);
         } else {
-            $('#image-preview').attr('src', '');
-        }       
+            $("#image-preview").attr("src", "");
+        }
+    });
+
+    // Preview category image before upload - Edit Category
+    $(".category-image").change(function () {
+        let file = this.files[0];
+        let categoryId = $(this).data("id");
+
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                $("#image-preview-" + categoryId).attr("src", e.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            $("#image-preview-" + categoryId).attr("src", "");
+        }
+    });
+
+    //Update category
+    $(document).on("click", ".btn-update-submit-category", function (e) {
+        e.preventDefault();
+        let button = $(this);
+        let categoryId = button.data("id");
+        let form = button.closest(".modal").find("form");
+        let formData = new FormData(form[0]);
+        formData.append("category_id", categoryId);
+        
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/admin/categories/update/",
+            type: "POST",   
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                button.prop("disabled", true).text("Đang cập nhật...");
+            },
+            success: function (response) {
+                if (response.status) {
+                    toastr.success(response.message);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.error);
+                }   
+            },
+            error: function () {
+                button.prop("disabled", false).text("Cập nhật");
+                toastr.error(response.message);
+            },
+        }); 
+    });
+
+    $('.btn-delete-category').on('click', function(e) {
+        e.preventDefault();
+        let button = $(this);
+        let categoryId = button.data('id'); 
+        let row = button.closest('tr');
+
+        if (confirm('Bạn có chắc chắn muốn xóa danh mục này không?')) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '/admin/categories/delete/',
+                type: 'POST',
+                data: { 
+                    category_id : categoryId 
+                },
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success(response.message);
+                        row.fadeOut(300, function() {
+                            $(this).remove();
+                        });
+                    } else {
+                        toastr.error(response.error);
+                    }
+                },
+                error: function() {
+                    alert('Đã xảy ra lỗi khi xóa danh mục!');
+                }
+            });
+        }
     });
 });

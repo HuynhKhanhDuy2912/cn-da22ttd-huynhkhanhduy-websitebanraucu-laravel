@@ -57,7 +57,7 @@
 
                                                         <div class="col-md-12 text-center mb-3">
                                                             <div class="profile-pic-container">
-                                                                <img src="{{ asset('storage/' . $user->avatar) }}"
+                                                                <img src="{{ asset('storage/' . ($user->avatar ?? 'uploads/users/user.jpg')) }}"
                                                                     alt="Avatar" id="preview-image" class="profile-pic">
                                                                 <input type="file" name="avatar" id="avatar"
                                                                     accept="image/*" class="d-none">

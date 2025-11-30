@@ -810,7 +810,7 @@
     content: "\e260";
 }
 .left_col {
-    background: #2a3f54;
+    background: #06041a;
 }
 .container {
     width: 100%;
@@ -1041,7 +1041,7 @@ body .container.body .right_col {
 .nav_title {
     width: 230px;
     float: left;
-    background: #2a3f54;
+    background: #06041a;
     border-radius: 0;
     height: 57px;
     padding: 0px;
@@ -1174,7 +1174,7 @@ body .container.body .right_col {
 }
 body {
     color: #73879c;
-    background: #2a3f54;
+    background: #06041a;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -1478,7 +1478,7 @@ a:focus {
 }
 .nav.side-menu > li.current-page,
 .nav.side-menu > li.active {
-    border-right: 5px solid #1abb9c;
+    border-right: 5px solid #05ff24;
 }
 .nav li.current-page {
     background: rgba(255, 255, 255, 0.05);
@@ -2359,16 +2359,17 @@ span.right {
     padding: 5px 0 0 0;
     position: fixed;
     width: 230px;
-    background: #2a3f54;
+    background: #06041a;
 }
 .sidebar-footer a {
     padding: 7px 0 3px;
     text-align: center;
-    width: 25%;
+    width: 100%;
     font-size: 17px;
     display: block;
     float: left;
-    background: #172d44;
+    background: #0d2b4a;
+    color: #ff0000;
 }
 .sidebar-footer a:hover {
     background: #425567;

@@ -47,9 +47,9 @@
                                         <h4 class="brief text-uppercase"><i>{{ $user->role->name }}</i></h4>
                                         <div class="left col-md-8 col-sm-8">
                                             <h2>{{ $user->name }}</h2>
-                                            <p><strong>Email: </strong> {{ $user->email }} </p>
                                             <ul class="list-unstyled">
-                                                <li><i class="fa fa-building"></i> Địa chỉ: {{ $user->address }}</li>
+                                                <li><i class="fa fa-envelope"></i> Email: {{ $user->email }} </li>
+                                                <li><i class="fa fa-map-marker"></i> Địa chỉ: {{ $user->address }}</li>
                                                 <li><i class="fa fa-phone"></i> Số điện thoại: {{ $user->phone_number }}
                                                 </li>
                                             </ul>
@@ -82,7 +82,7 @@
                                                 @if ($user->status == 'deleted')
                                                     <button type="button" class="btn btn-success btn-sm changeStatus"
                                                         data-userid="{{ $user->id }}" data-status="active">
-                                                        <i class="fa fa-unlock"> </i> Khôi phục
+                                                        <i class="fa fa-undo"> </i> Khôi phục
                                                     </button>
                                                 @else
                                                     <button type="button" class="btn btn-danger btn-sm changeStatus"
