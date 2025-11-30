@@ -273,8 +273,12 @@ $(document).ready(function () {
 
     $(document).on("click", ".pagination-link", function (e) {
         let isSearchPage = window.location.href.includes("search");
+        let isSearchWishList = window.location.href.includes("wishlist");
 
         if (isSearchPage) {
+            return;
+        }
+        if (isSearchWishList) {
             return;
         }
         e.preventDefault();
@@ -855,8 +859,9 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.status) {
-                    row.remove();
-                    location.reload();
+                    row.fadeOut(300, function() {
+                        $(this).remove();
+                    });
                 }
             },
             error: function (xhr) {

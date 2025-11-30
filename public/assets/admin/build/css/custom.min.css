@@ -2957,6 +2957,7 @@ select.parsley-error {
 .item textarea {
     -webkit-transition: 0.42s;
     transition: 0.42s;
+    border-radius: 5px;
 }
 .item .alert {
     float: left;

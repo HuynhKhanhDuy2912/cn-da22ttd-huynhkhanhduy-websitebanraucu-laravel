@@ -8471,6 +8471,10 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     display: block;
     font-size: 25px;
 }
+.modal-header .close span:hover{
+    background-color: red;
+    color: #fff;
+}
 .modal-header .close:not(:disabled):not(.disabled):focus,
 .modal-header .close:not(:disabled):not(.disabled):hover,
 .modal-header .close:hover {

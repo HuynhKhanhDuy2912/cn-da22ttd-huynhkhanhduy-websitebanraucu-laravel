@@ -48,10 +48,10 @@
                                 </div>
 
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="category-image">Hình ảnh</label>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="category-image">Hình ảnh*</label>
                                     <div class="col-md-6 col-sm-6 ">
                                         <input type="file" id="category-image" name="image" accept="image/*" required/>
-                                        <label class="custom-file-upload" for="category-image">
+                                        <label class="custom-file-upload" for="category-image" style="margin-right: 15px;">
                                             <i class="fa fa-cloud-upload"></i> Chọn ảnh
                                         </label>
                                         <img src="" alt="Ảnh xem trước" id="image-preview" class="image-preview">

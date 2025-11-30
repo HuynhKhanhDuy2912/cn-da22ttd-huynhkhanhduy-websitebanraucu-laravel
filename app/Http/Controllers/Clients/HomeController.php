@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Clients;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,12 @@ class HomeController extends Controller
             ->groupBy('products.id', 'products.name', 'products.slug', 'products.category_id', 'products.description', 'products.price', 'products.stock', 'products.status', 'products.unit', 'products.created_at', 'products.updated_at')
             ->orderByDesc('total_sold')
             ->limit(8)->get();
+        
+        $likedProduct = [];
+        if (Auth::check()) {
+            $likedProduct = Wishlist::where('user_id', Auth::id())->pluck('product_id')->toArray();
+        }
 
-        return view('clients.pages.home', compact('categories', 'bestSelling'));
+        return view('clients.pages.home', compact('categories', 'bestSelling', 'likedProduct'));
     }
 }

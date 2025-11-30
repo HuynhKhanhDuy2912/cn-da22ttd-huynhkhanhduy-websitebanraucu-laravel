@@ -83,11 +83,22 @@
                                                     sản phẩm</span><br>
                                             </li>
                                             <li>
-                                                <a href="#" class="" title="Wishlist" data-bs-toggle="modal"
-                                                    data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
-                                                    <i class="far fa-heart"></i><span>Yêu thích</span>
-                                                    @include('clients.components.modals.liton_wishlist')
-                                                </a>
+                                                @if (Auth::check())
+                                                    @if (in_array($product->id, $likedProduct))
+                                                        <a href="javascript:void(0)" style="cursor: default;">
+                                                            <i class="fas fa-heart" style="color: red;"></i>
+                                                        </a> Đã thích
+                                                    @else
+                                                        <a href="#" class="add-to-wishlist" title="Yêu thích" 
+                                                        data-bs-toggle="modal" data-id = "{{ $product->id }}"
+                                                        data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
+                                                        <i class="far fa-heart"></i></a> Yêu thích
+                                                    @endif
+                                                @else
+                                                    <a href="javascript:void(0)" onclick="showLoginWarning()">
+                                                        <i class="far fa-heart"></i> Yêu thích
+                                                    </a>
+                                                @endif
                                             </li>
                                         </ul>
                                     </div>
@@ -242,13 +253,19 @@
                                         </li>
                                         <li>
                                             @if (Auth::check())
-                                                <a href="#" class="add-to-wishlist" title="Yêu thích"
+                                                @if (in_array($product->id, $likedProduct))
+                                                    <a href="javascript:void(0)" style="cursor: default;">
+                                                        <i class="fas fa-heart" style="color: red;"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="#" class="add-to-wishlist" title="Yêu thích" 
                                                     data-bs-toggle="modal" data-id = "{{ $product->id }}"
                                                     data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
                                                     <i class="far fa-heart"></i></a>
+                                                @endif
                                             @else
                                                 <a href="javascript:void(0)" onclick="showLoginWarning()">
-                                                    <i class="far fa-heart"></i>
+                                                    <i class="far fa-heart"></i> 
                                                 </a>
                                             @endif
                                         </li>

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,11 +20,21 @@ class ProductController extends Controller
 
         $products = Product::with('firstImage')->where('status', 'in_stock')->paginate(9);
 
-        return view('clients.pages.product', compact('categories', 'products'));
+        $likedProduct = []; 
+        if (Auth::check()) {
+            $likedProduct = Wishlist::where('user_id', Auth::id())->pluck('product_id')->toArray();
+        }
+
+        return view('clients.pages.product', compact('categories', 'products', 'likedProduct'));
     }
 
     public function filter(Request $request)
     {
+        $likedProduct = [];
+        if (Auth::check()) {
+            $likedProduct = Wishlist::where('user_id', Auth::id())->pluck('product_id')->toArray();
+        }
+
         $query = Product::query()->where('status', 'in_stock');
 
         //Filter Category if exist
@@ -60,8 +71,8 @@ class ProductController extends Controller
         $products = $query->paginate(9);
 
         return response()->json([
-            'products' => view('clients.components.products_grid', compact('products'))->render(),
-            'panigation' => $products->links('clients.components.pagination.pagination-custom')->toHtml(),
+            'products' => view('clients.components.products_grid', compact('products', 'likedProduct'))->render(),
+            'pagination' => $products->links('clients.components.pagination.pagination-custom')->toHtml(),
             'count' => $products->count(),   
             'total' => $products->total()
         ]);
@@ -70,6 +81,11 @@ class ProductController extends Controller
     public function detail($slug)
     {
         $product = Product::with(['category', 'images', 'reviews.user'])->where('slug', $slug)->firstOrFail();
+
+        $likedProduct = [];
+        if (Auth::check()) {
+            $likedProduct = Wishlist::where('user_id', Auth::id())->pluck('product_id')->toArray();
+        }
 
         //Get product in the same category
         $relatedProducts = Product::where('category_id', $product->category_id)
@@ -93,6 +109,6 @@ class ProductController extends Controller
             $hasReviewed = Review::where('user_id', $user->id)->where('product_id', $product->id)->exists();
         }
 
-        return view('clients.pages.product_detail', compact('product','relatedProducts', 'hasPurchased', 'hasReviewed', 'avgRating'));
+        return view('clients.pages.product_detail', compact('product','relatedProducts', 'hasPurchased', 'hasReviewed', 'avgRating', 'likedProduct'));
     }
 }

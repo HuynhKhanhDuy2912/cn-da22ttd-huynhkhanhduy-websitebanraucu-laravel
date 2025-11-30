@@ -90,6 +90,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="ltn__pagination-area text-center">
+                        <div class="ltn__pagination">
+                            {!!$wishlists->links('clients.components.pagination.pagination-custom')!!}
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

@@ -11,9 +11,15 @@ class WishlistController extends Controller
 {
     public function index()
     {
-        $wishlists = Wishlist::with('product')->where('user_id', Auth::id())->get();
+        $wishlists = Wishlist::with('product')->where('user_id', Auth::id())->paginate(4);
 
-        return view('clients.pages.wishlist', compact('wishlists'));
+        $likedProduct = [];
+        if (Auth::check()) 
+        {
+            $likedProduct = $wishlists->pluck('product_id')->toArray();
+        }
+
+        return view('clients.pages.wishlist', compact('wishlists', 'likedProduct'));
     }
 
     public function addToWishList(Request $request)

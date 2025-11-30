@@ -203,15 +203,19 @@
                                                                 </li>
                                                                 <li>
                                                                     @if (Auth::check())
-                                                                        <a href="#" class="add-to-wishlist"
-                                                                            title="Yêu thích" data-bs-toggle="modal"
-                                                                            data-id = "{{ $product->id }}"
+                                                                        @if (in_array($product->id, $likedProduct))
+                                                                            <a href="javascript:void(0)" style="cursor: default;">
+                                                                                <i class="fas fa-heart" style="color: red;"></i>
+                                                                            </a>
+                                                                        @else
+                                                                            <a href="#" class="add-to-wishlist" title="Yêu thích" 
+                                                                            data-bs-toggle="modal" data-id = "{{ $product->id }}"
                                                                             data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
                                                                             <i class="far fa-heart"></i></a>
+                                                                        @endif
                                                                     @else
-                                                                        <a href="javascript:void(0)"
-                                                                            onclick="showLoginWarning()">
-                                                                            <i class="far fa-heart"></i>
+                                                                        <a href="javascript:void(0)" onclick="showLoginWarning()">
+                                                                            <i class="far fa-heart"></i> 
                                                                         </a>
                                                                     @endif
                                                                 </li>
@@ -332,13 +336,19 @@
                                         </li>
                                         <li>
                                             @if (Auth::check())
-                                                <a href="#" class="add-to-wishlist" title="Yêu thích"
+                                                @if (in_array($product->id, $likedProduct))
+                                                    <a href="javascript:void(0)" style="cursor: default;">
+                                                        <i class="fas fa-heart" style="color: red;"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="#" class="add-to-wishlist" title="Yêu thích" 
                                                     data-bs-toggle="modal" data-id = "{{ $product->id }}"
                                                     data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
                                                     <i class="far fa-heart"></i></a>
+                                                @endif
                                             @else
                                                 <a href="javascript:void(0)" onclick="showLoginWarning()">
-                                                    <i class="far fa-heart"></i>
+                                                    <i class="far fa-heart"></i> 
                                                 </a>
                                             @endif
                                         </li>
