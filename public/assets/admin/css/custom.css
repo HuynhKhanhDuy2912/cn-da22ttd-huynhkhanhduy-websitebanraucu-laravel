@@ -2,13 +2,14 @@
     display: inline-block;
     background-color: #ffffff;
     color: #0d6efd;
-    padding: 10px 15px;
+    padding: 8px 15px;
     border-radius: 50px;
     cursor: pointer;
     border: 1px solid #0d6efd;
     transition: all 0.3s ease;
     margin-bottom: 0;
     margin-top: 10px;
+    margin-right: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     font-weight: 600;
     font-size: 14px;
@@ -20,12 +21,13 @@
     box-shadow: 0 4px 8px rgba(13, 110, 253, 0.2);
 }
 
-#category-image, .category-image {
+#category-image,
+#product-images {
     display: none;
 }
 
 .image-preview {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     /* margin-left: 15px; */
     max-width: 200px;
     max-height: 200px;
@@ -34,15 +36,29 @@
     padding: 5px;
 }
 
-.btn-delete-category, .btn-update-category{
-  margin-top: 10px;
+.btn-delete-category,
+.btn-update-category {
+    margin-top: 10px;
 }
 
-.btn-delete-category i, .btn-update-category i{
-  font-size: 15px;
+.btn-delete-category i,
+.btn-update-category i {
+    font-size: 15px;
 }
 
-#add-category, .modal-body{
-  color: #000000;
-  font-size: 15px;
+#add-category,
+.modal-body,
+#add-product {
+    color: #000000;
+    font-size: 1rem;
 }
+
+.btn-category_product {
+    text-align: center;
+}
+
+/* select.form-control {
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+    appearance: auto !important;
+} */

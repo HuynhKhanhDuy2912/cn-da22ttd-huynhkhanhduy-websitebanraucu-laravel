@@ -1175,7 +1175,7 @@ body .container.body .right_col {
 body {
     color: #73879c;
     background: #06041a;
-    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    /* font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif; */
     font-size: 13px;
     font-weight: 400;
     line-height: 1.471;

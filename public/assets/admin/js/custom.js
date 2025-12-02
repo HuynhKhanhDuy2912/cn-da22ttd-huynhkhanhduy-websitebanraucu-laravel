@@ -88,10 +88,11 @@ $(document).ready(function () {
         form.trigger("reset");
         form.find('input[type="file"]').val("");
         form.find("#image-preview").html("").attr("src", "");
+        form.find("#image-preview-container").html("");
     });
 
     /********************************
-        MANAGEMENT CATEGORIES
+          MANAGEMENT CATEGORIES
     ********************************/
 
    // Preview category image before upload - Add Category
@@ -197,6 +198,38 @@ $(document).ready(function () {
                     alert('Đã xảy ra lỗi khi xóa danh mục!');
                 }
             });
+        }
+    });
+
+    /********************************
+          MANAGEMENT PRODUCTS
+    ********************************/
+
+    // Preview product image before upload - Add Product
+   $('#product-images').on('change', function(e) {
+        let files = e.target.files;
+        console.log(files); 
+        let previewContainer = $('#image-preview-container');
+        previewContainer.empty(); // Clear previous previews
+        
+        if (files) {
+            Array.from(files).forEach(file => {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    let img = $('<img>').attr('src', e.target.result).addClass('image-preview');
+                    img.css({
+                        'max-width': '160px',
+                        'max-height': '160px',
+                        'margin': '10px',
+                        'border': '1px solid #000',
+                        'padding': '3px'
+                    });
+                    previewContainer.append(img);
+                }
+                reader.readAsDataURL(file);
+            });
+        } else {
+            previewContainer.html('');
         }
     });
 });
