@@ -50,7 +50,7 @@
                         <li><a><i class="fa fa-archive"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('admin.product.showAddProductForm') }}">Thêm sản phẩm</a></li>
-                                <li><a href="#">Danh sách sản phẩm</a></li>
+                                <li><a href="{{ route('admin.product.index') }}">Danh sách sản phẩm</a></li>
                             </ul>
                         </li>
                     @endif
