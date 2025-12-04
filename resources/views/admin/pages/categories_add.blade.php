@@ -51,8 +51,10 @@
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="category-image">Hình ảnh:</label>
                                     <div class="col-md-6 col-sm-6">
                                         <input type="file" id="category-image" name="image" accept="image/*" required/>
+
                                         <img src="" alt="Ảnh xem trước" id="image-preview" class="image-preview">
                                         <br>
+                                        
                                         <label class="custom-file-upload" for="category-image">
                                             <i class="fa fa-cloud-upload"></i> Chọn ảnh
                                         </label>

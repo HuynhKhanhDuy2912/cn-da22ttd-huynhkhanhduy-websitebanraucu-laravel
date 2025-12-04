@@ -58,8 +58,8 @@
                                                 @foreach ($products as $product)
                                                     <tr id="product-row-{{ $product->id }}">
                                                         <td class="text-center">
-                                                            <img src="{{ $product->image_url }}"
-                                                                alt="{{ $product->name }}" class="image-product" width="80" height="80">
+                                                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                                                                class="image-product" width="80" height="80">
                                                         </td>
                                                         <td>{{ $product->name }}</td>
                                                         <td>{{ $product->category->name }}</td>
@@ -73,7 +73,7 @@
                                                             <button class="btn btn-primary btn-update-product"
                                                                 data-toggle="modal"
                                                                 data-target="#modalUpdate-{{ $product->id }}"><i
-                                                                    class="fa fa-edit"></i> Chỉnh sửa
+                                                                    class="fa fa-edit"></i> Sửa
                                                             </button>
                                                         </td>
                                                         <td class="text-center">
@@ -84,37 +84,52 @@
                                                         </td>
                                                     </tr>
                                                     <!-- Modal -->
-                                                    {{-- <div class="modal fade" id="modalUpdate-{{ $product->id }}"
+                                                    <div class="modal fade" id="modalUpdate-{{ $product->id }}"
                                                         tabindex="-1" aria-labelledby="categoruModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title">Cập nhật danh mục</h5>
+                                                                    <h5 class="modal-title">Cập nhật sản phẩm</h5>
                                                                     <button type="button" class="btn-close"
                                                                         data-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form method="POST"
-                                                                        class="form-horizontal form-label-left"
-                                                                        enctype="multipart/form-data">
+                                                                    <form method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
                                                                         @csrf
                                                                         <div class="item form-group">
                                                                             <label
-                                                                                class="col-form-label col-md-3 col-sm-3 label-align text-left"
+                                                                                class="col-form-label col-md-3 col-sm-3 label-align"
                                                                                 for="product-name"
-                                                                                style="white-space: nowrap;">Tên danh mục:
+                                                                                style="white-space: nowrap;">Tên sản phẩm:
                                                                             </label>
                                                                             <div class="col-md-9 col-sm-9">
-                                                                                <input type="text" id="product-name"
-                                                                                    name="name" class="form-control"
-                                                                                    value="{{ $product->name }}" required>
+                                                                                <input type="text" id="product-name" name="name" class="form-control" value="{{ $product->name }}" required>
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="item form-group">
-                                                                            <label
-                                                                                class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                                for="product-name" style="white-space: nowrap;">Danh mục:
+                                                                            </label>
+                                                                            <div class="col-md-9 col-sm-9">
+                                                                                <select name="category_id"
+                                                                                    id="product-category"
+                                                                                    class="form-select" required>
+                                                                                    <option value="" disabled
+                                                                                        selected>Chọn danh mục</option>
+                                                                                    @foreach ($categories as $category)
+                                                                                        <option value="{{ $category->id }}"
+                                                                                            {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                                                            {{ $category->name }}
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="item form-group">
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
                                                                                 for="product-description">Mô tả:
                                                                             </label>
                                                                             <div class="col-md-9 col-sm-9 ">
@@ -127,43 +142,76 @@
                                                                         </div>
 
                                                                         <div class="item form-group">
-                                                                            <label
-                                                                                class="col-form-label col-md-3 col-sm-3 label-align"
-                                                                                for="product-image">Hình ảnh:
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                                for="product-description">Giá:
+                                                                            </label>
+                                                                            <div class="col-md-9 col-sm-9 ">
+                                                                                <input type="number" id="product-price"
+                                                                                    name="price" class="form-control"
+                                                                                    value="{{ $product->price }}" required>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="item form-group">
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                                for="product-stock">Số lượng:
+                                                                            </label>
+                                                                            <div class="col-md-9 col-sm-9 ">
+                                                                                <input type="number" id="product-stock"
+                                                                                    name="stock" class="form-control"
+                                                                                    value="{{ $product->stock }}" required>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="item form-group">
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                                for="product-unit">Đơn vị:
+                                                                            </label>
+                                                                            <div class="col-md-9 col-sm-9 ">
+                                                                                <input type="text" id="product-unit"
+                                                                                    name="unit" class="form-control"
+                                                                                    value="{{ $product->unit }}" required>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="item form-group">
+                                                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                                                for="product-images">Hình ảnh:
                                                                             </label>
 
-                                                                            <div class="col-md-6 col-sm-6 text-center">
-                                                                                <img src="{{ asset('storage/' . $product->image) }}"
-                                                                                    alt="{{ $product->name }}"
-                                                                                    id="image-preview-{{ $product->id }}"
-                                                                                    class="image-preview">
+                                                                            <div class="col-md-6 col-sm-6">
+                                                                                <div id="image-preview-container-{{ $product->id }}"
+                                                                                    class="image-preview-container image-preview-listproduct"
+                                                                                    data-id="{{ $product->id }}">
+                                                                                    @foreach ($product->images as $image)
+                                                                                        <img src="{{ asset('storage/' . $image->image) }}"
+                                                                                            alt="Ảnh sản phẩm"
+                                                                                            width="80" height="80">
+                                                                                    @endforeach
+                                                                                </div>
 
                                                                                 <input type="file"
-                                                                                    id="product-image-{{ $product->id }}"
+                                                                                    id="product-images-{{ $product->id }}"
                                                                                     data-id ="{{ $product->id }}"
-                                                                                    name="image" accept="image/*"
-                                                                                    class="product-image" />
+                                                                                    name="images[]" accept="image/*"
+                                                                                    class="product-images" multiple/>
 
                                                                                 <label class="custom-file-upload"
-                                                                                    for="product-image-{{ $product->id }}">
-                                                                                    <i class="fa fa-cloud-upload"></i> Chọn
-                                                                                    ảnh
+                                                                                    for="product-images-{{ $product->id }}">
+                                                                                    <i class="fa fa-cloud-upload"></i> Chọn ảnh
                                                                                 </label>
                                                                             </div>
-
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button"
-                                                                        class="btn btn-success btn-update-submit-category"
-                                                                        data-id="{{ $category->id }}">Cập nhật</button>
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Quay lại</button>
+                                                                    <button type="button" class="btn btn-success btn-update-submit-product"
+                                                                        data-id="{{ $product->id }}">Cập nhật</button>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 @endforeach
                                             </tbody>
                                         </table>

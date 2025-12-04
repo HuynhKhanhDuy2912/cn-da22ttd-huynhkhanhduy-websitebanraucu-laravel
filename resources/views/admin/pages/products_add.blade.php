@@ -66,7 +66,7 @@
                                         Giá tiền:
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="product-price" name="price" required="required" class="form-control ">
+                                        <input type="number" id="product-price" name="price" required="required" class="form-control ">
                                     </div>
                                 </div>
 
@@ -93,9 +93,7 @@
                                     <div class="col-md-6 col-sm-6 ">
                                         <input type="file" id="product-images" name="images[]" accept="image/*" multiple required/>
                             
-                                        <div id="image-preview-container">
-
-                                        </div>
+                                        <div id="image-preview-container"></div>
 
                                         <label class="custom-file-upload" for="product-images" style="margin-right: 15px;">
                                             <i class="fa fa-cloud-upload"></i> Chọn ảnh

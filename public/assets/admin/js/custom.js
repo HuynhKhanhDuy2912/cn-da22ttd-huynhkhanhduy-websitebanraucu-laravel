@@ -166,6 +166,7 @@ $(document).ready(function () {
         }); 
     });
 
+    // Delete category
     $('.btn-delete-category').on('click', function(e) {
         e.preventDefault();
         let button = $(this);
@@ -231,5 +232,68 @@ $(document).ready(function () {
         } else {
             previewContainer.html('');
         }
+    });
+
+    // Preview product image before upload - Edit Product
+    $('.product-images').on('change', function(e) {
+        let files = e.target.files;
+        let productId = $(this).data('id');
+        let previewContainer = $('#image-preview-container-' + productId);
+        previewContainer.empty(); // Clear previous previews
+        if (files.length > 0) {
+            for (let i = 0; i < files.length; i++) {
+                let file = files[i];
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    let img = $('<img>').attr('src', e.target.result).addClass('image-preview');
+                    img.css({
+                        'max-width': '80px',
+                        'max-height': '80px'
+                    });
+                    previewContainer.append(img);
+                };
+                reader.readAsDataURL(file);
+            }            
+        } else {
+            previewContainer.html('');
+        }           
+    });
+
+    //Update product
+    $(document).on("click", ".btn-update-submit-product", function (e) {
+        e.preventDefault();
+        let button = $(this);
+        let productId = button.data("id");
+        let form = button.closest(".modal").find("form");
+        let formData = new FormData(form[0]);
+        formData.append("product_id", productId);
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            url: "/admin/product/update",
+            type: "POST",   
+            data: formData, 
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                button.prop("disabled", true).text("Đang cập nhật...");
+            },
+            success: function (response) {
+                if (response.status) {
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.error);
+                }
+            },
+            error: function () {
+                button.prop("disabled", false).text("Cập nhật");
+                toastr.error(response.message);
+            },
+        }); 
     });
 });

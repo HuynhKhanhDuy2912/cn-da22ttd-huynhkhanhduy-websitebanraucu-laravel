@@ -66,7 +66,7 @@
                                                             <button class="btn btn-primary btn-update-category"
                                                                 data-toggle="modal"
                                                                 data-target="#modalUpdate-{{ $category->id }}"><i
-                                                                    class="fa fa-edit"></i> Chỉnh sửa
+                                                                    class="fa fa-edit"></i> Sửa
                                                             </button>
                                                         </td>
                                                         <td class="text-center">
