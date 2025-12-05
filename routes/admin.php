@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,5 +44,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/product', [ProductController::class, 'index'])->name('admin.product.index');
         Route::post('/product/update', [ProductController::class, 'updateProduct']);
         Route::post('/product/delete', [ProductController::class, 'deleteProduct']);
+    });
+
+    Route::middleware(['permission:manage_orders'])->group(function () {        
+        Route::get('/orders', [OrderController::class, 'index'])->name('admin.order.index');
     });
 });

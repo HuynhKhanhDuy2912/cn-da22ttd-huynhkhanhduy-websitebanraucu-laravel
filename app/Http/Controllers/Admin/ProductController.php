@@ -102,10 +102,10 @@ class ProductController extends Controller
             // Delete old images
             $oldImages = ProductImage::where('product_id', $product->id)->get();
             foreach ($oldImages as $image) {
-                Storage::disk('public')->delete('uploads/'. $image->image);
+                Storage::disk('public')->delete($image->image);
             }
 
-            // Delete old image records
+            // Delete old image records (database)
             ProductImage::where('product_id', $product->id)->delete();
 
             // Upload new images
@@ -126,5 +126,28 @@ class ProductController extends Controller
 
         toastr()->success('Cập nhật sản phẩm thành công!');
         return response()->json(['status' => true]);
+    }
+
+    public function deleteProduct(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        $product = Product::findOrFail($request->product_id);
+
+        // Delete associated images from storage
+        $images = ProductImage::where('product_id', $product->id)->get();
+        foreach ($images as $image) {
+            Storage::disk('public')->delete($image->image);
+        }
+
+        // Delete image records from database
+        ProductImage::where('product_id', $product->id)->delete();
+
+        // Delete the product
+        $product->delete();
+        
+        return response()->json(['status' => true, 'message' => 'Xóa sản phẩm thành công!']);
     }
 }

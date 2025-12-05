@@ -73,11 +73,19 @@
                                                                     </li>
                                                                     <li>
                                                                         @if (Auth::check())
-                                                                            <a href="#" class="add-to-wishlist"
-                                                                                title="Yêu thích" data-bs-toggle="modal"
-                                                                                data-id = "{{ $product->id }}"
-                                                                                data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
-                                                                                <i class="far fa-heart"></i></a>
+                                                                            @if (in_array($product->id, $likedProduct))
+                                                                                <a href="javascript:void(0)"
+                                                                                    style="cursor: default;">
+                                                                                    <i class="fas fa-heart"
+                                                                                        style="color: red;"></i>
+                                                                                </a>
+                                                                            @else
+                                                                                <a href="#" class="add-to-wishlist"
+                                                                                    title="Yêu thích" data-bs-toggle="modal"
+                                                                                    data-id = "{{ $product->id }}"
+                                                                                    data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
+                                                                                    <i class="far fa-heart"></i></a>
+                                                                            @endif
                                                                         @else
                                                                             <a href="javascript:void(0)"
                                                                                 onclick="showLoginWarning()">
@@ -90,20 +98,25 @@
                                                         </div>
                                                         <div class="product-info">
                                                             <div class="product-ratting">
-                                                                @include('clients.components.includes.rating',['product' => $product])
+                                                                @include(
+                                                                    'clients.components.includes.rating',
+                                                                    ['product' => $product]
+                                                                )
                                                             </div>
                                                             <h2 class="product-title"><a
                                                                     href="{{ route('products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                             </h2>
                                                             <div class="product-price">
-                                                                <span>{{ number_format($product->price, 0, ',', '.') }} VNĐ/{{ $product->unit }}</span>
+                                                                <span>{{ number_format($product->price, 0, ',', '.') }}
+                                                                    VNĐ/{{ $product->unit }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @empty
                                                 <div class="col-12 text-center my-5">
-                                                    <h4>Không có sản phẩm phù hợp với từ khóa bạn đã nhập. Thử các từ khóa phổ biến hơn để có thêm lựa chọn nhé!</h4>
+                                                    <h4>Không có sản phẩm phù hợp với từ khóa bạn đã nhập. Thử các từ khóa
+                                                        phổ biến hơn để có thêm lựa chọn nhé!</h4>
                                                 </div>
                                             @endforelse
                                         </div>

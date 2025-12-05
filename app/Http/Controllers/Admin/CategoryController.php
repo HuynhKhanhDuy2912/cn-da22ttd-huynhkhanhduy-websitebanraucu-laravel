@@ -52,7 +52,7 @@ class CategoryController extends Controller
         ]);
 
         toastr()->success('Danh mục đã được thêm thành công!');
-        return redirect()->route('admin.category.add');
+        return redirect()->route('admin.category.index');
     }
 
     public function updateCategory(Request $request)

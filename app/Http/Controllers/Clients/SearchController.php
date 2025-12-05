@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use function Flasher\Toastr\Prime\toastr;
 
@@ -22,6 +24,12 @@ class SearchController extends Controller
             ->orWhere('description', 'LIKE', "%$keyword%")
             ->paginate(12)->appends(['keyword' => $keyword]);
 
-        return view('clients.pages.product_search', compact('products'));
+
+        $likedProduct = [];
+        if (Auth::check()) {
+            $likedProduct = Wishlist::where('user_id', Auth::id())->pluck('product_id')->toArray();
+        }
+
+        return view('clients.pages.product_search', compact('products', 'likedProduct'));
     }
 }
