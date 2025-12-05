@@ -48,5 +48,7 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware(['permission:manage_orders'])->group(function () {        
         Route::get('/orders', [OrderController::class, 'index'])->name('admin.order.index');
+        Route::post('/order/confirm', [OrderController::class, 'confirmOrder']);
+        Route::get('/order-detail/{id}', [OrderController::class, 'orderDetail'])->name('admin.order.detail');
     });
 });

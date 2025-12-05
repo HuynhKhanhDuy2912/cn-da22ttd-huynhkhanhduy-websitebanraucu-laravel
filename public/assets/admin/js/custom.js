@@ -95,7 +95,7 @@ $(document).ready(function () {
           MANAGEMENT CATEGORIES
     ********************************/
 
-   // Preview category image before upload - Add Category
+    // Preview category image before upload - Add Category
     $("#category-image").on("change", function () {
         let file = this.files[0];
         if (file) {
@@ -133,7 +133,7 @@ $(document).ready(function () {
         let form = button.closest(".modal").find("form");
         let formData = new FormData(form[0]);
         formData.append("category_id", categoryId);
-        
+
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
         $.ajax({
             url: "/admin/categories/update/",
-            type: "POST",   
+            type: "POST",
             data: formData,
             processData: false,
             contentType: false,
@@ -157,47 +157,49 @@ $(document).ready(function () {
                     }, 1500);
                 } else {
                     toastr.error(response.error);
-                }   
+                }
             },
             error: function () {
                 button.prop("disabled", false).text("Cập nhật");
                 toastr.error(response.message);
             },
-        }); 
+        });
     });
 
     // Delete category
-    $('.btn-delete-category').on('click', function(e) {
+    $(".btn-delete-category").on("click", function (e) {
         e.preventDefault();
         let button = $(this);
-        let categoryId = button.data('id'); 
-        let row = button.closest('tr');
+        let categoryId = button.data("id");
+        let row = button.closest("tr");
 
-        if (confirm('Bạn có chắc chắn muốn xóa danh mục này không?')) {
+        if (confirm("Bạn có chắc chắn muốn xóa danh mục này không?")) {
             $.ajaxSetup({
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
             });
             $.ajax({
-                url: '/admin/categories/delete/',
-                type: 'POST',
-                data: { 
-                    category_id : categoryId 
+                url: "/admin/categories/delete/",
+                type: "POST",
+                data: {
+                    category_id: categoryId,
                 },
-                success: function(response) {
+                success: function (response) {
                     if (response.status) {
                         toastr.success(response.message);
-                        row.fadeOut(300, function() {
+                        row.fadeOut(300, function () {
                             $(this).remove();
                         });
                     } else {
                         toastr.error(response.error);
                     }
                 },
-                error: function() {
-                    alert('Đã xảy ra lỗi khi xóa danh mục!');
-                }
+                error: function () {
+                    alert("Đã xảy ra lỗi khi xóa danh mục!");
+                },
             });
         }
     });
@@ -207,56 +209,60 @@ $(document).ready(function () {
     ********************************/
 
     // Preview product image before upload - Add Product
-   $('#product-images').on('change', function(e) {
+    $("#product-images").on("change", function (e) {
         let files = e.target.files;
-        console.log(files); 
-        let previewContainer = $('#image-preview-container');
+        console.log(files);
+        let previewContainer = $("#image-preview-container");
         previewContainer.empty(); // Clear previous previews
-        
+
         if (files) {
-            Array.from(files).forEach(file => {
+            Array.from(files).forEach((file) => {
                 let reader = new FileReader();
-                reader.onload = function(e) {
-                    let img = $('<img>').attr('src', e.target.result).addClass('image-preview');
+                reader.onload = function (e) {
+                    let img = $("<img>")
+                        .attr("src", e.target.result)
+                        .addClass("image-preview");
                     img.css({
-                        'max-width': '160px',
-                        'max-height': '160px',
-                        'margin': '10px',
-                        'border': '1px solid #000',
-                        'padding': '3px'
+                        "max-width": "160px",
+                        "max-height": "160px",
+                        margin: "10px",
+                        border: "1px solid #000",
+                        padding: "3px",
                     });
                     previewContainer.append(img);
-                }
+                };
                 reader.readAsDataURL(file);
             });
         } else {
-            previewContainer.html('');
+            previewContainer.html("");
         }
     });
 
     // Preview product image before upload - Edit Product
-    $('.product-images').on('change', function(e) {
+    $(".product-images").on("change", function (e) {
         let files = e.target.files;
-        let productId = $(this).data('id');
-        let previewContainer = $('#image-preview-container-' + productId);
+        let productId = $(this).data("id");
+        let previewContainer = $("#image-preview-container-" + productId);
         previewContainer.empty(); // Clear previous previews
         if (files.length > 0) {
             for (let i = 0; i < files.length; i++) {
                 let file = files[i];
                 let reader = new FileReader();
-                reader.onload = function(e) {
-                    let img = $('<img>').attr('src', e.target.result).addClass('image-preview');
+                reader.onload = function (e) {
+                    let img = $("<img>")
+                        .attr("src", e.target.result)
+                        .addClass("image-preview");
                     img.css({
-                        'max-width': '80px',
-                        'max-height': '80px'
+                        "max-width": "80px",
+                        "max-height": "80px",
                     });
                     previewContainer.append(img);
                 };
                 reader.readAsDataURL(file);
-            }            
+            }
         } else {
-            previewContainer.html('');
-        }           
+            previewContainer.html("");
+        }
     });
 
     // Update product
@@ -274,8 +280,8 @@ $(document).ready(function () {
         });
         $.ajax({
             url: "/admin/product/update/",
-            type: "POST",   
-            data: formData, 
+            type: "POST",
+            data: formData,
             processData: false,
             contentType: false,
             beforeSend: function () {
@@ -294,43 +300,82 @@ $(document).ready(function () {
                 button.prop("disabled", false).text("Cập nhật");
                 toastr.error(response.message);
             },
-        }); 
+        });
     });
 
     // Delete product
     $(document).on("click", ".btn-delete-product", function (e) {
         e.preventDefault();
         let button = $(this);
-        let productId = button.data('id'); 
-        let row = button.closest('tr');
+        let productId = button.data("id");
+        let row = button.closest("tr");
 
-        if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+        if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
             $.ajaxSetup({
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            
-            $.ajax({
-                url: '/admin/product/delete/',
-                type: 'POST',   
-                data: { 
-                    product_id : productId 
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
                 },
-                success: function(response) {
+            });
+
+            $.ajax({
+                url: "/admin/product/delete/",
+                type: "POST",
+                data: {
+                    product_id: productId,
+                },
+                success: function (response) {
                     if (response.status) {
                         toastr.success(response.message);
-                        row.fadeOut(300, function() {
+                        row.fadeOut(300, function () {
                             $(this).remove();
                         });
                     } else {
                         toastr.error(response.error);
                     }
                 },
-                error: function() {
-                    alert('Đã xảy ra lỗi khi xóa sản phẩm!');
-                }
+                error: function () {
+                    alert("Đã xảy ra lỗi khi xóa sản phẩm!");
+                },
             });
         }
+    });
+
+    /********************************
+          MANAGEMENT ORDERS
+    ********************************/
+
+    $(document).on("click", ".confirm-order", function (e) {
+        e.preventDefault();
+        let button = $(this);
+        let orderId = button.data("id");
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/admin/order/confirm/",
+            type: "POST",
+            data: {
+                id: orderId,
+            },
+            success: function (response) {
+                if (response.status) {
+                    toastr.success(response.message);
+                    button.closest("tr").find(".order-status")
+                    .html('<span class="custom-badge badge badge-primary">Đang giao hàng</span>');
+                    button.hide();
+                } else {
+                    toastr.error(response.error);
+                }
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi khi xác nhận đơn hàng!");
+            },
+        });
     });
 });

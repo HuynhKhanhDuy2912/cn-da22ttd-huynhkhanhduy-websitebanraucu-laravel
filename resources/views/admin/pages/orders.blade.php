@@ -60,13 +60,13 @@
                                                             {{ $order->shippingAddress->address }}</a>
                                                         </td>
                                                         <td>{{ number_format($order->total_price, 0, ',', '.') }} VNĐ</td>
-                                                        <td>
+                                                        <td class="order-status">
                                                             @if ($order->status == 'pending')
                                                                 <span class="custom-badge badge badge-warning">Đợi xác
                                                                     nhận</span>
                                                             @elseif ($order->status == 'processing')
-                                                                <span class="custom-badge badge badge-primary">Đang giao
-                                                                    hàng</span>
+                                                                    <span class="custom-badge badge badge-primary">Đang giao
+                                                                        hàng</span>
                                                             @elseif ($order->status == 'completed')
                                                                 <span class="custom-badge badge badge-success">Đã hoàn
                                                                     thành</span>
@@ -91,18 +91,18 @@
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button type="button"
-                                                                    class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-                                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                                    class="btn btn-danger dropdown-toggle dropdown-toggle-split 
+                                                                    dropdown-toggle-custom" data-toggle="dropdown" aria-haspopup="true"
                                                                     aria-expanded="false">
                                                                 </button>
-                                                                <div class="dropdown-menu">
+                                                                <div class="dropdown-menu dropdown-menu-custom">
                                                                     @if ($order->status == 'pending')
                                                                         <a href="#"
                                                                             class="dropdown-item confirm-order"
                                                                             data-id="{{ $order->id }}"> Xác nhận</a>
                                                                     @endif
                                                                     <a class="dropdown-item" target="_blank"
-                                                                        href="#">Xem chi tiết</a>
+                                                                        href="{{ route('admin.order.detail', ['id' => $order->id]) }}">Xem chi tiết</a>
                                                                 </div>
                                                             </div>
                                                         </td>
