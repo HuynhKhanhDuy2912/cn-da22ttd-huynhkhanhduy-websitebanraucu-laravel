@@ -62,3 +62,7 @@
 .modal-dialog {
     max-width: 600px !important;
 }
+
+.custom-badge{
+    padding: 5px;
+}
