@@ -346,6 +346,7 @@ $(document).ready(function () {
           MANAGEMENT ORDERS
     ********************************/
 
+    // Confirm order
     $(document).on("click", ".confirm-order", function (e) {
         e.preventDefault();
         let button = $(this);
@@ -378,4 +379,38 @@ $(document).ready(function () {
             },
         });
     });
+
+    // Send mail to customer
+    $(document).on("click", ".send-invoice-mail", function (e) {
+        e.preventDefault();
+        let button = $(this);
+        let orderId = button.data("id");
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "send-invoice",
+            type: "POST",
+            data: {
+                id: orderId,
+            },
+            success: function (response) {
+                if (response.status) {
+                    toastr.success(response.message);
+                    button.remove();
+                } else {
+                    toastr.error(response.error);
+                }
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi khi gửi hóa đơn cho khách hàng!");
+            },
+        });
+
+    });
+
 });

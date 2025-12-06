@@ -65,11 +65,11 @@
                                     <!-- /.col -->
                                     <div class="col-sm-4 invoice-col">
                                         <b>Mã hóa đơn:</b>
-                                            {{ 'HD-' . $order->created_at->format('Ymd') . '-' . str_pad($order->id, 6, '0', STR_PAD_LEFT) }}                                
+                                        {{ 'HD-' . $order->created_at->format('Ymd') . '-' . str_pad($order->id, 6, '0', STR_PAD_LEFT) }}
                                         <br>
                                         <b>Email:</b> {{ $order->user->email }}
                                         <br>
-                                        <b>Tài khoản:</b>  {{ $order->shippingAddress->full_name }}
+                                        <b>Tài khoản:</b> {{ $order->shippingAddress->full_name }}
                                     </div>
                                     <!-- /.col -->
                                 </div>
@@ -92,14 +92,14 @@
                                                 @foreach ($order->orderItems as $item)
                                                     <tr>
                                                         <td>
-                                                            <img src="{{ asset('storage/'. $item->product->image) }}" alt="">
+                                                            <img src="{{ $item->product->image_url }}" width="50px">
                                                         </td>
                                                         <td>{{ $item->product->name }}</td>
                                                         <td>{{ number_format($item->price, 0, ',', '.') }} VNĐ</td>
                                                         <td>{{ $item->quantity }}</td>
                                                         <td>{{ number_format($item->quantity * $item->price, 0, ',', '.') }} VNĐ</td>
-                                                    </tr>                                                    
-                                                @endforeach                                                
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -112,11 +112,13 @@
                                     <div class="col-md-6">
                                         <p class="lead">Phương thức thanh toán:</p>
                                         @if ($order->payment->payment_method == 'paypal')
-                                            <img src="{{ asset('assets/admin/images/paypal.png') }}" alt="Paypal"> Thanh toán bằng Paypal
+                                            <img src="{{ asset('assets/admin/images/paypal.png') }}" alt="Paypal"> Thanh
+                                            toán bằng Paypal
                                         @else
-                                            <img src="{{ asset('assets/admin/images/cash.png') }}" alt="Cash"> Thanh toán bằng tiền mặt
+                                            <img src="{{ asset('assets/admin/images/cash.jpg') }}" alt="Cash"
+                                                style="width: 50px; border-radius: 3px;"> Thanh toán bằng tiền mặt
                                         @endif
-                                        
+
                                         <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                             Đây là phương thức thanh toán mà khác hàng đã chọn cho đơn hàng này.
                                             Nếu là Paypal, thanh toán đã được xử lý trực tuyến. Nếu là thanh toán
@@ -130,20 +132,16 @@
                                             <table class="table">
                                                 <tbody>
                                                     <tr>
-                                                        <th style="width:50%">Subtotal:</th>
-                                                        <td>$250.30</td>
+                                                        <th style="width:50%">Tổng tiền sản phẩm:</th>
+                                                        <td>{{ number_format($order->total_price - 25000, 0, ',', '.') }} VNĐ</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax (9.3%)</th>
-                                                        <td>$10.34</td>
+                                                        <th>Phí vận chuyển: </th>
+                                                        <td>{{ number_format(25000, 0, ',', '.') }} VNĐ</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Shipping:</th>
-                                                        <td>$5.80</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Total:</th>
-                                                        <td>$265.24</td>
+                                                        <th>Tổng tiền thanh toán:</th>
+                                                        <td>{{ number_format($order->total_price, 0, ',', '.') }} VNĐ</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -155,13 +153,22 @@
 
                                 <!-- this row will not appear when printing -->
                                 <div class="row no-print">
-                                    <div class=" ">
-                                        <button class="btn btn-default" onclick="window.print();"><i
-                                                class="fa fa-print"></i> Print</button>
-                                        <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit
-                                            Payment</button>
-                                        <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i
-                                                class="fa fa-download"></i> Generate PDF</button>
+                                    <div>
+                                        @if ($order->status != 'canceled')
+                                            <button class="btn btn-secondary" onclick="window.print();">
+                                                <i class="fa fa-print"></i> In hóa đơn</button>
+                                            <button class="btn btn-success send-invoice-mail" data-id="{{ $order->id }}">
+                                                <i class="fa fa-send"></i> Gửi hóa đơn
+                                            </button>
+                                            @if ($order->status == 'pending')
+                                                <button class="btn btn-danger cancel-order" data-id="{{ $order->id }}">
+                                                    <i class="fa fa-remove"></i> Hủy đơn hàng
+                                                </button>
+                                            @endif
+                                        @else
+                                            <div class="text-center bg-red" style="font-size: 16px; padding: 5px;"> Đơn hàng đã hủy
+                                            </div>    
+                                        @endif
                                     </div>
                                 </div>
                             </section>

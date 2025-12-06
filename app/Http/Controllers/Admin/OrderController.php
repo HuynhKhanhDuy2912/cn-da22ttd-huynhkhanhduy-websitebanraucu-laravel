@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class OrderController extends Controller
 {
@@ -40,5 +42,30 @@ class OrderController extends Controller
         $order = Order::with('orderItems.product', 'shippingAddress', 'user', 'payment')->find($id);
 
         return view('admin.pages.order_detail', compact('order'));
+    }
+
+    public function sendMail(Request $request)
+    {
+        $id = $request->id;
+        $order = Order::with('orderItems.product', 'shippingAddress', 'user', 'payment')->find($id);
+
+        try
+        {
+            Mail::send('admin.emails.invoice',  compact('order'), function($message) use ($order){
+                $message->to($order->user->email)->subject('Hóa đơn đơn hàng #'. $order->created_at->format('Ymd') . '-' . str_pad($order->id, 6, '0', STR_PAD_LEFT));
+            });
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Hóa đơn đã được gửi đến khách hàng!'
+            ]);
+        }        
+        catch(Throwable $th)
+        {
+            return response()->json([
+                'status' => false,
+                'message' => 'Không thể gửi hóa đơn qua email. Vui lòng thử lại sau' . $th->getMessage()
+            ]);
+        }
     }
 }

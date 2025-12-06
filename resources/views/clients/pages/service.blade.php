@@ -6,7 +6,7 @@
 @section('content')
 
 <!-- ABOUT US AREA START -->
-<div class="ltn__about-us-area pb-115">
+<div class="ltn__about-us-area pb-100">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 align-self-center">
@@ -25,10 +25,10 @@
                         <p>Với nhiều năm kinh nghiệm trong lĩnh vực cung cấp thực phẩm sạch, chúng tôi luôn nỗ lực đem đến cho người tiêu dùng những loại rau củ quả tươi ngon, rõ nguồn gốc và đạt chuẩn VietGAP. Mọi sản phẩm đều được chọn lọc kỹ lưỡng, đóng gói cẩn thận và giao tận nơi nhanh chóng.</p>
                         <div class="list-item-with-icon">
                             <ul>
-                                <li><a href="contact.html">Giao hàng tận nhà miễn phí 24/7</a></li>
-                                <li><a href="team.html">Đội ngũ chuyên viên tận tâm</a></li>
-                                <li><a href="service-details.html">Trang thiết bị bảo quản hiện đại</a></li>
-                                <li><a href="shop.html">Nguồn sản phẩm phong phú, đa dạng</a></li>
+                                <li><a href="javascript:void(0)">Giao hàng tận nhà miễn phí 24/7</a></li>
+                                <li><a href="javascript:void(0)">Đội ngũ chuyên viên tận tâm và chuyên nghiệp</a></li>
+                                <li><a href="javascript:void(0)">Trang thiết bị bảo quản hiện đại</a></li>
+                                <li><a href="javascript:void(0)">Nguồn sản phẩm phong phú, đa dạng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -55,10 +55,10 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="service-details.html"><img src="{{asset('assets/clients/img/service/1.jpg')}}" alt="Rau hữu cơ tươi sạch"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/1.jpg')}}" alt="Rau hữu cơ tươi sạch"></a>
                     </div>
                     <div class="service-item-brief">
-                        <h3><a href="service-details.html">Rau Hữu Cơ Tươi Sạch</a></h3>
+                        <h3><a href="javascript:void(0)">Rau Hữu Cơ Tươi Sạch Và Dinh Dưỡng</a></h3>
                         <p>Rau củ được thu hoạch trong ngày từ các nông trại đạt chuẩn VietGAP, đảm bảo an toàn và giàu dinh dưỡng.</p>
                     </div>
                 </div>
@@ -68,11 +68,11 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="service-details.html"><img src="{{asset('assets/clients/img/service/2.jpg')}}" alt="Giao hàng tận nơi"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/2.jpg')}}" alt="Giao hàng tận nơi"></a>
                     </div>
                     <div class="service-item-brief">
                         <h3><a href="service-details.html">Giao Hàng Tận Nơi Nhanh Chóng</a></h3>
-                        <p>Chúng tôi giao hàng tận nhà trong vòng 24 giờ, giúp bạn luôn có rau củ tươi ngon mỗi ngày mà không cần ra chợ.</p>
+                        <p>Chúng tôi giao hàng tận nhà, giúp bạn luôn có rau củ tươi ngon mỗi ngày mà không cần ra chợ.</p>
                     </div>
                 </div>
             </div>
@@ -81,10 +81,10 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="service-details.html"><img src="{{asset('assets/clients/img/service/3.jpg')}}" alt="Đặt hàng online dễ dàng"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/3.jpg')}}" alt="Đặt hàng online dễ dàng"></a>
                     </div>
                     <div class="service-item-brief">
-                        <h3><a href="service-details.html">Đặt Hàng Online Dễ Dàng</a></h3>
+                        <h3><a href="javascript:void(0)">Đặt Hàng Online Dễ Dàng</a></h3>
                         <p>Website thân thiện, thao tác nhanh gọn giúp bạn chọn mua rau củ chỉ trong vài cú nhấp chuột.</p>
                     </div>
                 </div>
@@ -94,10 +94,10 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="service-details.html"><img src="{{asset('assets/clients/img/service/3.jpg')}}" alt="Đóng gói an toàn"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/3.jpg')}}" alt="Đóng gói an toàn"></a>
                     </div>
                     <div class="service-item-brief">
-                        <h3><a href="service-details.html">Đóng Gói An Toàn & Thân Thiện</a></h3>
+                        <h3><a href="javascript:void(0)">Đóng Gói An Toàn & Thân Thiện</a></h3>
                         <p>Sản phẩm được đóng gói bằng vật liệu thân thiện với môi trường, đảm bảo vệ sinh và giữ độ tươi lâu.</p>
                     </div>
                 </div>
@@ -107,10 +107,10 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="service-details.html"><img src="{{asset('assets/clients/img/service/1.jpg')}}" alt="Tư vấn dinh dưỡng miễn phí"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/1.jpg')}}" alt="Tư vấn dinh dưỡng miễn phí"></a>
                     </div>
                     <div class="service-item-brief">
-                        <h3><a href="service-details.html">Tư Vấn Dinh Dưỡng Miễn Phí</a></h3>
+                        <h3><a href="javascript:void(0)">Tư Vấn Dinh Dưỡng Miễn Phí</a></h3>
                         <p>Đội ngũ của chúng tôi sẵn sàng hỗ trợ bạn lựa chọn thực phẩm phù hợp cho chế độ ăn lành mạnh.</p>
                     </div>
                 </div>
@@ -120,10 +120,10 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="service-details.html"><img src="{{asset('assets/clients/img/service/2.jpg')}}" alt="Ưu đãi hấp dẫn"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/2.jpg')}}" alt="Ưu đãi hấp dẫn"></a>
                     </div>
                     <div class="service-item-brief">
-                        <h3><a href="service-details.html">Ưu Đãi & Khuyến Mãi Hấp Dẫn</a></h3>
+                        <h3><a href="javascript:void(0)">Ưu Đãi & Khuyến Mãi Hấp Dẫn</a></h3>
                         <p>Thường xuyên có chương trình giảm giá và combo tiết kiệm giúp bạn mua rau củ tươi ngon với giá tốt nhất.</p>
                     </div>
                 </div>

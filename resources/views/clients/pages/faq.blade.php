@@ -117,7 +117,7 @@
                     <div class="need-support text-center mt-100">
                         <h2>Vẫn cần hỗ trợ? Liên hệ với chúng tôi 24/7:</h2>
                         <div class="btn-wrapper mb-30">
-                            <a href="contact.html" class="theme-btn-1 btn">Liên hệ ngay</a>
+                            <a href="{{ route('contact.index') }}" class="theme-btn-1 btn">Liên hệ ngay</a>
                         </div>
                         <h3><i class="fas fa-phone"></i> 0972 144 904</h3>
                     </div>
@@ -139,7 +139,7 @@
                     </div>
                     <!-- Banner Widget -->
                     <div class="widget ltn__banner-widget">
-                        <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/banner-3.jpg') }}" alt="Banner Quảng Cáo"></a>
+                        <a href="{{ route('products.index') }}"><img src="{{ asset('assets/clients/img/banner/banner-3.jpg') }}" alt="Banner Quảng Cáo"></a>
                     </div>
                 </aside>
             </div>

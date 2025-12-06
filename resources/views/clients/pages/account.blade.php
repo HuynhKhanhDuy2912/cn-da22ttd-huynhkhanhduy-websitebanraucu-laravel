@@ -100,7 +100,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="liton_tab_orders">
+                                        <div class="tab-pane fade" id="liton_tab_orders" style="max-height: 360px; overflow-y: scroll">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <div class="table-responsive">
                                                     <table class="table">
