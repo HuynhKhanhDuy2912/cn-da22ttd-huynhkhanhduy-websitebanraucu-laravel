@@ -925,8 +925,8 @@
     display: block;
 }
 .profile_pic {
-    width: 35%;
-    float: left;
+    width: 25%;
+    align-items: center;   
 }
 .img-circle.profile_img {
     width: 70%;
@@ -939,8 +939,8 @@
     padding: 4px;
 }
 .profile_info {
-    padding: 25px 10px 10px;
-    width: 65%;
+    padding: 15px 10px 10px;
+    width: 75%;
     float: left;
 }
 .profile_info span {

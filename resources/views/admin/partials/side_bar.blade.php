@@ -9,15 +9,19 @@
 
         <div class="clearfix"></div>
 
+        @php
+            $admin = Auth::guard('admin')->user();
+        @endphp 
         <!-- menu profile quick info -->
         <div class="profile clearfix">
-            <div class="profile_pic">
-                {{-- <img src="images/img.jpg" alt="..." class="img-circle profile_img"> --}}
-            </div>
-            <div class="profile_info">
-                <span>Xin chào,</span>
-                <h2>John Doe</h2>
-            </div>
+            <a href="{{ route('admin.profile') }}" style="width: 100%" class="d-flex">
+                <div class="profile_pic">
+                    <img src="{{ asset('storage/' . ($admin->avatar ?? 'uploads/users/user.jpg')) }}" width="30">
+                </div>
+                <div class="profile_info">
+                    <h2 style="font-size: 15px; font-weight: 600">Xin chào, {{ $admin->name }}!</h2>
+                </div>
+            </a>
         </div>
         <!-- /menu profile quick info -->
 

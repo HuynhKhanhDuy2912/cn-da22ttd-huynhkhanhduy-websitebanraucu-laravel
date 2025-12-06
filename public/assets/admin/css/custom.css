@@ -122,3 +122,26 @@ body.nav-sm .top_nav {
     cursor: pointer;
 }
 
+.img-account{
+    width: 200px;
+    height: 200px;
+}
+
+.profile {
+    padding: 10px;
+}
+
+.profile_pic {
+    padding-left: 25px;
+    
+}
+
+.profile_pic img{
+    border-radius: 50%;
+}
+
+.profile_info {
+    padding: 5px 10px;
+}
+
+

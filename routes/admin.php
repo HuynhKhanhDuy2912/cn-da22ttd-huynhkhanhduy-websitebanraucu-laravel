@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AccountController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -21,42 +22,44 @@ Route::prefix('admin')->group(function () {
         Route::get('/dashboard', function () {
             return view('admin.pages.dashboard');
         })->name('admin.dashboard');
-    });
 
-    Route::middleware(['permission:manage_users'])->group(function () {
-        Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
-        Route::post('/user/upgrade', [UserController::class, 'upgrade']);
-        Route::post('/user/updateStatus', [UserController::class, 'updateStatus']);
-    });
+        Route::get('/profile', [AccountController::class, 'index'])->name('admin.profile');
 
-    Route::middleware(['permission:manage_categories'])->group(function () {        
-        Route::get('/categories/add', [CategoryController::class, 'showFormAddCate'])->name('admin.category.showAddCateForm');
-        Route::post('/categories/add', [CategoryController::class, 'addCategory'])->name('admin.category.add');
+        Route::middleware(['permission:manage_users'])->group(function () {
+            Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+            Route::post('/user/upgrade', [UserController::class, 'upgrade']);
+            Route::post('/user/updateStatus', [UserController::class, 'updateStatus']);
+        });
 
-        Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category.index');
-        Route::post('/categories/update', [CategoryController::class, 'updateCategory']);
-        Route::post('/categories/delete', [CategoryController::class, 'deleteCategory']);
-    });
+        Route::middleware(['permission:manage_categories'])->group(function () {
+            Route::get('/categories/add', [CategoryController::class, 'showFormAddCate'])->name('admin.category.showAddCateForm');
+            Route::post('/categories/add', [CategoryController::class, 'addCategory'])->name('admin.category.add');
 
-    Route::middleware(['permission:manage_products'])->group(function () {        
-        Route::get('/product/add', [ProductController::class, 'showFormAddProduct'])->name('admin.product.showAddProductForm');
-        Route::post('/product/add', [ProductController::class, 'addProduct'])->name('admin.product.add');
-        
-        Route::get('/product', [ProductController::class, 'index'])->name('admin.product.index');
-        Route::post('/product/update', [ProductController::class, 'updateProduct']);
-        Route::post('/product/delete', [ProductController::class, 'deleteProduct']);
-    });
+            Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category.index');
+            Route::post('/categories/update', [CategoryController::class, 'updateCategory']);
+            Route::post('/categories/delete', [CategoryController::class, 'deleteCategory']);
+        });
 
-    Route::middleware(['permission:manage_orders'])->group(function () {        
-        Route::get('/orders', [OrderController::class, 'index'])->name('admin.order.index');
-        Route::post('/order/confirm', [OrderController::class, 'confirmOrder']);
-        Route::get('/order-detail/{id}', [OrderController::class, 'orderDetail'])->name('admin.order.detail');
-        Route::post('/order-detail/send-invoice', [OrderController::class, 'sendMail']);
-        Route::post('/order-detail/cancel-order', [OrderController::class, 'cancelOrder']);
-    });
+        Route::middleware(['permission:manage_products'])->group(function () {
+            Route::get('/product/add', [ProductController::class, 'showFormAddProduct'])->name('admin.product.showAddProductForm');
+            Route::post('/product/add', [ProductController::class, 'addProduct'])->name('admin.product.add');
 
-    Route::middleware(['permission:manage_contacts'])->group(function () {        
-        Route::get('/contacts', [ContactController::class, 'index'])->name('admin.contacts.index');
-        Route::post('/contact/reply', [ContactController::class, 'replyContact']);
+            Route::get('/product', [ProductController::class, 'index'])->name('admin.product.index');
+            Route::post('/product/update', [ProductController::class, 'updateProduct']);
+            Route::post('/product/delete', [ProductController::class, 'deleteProduct']);
+        });
+
+        Route::middleware(['permission:manage_orders'])->group(function () {
+            Route::get('/orders', [OrderController::class, 'index'])->name('admin.order.index');
+            Route::post('/order/confirm', [OrderController::class, 'confirmOrder']);
+            Route::get('/order-detail/{id}', [OrderController::class, 'orderDetail'])->name('admin.order.detail');
+            Route::post('/order-detail/send-invoice', [OrderController::class, 'sendMail']);
+            Route::post('/order-detail/cancel-order', [OrderController::class, 'cancelOrder']);
+        });
+
+        Route::middleware(['permission:manage_contacts'])->group(function () {
+            Route::get('/contacts', [ContactController::class, 'index'])->name('admin.contacts.index');
+            Route::post('/contact/reply', [ContactController::class, 'replyContact']);
+        });
     });
 });

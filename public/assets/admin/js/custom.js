@@ -533,4 +533,14 @@ $(document).ready(function () {
             },
         });
     });
+
+    $(".form-change-pass").on("click", function(e){
+        e.preventDefault();
+        $("#change-password").toggle();
+        if($("#change-password").is(":visible")){
+            $(this).text("Đóng");
+        }else{
+            $(this).text("Đổi mật khẩu");
+        }
+    });
 });
