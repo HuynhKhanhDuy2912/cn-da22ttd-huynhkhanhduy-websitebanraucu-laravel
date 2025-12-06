@@ -367,8 +367,12 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status) {
                     toastr.success(response.message);
-                    button.closest("tr").find(".order-status")
-                    .html('<span class="custom-badge badge badge-primary">Đang giao hàng</span>');
+                    button
+                        .closest("tr")
+                        .find(".order-status")
+                        .html(
+                            '<span class="custom-badge badge badge-primary">Đang giao hàng</span>'
+                        );
                     button.hide();
                 } else {
                     toastr.error(response.error);
@@ -410,7 +414,6 @@ $(document).ready(function () {
                 alert("Đã xảy ra lỗi khi gửi hóa đơn cho khách hàng!");
             },
         });
-
     });
 
     //Cancel order
@@ -434,8 +437,12 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status) {
                     toastr.success(response.message);
-                    button.closest("tr").find(".order-status")
-                    .html('<div class="text-center bg-red" style="font-size: 16px; padding: 5px;"> Đơn hàng đã hủy</div>');
+                    button
+                        .closest("tr")
+                        .find(".order-status")
+                        .html(
+                            '<div class="text-center bg-red" style="font-size: 16px; padding: 5px;"> Đơn hàng đã hủy</div>'
+                        );
                     setTimeout(function () {
                         location.reload();
                     }, 1500);
@@ -449,4 +456,81 @@ $(document).ready(function () {
         });
     });
 
+    /********************************
+          MANAGEMENT CONTACT
+    ********************************/
+
+    if ($("#editor-contact").length) {
+        CKEDITOR.replace("editor-contact");
+    }
+
+    $(document).on("click", ".contact-item", function (e) {
+        // Get contact data from clicked item
+        let contactName = $(this).data("name");
+        let contactEmail = $(this).data("email");
+        let contactMessage = $(this).data("message");
+        let contactId = $(this).data("id");
+        let isReplied = $(this).data("is_replied");
+
+        $(".mail_view .inbox-body .sender-info strong").text(contactName);
+        $(".mail_view .inbox-body .sender-info span").text('(' + contactEmail + ')');
+        $(".mail_view .inbox-body .view-mail p").text(contactMessage);
+
+        $(".mail_view").show();
+        
+        if(isReplied != 0){
+            $("#compose").hide();
+            $("#reply-status").text("Đã phản hồi").css("color", "#c6c6c6");
+        }
+        else{
+             // Add attribute data-email to button reply
+            $(".send-reply-contact").attr("data-email", contactEmail);
+            $(".send-reply-contact").attr("data-id", contactId);
+
+            $("#reply-status").text("");
+            $("#compose").show();
+        }
+    });
+
+    // Send reply contact
+    $(document).on("click", ".send-reply-contact", function (e) {
+        e.preventDefault();
+        let button = $(this);
+        let email = button.data("email");
+        let contactId = button.data("id");
+        let message = CKEDITOR.instances["editor-contact"].getData();
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "/admin/contact/reply",
+            type: "POST",
+            data: {
+                email : email,
+                message : message,
+                contact_id : contactId
+            },
+            success: function (response) {
+                if (response.status) {
+                    toastr.success(response.message);
+                    $(".mail_view").hide();
+                    $("#compose").hide();
+                    CKEDITOR.instances["editor-contact"].setData("");
+                    $("#editor-contact").empty();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.error);
+                }
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi khi gửi thư phản hồi cho khách hàng!");
+            },
+        });
+    });
 });

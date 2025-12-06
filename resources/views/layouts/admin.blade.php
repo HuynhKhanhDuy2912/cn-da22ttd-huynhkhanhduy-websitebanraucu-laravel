@@ -123,10 +123,14 @@
         <script src="{{ asset('assets/admin/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
         <script src="{{ asset('assets/admin/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
     @endif
+
+    <!-- CKEDITOR -->
+    <script src="{{ asset('assets/admin/js/ckeditor/ckeditor.js') }}"></script>
     
     <!-- Custom Scripts -->
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
 
+    
 </body>
 
 </html>
