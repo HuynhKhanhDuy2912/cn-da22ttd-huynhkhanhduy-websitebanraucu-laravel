@@ -82,3 +82,43 @@
 .btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
     border-radius: 3px;
 }
+
+.left_col {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+body.nav-md .right_col,
+body.nav-md .top_nav {
+    margin-left: 230px !important; 
+}
+
+body.nav-sm .left_col {
+    width: 70px !important; 
+    overflow: visible !important; 
+    z-index: 1001; 
+}
+
+body.nav-sm .right_col,
+body.nav-sm .top_nav {
+    margin-left: 70px !important; 
+    z-index: 1;
+}
+
+
+.nav_menu {
+    position: relative;
+    background: #ededed;
+    z-index: 999;
+}
+
+#menu_toggle {
+    z-index: 10002 !important;
+    position: relative;
+    cursor: pointer;
+}
+

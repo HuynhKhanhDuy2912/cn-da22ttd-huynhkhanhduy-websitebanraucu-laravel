@@ -413,4 +413,40 @@ $(document).ready(function () {
 
     });
 
+    //Cancel order
+    $(document).on("click", ".cancel-order", function (e) {
+        e.preventDefault();
+        let button = $(this);
+        let orderId = button.data("id");
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+            url: "cancel-order",
+            type: "POST",
+            data: {
+                id: orderId,
+            },
+            success: function (response) {
+                if (response.status) {
+                    toastr.success(response.message);
+                    button.closest("tr").find(".order-status")
+                    .html('<div class="text-center bg-red" style="font-size: 16px; padding: 5px;"> Đơn hàng đã hủy</div>');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.error);
+                }
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi khi hủy đơn hàng!");
+            },
+        });
+    });
+
 });

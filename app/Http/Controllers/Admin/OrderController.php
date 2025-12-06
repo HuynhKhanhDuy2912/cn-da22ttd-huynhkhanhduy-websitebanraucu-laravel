@@ -21,8 +21,7 @@ class OrderController extends Controller
     {
         $order = Order::find($request->id);
 
-        if($order)
-        {
+        if ($order) {
             $order->status = 'processing';
             $order->save();
             return response()->json([
@@ -32,9 +31,9 @@ class OrderController extends Controller
         }
 
         return response()->json([
-                'status' => false,
-                'message' => 'Đơn hàng không tồn tại.'
-            ]);
+            'status' => false,
+            'message' => 'Đơn hàng không tồn tại.'
+        ]);
     }
 
     public function orderDetail($id)
@@ -49,23 +48,46 @@ class OrderController extends Controller
         $id = $request->id;
         $order = Order::with('orderItems.product', 'shippingAddress', 'user', 'payment')->find($id);
 
-        try
-        {
-            Mail::send('admin.emails.invoice',  compact('order'), function($message) use ($order){
-                $message->to($order->user->email)->subject('Hóa đơn đơn hàng #'. $order->created_at->format('Ymd') . '-' . str_pad($order->id, 6, '0', STR_PAD_LEFT));
+        try {
+            Mail::send('admin.emails.invoice',  compact('order'), function ($message) use ($order) {
+                $message->to($order->user->email)->subject('Hóa đơn đơn hàng #' . $order->created_at->format('Ymd') . '-' . str_pad($order->id, 6, '0', STR_PAD_LEFT));
             });
 
             return response()->json([
                 'status' => true,
                 'message' => 'Hóa đơn đã được gửi đến khách hàng!'
             ]);
-        }        
-        catch(Throwable $th)
-        {
+        } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
                 'message' => 'Không thể gửi hóa đơn qua email. Vui lòng thử lại sau' . $th->getMessage()
             ]);
         }
+    }
+
+    public function cancelOrder(Request $request)
+    {
+        $id = $request->id;
+        $order = Order::find($id);
+        if ($order) {
+
+            foreach($order->orderItems as $item){
+                // Update product stock
+                $item->product->increment('stock', $item->quantity);
+            }
+
+            $order->status = 'canceled';
+            $order->save();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Đơn hàng đã được hủy thành công!'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Đơn hàng không tồn tại.'
+        ]);
     }
 }

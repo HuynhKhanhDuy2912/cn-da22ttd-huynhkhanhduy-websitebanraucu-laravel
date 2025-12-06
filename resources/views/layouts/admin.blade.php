@@ -60,7 +60,7 @@
                 @yield('content')
             </main>
 
-            @include('admin.partials.footer')
+            {{-- @include('admin.partials.footer') --}}
         </div>
     </div>
 
