@@ -23,6 +23,12 @@
                                         <!-- Current avatar -->
                                         <img class="img-responsive avatar-view img-account" id="avatar-preview" src="{{ asset('storage/' . ($user->avatar ?? 'uploads/users/user.jpg')) }}">
                                     </div>
+                                    <form enctype="multipart/form-data">
+                                        <input type="file" name="avatar" id="avatar" accept="image/*" style="display: none">
+                                        <a href="javascript:void(0)" class="btn btn-primary update-avatar" style="margin: 10px 5px;">
+                                            <i class="fa fa-edit m-right-xs"> Chọn ảnh</i>
+                                        </a>
+                                    </form>
                                 </div>
                                 <h3 id="user-name">{{ $user->name }}</h3>
 
@@ -31,7 +37,7 @@
                                     </li>
 
                                     <li>
-                                        <i class="fa fa-phone user-profile-icon"></i> <span id="user-phone_number">{{ $user->phone_number }}</span>
+                                        <i class="fa fa-phone user-profile-icon"></i> <span id="user-phone">{{ $user->phone_number }}</span>
                                     </li>
 
                                     <li class="m-top-xs">
@@ -52,7 +58,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email: <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="last-name" name="email" required class="form-control" value="{{ $user->email }}">
+                                            <input type="text" id="email" name="email" readonly class="form-control" value="{{ $user->email }}">
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -92,7 +98,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="new_password">Mật khẩu mới: <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="password" id="last-name" name="new_password" required class="form-control">
+                                            <input type="password" id="new_password" name="new_password" required class="form-control">
                                         </div>
                                     </div>
                                     <div class="item form-group">

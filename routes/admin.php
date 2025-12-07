@@ -24,6 +24,7 @@ Route::prefix('admin')->group(function () {
         })->name('admin.dashboard');
 
         Route::get('/profile', [AccountController::class, 'index'])->name('admin.profile');
+        Route::post('/profile/update', [AccountController::class, 'updateProfile']);
 
         Route::middleware(['permission:manage_users'])->group(function () {
             Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');

@@ -156,7 +156,7 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <table class="table table-bored">
+                                                            <table class="table table-bored text-center">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>#</th>

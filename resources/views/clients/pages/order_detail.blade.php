@@ -46,7 +46,7 @@
                         @foreach ($order->orderItems as $item)
                             <tr class="text-center">
                                 <td>
-                                    <img src="{{ asset('storage/' . $item->product->image) }}" width="50">
+                                    <img src="{{ $item->product->image_url }}" width="50">
                                 </td>
                                 <td>{{ $item->product->name }}</td>
                                 <td>{{ number_format($item->price, 0, ',', '.') }} đ</td>

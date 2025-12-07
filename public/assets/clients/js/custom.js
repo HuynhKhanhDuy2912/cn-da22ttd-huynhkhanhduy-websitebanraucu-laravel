@@ -637,7 +637,8 @@ $(document).ready(function () {
     );
     var totalUSD = (totalPriceNumber / EXCHANGE_RATE).toFixed(2);
 
-    paypal
+    if (document.getElementById("paypal-button-container")) {
+        paypal
         .Buttons({
             createOrder: function (data, actions) {
                 return actions.order.create({
@@ -683,6 +684,7 @@ $(document).ready(function () {
             },
         })
         .render("#paypal-button-container");
+    }
 
     /********************************
           HANDLE RATING PRODUCT

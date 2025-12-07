@@ -83,8 +83,8 @@
     <!-- Skycons -->
     <script src="{{ asset('assets/admin/vendors/skycons/skycons.js') }}"></script>
     <!-- Flot -->
-    <script src="{{ asset('assets/admin/vendors/Flot/jquery.flot.pie.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/Flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendors/Flot/jquery.flot.pie.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/Flot/jquery.flot.time.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/Flot/jquery.flot.stack.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/Flot/jquery.flot.resize.js') }}"></script>
@@ -105,6 +105,9 @@
     <script src="{{ asset('assets/admin/build/js/custom.min.js') }}"></script>
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- CKEDITOR -->
+    <script src="{{ asset('assets/admin/js/ckeditor/ckeditor.js') }}"></script>
+
     @if (in_array(Route::currentRouteName(), $dataTableRoutes))
         <!-- Datatables -->
         <script src="{{ asset('assets/admin/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
@@ -123,9 +126,6 @@
         <script src="{{ asset('assets/admin/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
         <script src="{{ asset('assets/admin/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
     @endif
-
-    <!-- CKEDITOR -->
-    <script src="{{ asset('assets/admin/js/ckeditor/ckeditor.js') }}"></script>
     
     <!-- Custom Scripts -->
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>

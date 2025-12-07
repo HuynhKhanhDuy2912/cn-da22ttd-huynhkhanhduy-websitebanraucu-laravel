@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap");
+
 @font-face {
     font-family: "Glyphicons Halflings";
     src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot");
@@ -10,8 +12,6 @@
         url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular")
             format("svg");
 }
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap");
-
 .glyphicon {
     position: relative;
     top: 1px;
