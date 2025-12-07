@@ -8,7 +8,6 @@
         </div>
 
         <div class="clearfix"></div>
-
         @php
             $admin = Auth::guard('admin')->user();
         @endphp 
@@ -16,10 +15,10 @@
         <div class="profile clearfix">
             <a href="{{ route('admin.profile') }}" style="width: 100%" class="d-flex">
                 <div class="profile_pic">
-                    <img src="{{ asset('storage/' . ($admin->avatar ?? 'uploads/users/user.jpg')) }}" width="30">
+                    <img src="{{ asset('storage/' . ($admin->avatar ?? 'uploads/users/user.jpg')) }}" width="40">
                 </div>
                 <div class="profile_info">
-                    <h2 style="font-size: 15px; font-weight: 600">Xin chào, {{ $admin->name }}!</h2>
+                    <h2>Xin chào, {{ $admin->name }}!</h2>
                 </div>
             </a>
         </div>

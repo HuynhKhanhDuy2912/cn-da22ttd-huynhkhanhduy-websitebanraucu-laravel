@@ -19,11 +19,11 @@
                         <div class="x_content">
                             <div class="col-md-3 col-sm-3  profile_left">
                                 <div class="profile_img">
-                                    <div id="crop-avatar">
+                                    <div id="crop-avatar" class="text-center">
                                         <!-- Current avatar -->
                                         <img class="img-responsive avatar-view img-account" id="avatar-preview" src="{{ asset('storage/' . ($user->avatar ?? 'uploads/users/user.jpg')) }}">
                                     </div>
-                                    <form enctype="multipart/form-data">
+                                    <form enctype="multipart/form-data" class="text-center">
                                         <input type="file" name="avatar" id="avatar" accept="image/*" style="display: none">
                                         <a href="javascript:void(0)" class="btn btn-primary update-avatar" style="margin: 10px 5px;">
                                             <i class="fa fa-edit m-right-xs"> Chọn ảnh</i>
@@ -65,7 +65,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="phone">Số điện thoại: <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="number" id="phone" name="phone" required class="form-control" value="{{ $user->phone_number }}">
+                                            <input type="text" id="phone" name="phone" required class="form-control" value="{{ $user->phone_number }}">
                                         </div>
                                     </div>
                                     <div class="item form-group">
