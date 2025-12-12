@@ -102,7 +102,7 @@
     <script src="{{ asset('assets/admin/vendors/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <!-- Custom Theme Scripts -->
-    <script src="{{ asset('assets/admin/build/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/build/js/custom.js') }}"></script>
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- CKEDITOR -->

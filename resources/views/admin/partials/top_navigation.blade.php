@@ -57,12 +57,26 @@
                     <a href="javascript:;" class="dropdown-toggle info-number"
                         data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell-o" style="font-size: 20px;"></i>
-                        <span class="badge bg-red">5</span>
+                        <span class="badge bg-red">{{ $notifications->count() }}</span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                        @for ($i = 0; $i < min(5, $notifications->count()); $i++)
+                            <li class="nav-item">
+                            <a class="dropdown-item">
+                                <span class="image"><img src="{{ asset('assets/admin/images/bell.png') }}" alt="Profile Image" /></span>
+                                <span>
+                                    <span>{{ $notifications[$i]->title }}</span>
+                                    <span class="time">{{ $notifications[$i]->created_at->diffForHumans() }}</span>
+                                </span>
+                                <span class="message custom-message-top">
+                                    {{ $notifications[$i]->message }}
+                                </span>
+                            </a>
+                        </li>
+                        @endfor
                         <li class="nav-item">
                             <div class="text-center">
-                                <a class="dropdown-item" href="{{ route('admin.contacts.index') }}">
+                                <a class="dropdown-item" href="{{ route('admin.notification.index') }}">
                                     <strong>Xem tất cả thông báo</strong>
                                     <i class="fa fa-angle-right"></i>
                                 </a>

@@ -687,4 +687,29 @@ $(document).ready(function () {
             },
         });
     }
+
+    /********************************
+          MANAGEMENT NOTIFICATION
+    ********************************/
+
+    $(document).on("click", ".notification-item", function () {
+        let notificationId = $(this).data("id");
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            url: "/admin/notification/update",
+            type: "POST",
+            data: {
+                id: notificationId,
+            },
+            success: function (response) {
+            },
+            error: function () {
+                console.log("Đã có lỗi xảy ra khi cập nhật thông báo!");
+            },
+        });
+    });
 });

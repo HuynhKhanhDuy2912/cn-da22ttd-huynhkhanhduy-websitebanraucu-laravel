@@ -683,34 +683,41 @@ function init_chart_doughnut() {
 
     console.log('init_chart_doughnut');
 
-    if ($('.canvasDoughnut').length) {
+    if ($('.canvasDoughnutCategory').length) {
 
-        var chart_doughnut_settings = {
+        $('.canvasDoughnutCategory').each(function () {
+
+            var chart_element = $(this);
+
+            //Get data from data-attributes
+
+            var categoryLabels = JSON.parse(chart_element.attr('data-labels'));
+            var categoryCounts = JSON.parse(chart_element.attr('data-counts'));
+
+            var chart_doughnut_settings = {
             type: 'doughnut',
             tooltipFillColor: "rgba(51, 51, 51, 0.55)",
             data: {
-                labels: [
-                    "Symbian",
-                    "Blackberry",
-                    "Other",
-                    "Android",
-                    "IOS"
-                ],
+                labels: categoryLabels,
                 datasets: [{
-                    data: [15, 20, 30, 10, 30],
+                    data: categoryCounts,
                     backgroundColor: [
-                        "#BDC3C7",
-                        "#9B59B6",
-                        "#E74C3C",
-                        "#26B99A",
-                        "#3498DB"
+                        "#22D015",                         
+                        "#8E44AD", 
+                        "#FF1800", 
+                        "#F8E802", 
+                        "#3498DB",
+                        // "#E67E22", 
+                        // "#FF6F91"  
                     ],
                     hoverBackgroundColor: [
-                        "#CFD4D8",
-                        "#B370CF",
-                        "#E95E4F",
-                        "#36CAAB",
-                        "#49A9EA"
+                        "#1E8C4D", 
+                        "#732D91",                         
+                        "#C0392B", 
+                        "#D4AC0D", 
+                        "#2A80B9", 
+                        // "#CA6C1A", 
+                        // "#E0557D"  
                     ]
                 }]
             },
@@ -720,10 +727,7 @@ function init_chart_doughnut() {
             }
         }
 
-        $('.canvasDoughnut').each(function () {
-
-            var chart_element = $(this);
-            var chart_doughnut = new Chart(chart_element, chart_doughnut_settings);
+            new Chart(chart_element, chart_doughnut_settings);
 
         });
 
@@ -2173,22 +2177,21 @@ function init_charts() {
 
     // Bar chart
 
-    if ($('#mybarChart').length) {
+    if ($('#revenueBarChart').length) {
 
-        var ctx = document.getElementById("mybarChart");
-        var mybarChart = new Chart(ctx, {
+        var ctx = document.getElementById("revenueBarChart");
+        //Get data from data attr
+        var labels = JSON.parse(ctx.getAttribute('data-labels'));
+        var values = JSON.parse(ctx.getAttribute('data-values'));
+        var revenueBarChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: labels,
                 datasets: [{
-                    label: '# of Votes',
-                    backgroundColor: "#26B99A",
-                    data: [51, 30, 40, 28, 92, 50, 45]
-                }, {
-                    label: '# of Votes',
-                    backgroundColor: "#03586A",
-                    data: [41, 56, 25, 48, 72, 34, 12]
-                }]
+                    label: 'Doanh thu',
+                    backgroundColor: "#fd903cff",
+                    data: values //Total revenue monthly
+                },]
             },
 
             options: {
