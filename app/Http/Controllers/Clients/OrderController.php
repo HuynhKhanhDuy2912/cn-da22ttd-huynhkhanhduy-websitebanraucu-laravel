@@ -19,6 +19,21 @@ class OrderController extends Controller
         return view('clients.pages.order_detail', compact('order'));
     }
 
+    public function receivedOrder($id)
+    {
+        $order = Order::where('id', $id)
+        ->where('user_id', Auth::id())
+        ->where('status', 'processing')
+        ->firstOrFail();
+
+        //Update order status has been completed
+        $order->update(['status' => 'completed']);
+
+        toastr()->success('Xác nhận thành công. Bạn có thể đánh giá sản phẩm!');
+        return redirect()->back();
+
+    }
+
     public function cancelOrder($id)
     {
         $order = Order::where('id', $id)

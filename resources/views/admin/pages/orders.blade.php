@@ -40,7 +40,7 @@
                                             style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>#</th>
                                                     <th>Tài khoản</th>
                                                     <th>Thông tin người đặt</th>
                                                     <th>Tổng tiền</th>
@@ -54,7 +54,7 @@
                                             <tbody>
                                                 @foreach ($orders as $order)
                                                     <tr>
-                                                        <td>{{ $order->id }}</td>
+                                                        <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $order->user->name }}</td>
                                                         <td><a href="" data-toggle="modal" data-target="#InfoUserModal-{{ $order->id }}">
                                                             {{ $order->shippingAddress->address }}</a>

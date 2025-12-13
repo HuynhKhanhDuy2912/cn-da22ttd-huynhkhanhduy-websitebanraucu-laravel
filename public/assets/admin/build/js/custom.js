@@ -2189,7 +2189,7 @@ function init_charts() {
                 labels: labels,
                 datasets: [{
                     label: 'Doanh thu',
-                    backgroundColor: "#fd903cff",
+                    backgroundColor: "blue",
                     data: values //Total revenue monthly
                 },]
             },

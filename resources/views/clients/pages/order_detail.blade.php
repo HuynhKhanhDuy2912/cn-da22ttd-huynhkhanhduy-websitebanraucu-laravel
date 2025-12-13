@@ -81,7 +81,7 @@
                         @foreach ($order->orderItems as $item)
                             <tr class="text-center">
                                 <td>
-                                    <img src="{{ asset('storage/' . $item->product->image) }}" width="50">
+                                    <img src="{{ $item->product->image_url }}" width="50">
                                 </td>
                                 <td>{{ $item->product->name }}</td>
                                 <td>
@@ -101,9 +101,15 @@
                     </form>
                 @endif
 
+                @if($order->status == 'processing')
+                    <form action="{{ route('order.received', $order->id) }}" method="POST" onsubmit="return confirm('Bạn đã nhận được hàng này chưa?');">
+                        @csrf
+                        <button type="submit" class="btn btn-success btn-sm mt-3 me-3">Đã nhận được hàng</button>
+                    </form>
+                @endif
+
                 <a href="{{ route('account') }}"><button class="btn btn-warning mt-3">Quay lại</button></a>
             </div>
-            
         </div>
     </div>
 @endsection

@@ -70,9 +70,15 @@
                             <div class="input-item input-item-textarea ltn__custom-icon">
                                 <textarea name="message" placeholder="Nhập tin nhắn..."></textarea>
                             </div>
-                            <div class="btn-wrapper mt-0">
-                                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Gửi</button>
-                            </div>
+                            @if (Auth::check())
+                                <div class="btn-wrapper mt-0 text-end">
+                                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Gửi</button>
+                                </div>
+                            @else
+                                <div class="btn-wrapper mt-0 text-end">
+                                    <a href="javascript:void(0)" onclick="showLoginWarning()"><button class="btn theme-btn-1 btn-effect-1 text-uppercase">Gửi</button></a>
+                                </div>
+                            @endif
                             <p class="form-messege mb-0 mt-20"></p>
                         </form>
                     </div>

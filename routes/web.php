@@ -84,6 +84,7 @@ Route::prefix('/')->group(function () {
         //Order detail
         Route::get('/order/{id}', [OrderController::class, 'showOrder'])->name('order.show');
         Route::post('/order/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('order.cancel');
+        Route::post('/order/{id}/received', [OrderController::class, 'receivedOrder'])->name('order.received');
 
         //Review
         Route::post('/review', [ReviewController::class, 'createReview']);

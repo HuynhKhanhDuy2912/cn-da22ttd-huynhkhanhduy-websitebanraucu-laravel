@@ -73,7 +73,7 @@
                                                                     </li>
                                                                     <li>
                                                                         @if (Auth::check())
-                                                                            @if (in_array($product->id, $likedProduct))
+                                                                            @if (in_array($product->id, $likedProduct ?? []))
                                                                                 <a href="javascript:void(0)"
                                                                                     style="cursor: default;">
                                                                                     <i class="fas fa-heart"
@@ -134,4 +134,8 @@
             </div>
         </div>
     </div>
+
+    @foreach ($products as $product)
+        @include('clients.components.includes.include_modal')
+    @endforeach
 @endsection

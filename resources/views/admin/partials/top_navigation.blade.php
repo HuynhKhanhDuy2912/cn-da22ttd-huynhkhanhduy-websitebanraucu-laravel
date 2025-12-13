@@ -30,17 +30,17 @@
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                         @for ($i = 0; $i < min(5, $message->count()); $i++)
                             <li class="nav-item">
-                            <a class="dropdown-item">
-                                <span class="image"><img src="{{ asset('assets/admin/images/user_default.png') }}" alt="Profile Image" /></span>
-                                <span>
-                                    <span>{{ $message[$i]->full_name }}</span>
-                                    <span class="time">{{ $message[$i]->created_at->diffForHumans() }}</span>
-                                </span>
-                                <span class="message custom-message-top">
-                                    {{ $message[$i]->message }}
-                                </span>
-                            </a>
-                        </li>
+                                <a class="dropdown-item" href="{{ route('admin.contacts.index') }}">
+                                    <span class="image"><img src="{{ asset('assets/admin/images/user_default.png') }}" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>{{ $message[$i]->full_name }}</span>
+                                        <span class="time">{{ $message[$i]->created_at->diffForHumans() }}</span>
+                                    </span>
+                                    <span class="message custom-message-top">
+                                        {{ $message[$i]->message }}
+                                    </span>
+                                </a>
+                            </li>
                         @endfor
                         <li class="nav-item">
                             <div class="text-center">
@@ -62,7 +62,7 @@
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                         @for ($i = 0; $i < min(5, $notifications->count()); $i++)
                             <li class="nav-item">
-                            <a class="dropdown-item">
+                            <a class="dropdown-item" href="{{ route('admin.notification.index') }}">
                                 <span class="image"><img src="{{ asset('assets/admin/images/bell.png') }}" alt="Profile Image" /></span>
                                 <span>
                                     <span>{{ $notifications[$i]->title }}</span>
