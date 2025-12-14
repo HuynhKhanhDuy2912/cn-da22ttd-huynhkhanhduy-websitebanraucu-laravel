@@ -18,14 +18,16 @@ class ProductController extends Controller
     {
         $categories = Category::with('products')->get();
 
-        $products = Product::with('firstImage')->where('status', 'in_stock')->paginate(9);
+        $products = Product::with('firstImage')->where('status', 'in_stock')->paginate(12);
+
+        $productHighRate = Product::withAvg('reviews', 'rating')->orderByDesc('reviews_avg_rating')->limit(3)->get();
 
         $likedProduct = []; 
         if (Auth::check()) {
             $likedProduct = Wishlist::where('user_id', Auth::id())->pluck('product_id')->toArray();
         }
 
-        return view('clients.pages.product', compact('categories', 'products', 'likedProduct'));
+        return view('clients.pages.product', compact('categories', 'products', 'likedProduct', 'productHighRate'));
     }
 
     public function filter(Request $request)
@@ -68,7 +70,7 @@ class ProductController extends Controller
             }
         }
 
-        $products = $query->paginate(9);
+        $products = $query->paginate(12);
 
         return response()->json([
             'products' => view('clients.components.products_grid', compact('products', 'likedProduct'))->render(),

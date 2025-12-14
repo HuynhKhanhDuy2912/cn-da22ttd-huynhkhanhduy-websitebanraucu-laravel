@@ -157,3 +157,16 @@ body.nav-sm .top_nav {
     word-break: break-all;
     white-space: unset !important;
 }
+
+.truncate {
+    max-width: 350px;
+    height: 72px;     
+    overflow-y: auto;
+    overflow-x: hidden;
+    line-height: 1.5;
+    word-break: break-word;
+    display: block;
+}
+
+
+

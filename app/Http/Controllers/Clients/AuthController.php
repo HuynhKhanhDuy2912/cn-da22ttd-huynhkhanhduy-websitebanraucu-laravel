@@ -103,7 +103,6 @@ class AuthController extends Controller
             if (in_array(Auth::user()->role->name, ['customer'])) {
                 $request->session()->regenerate();
                 toastr()->success('Đăng nhập thành công.');
-
                 return redirect()->route('home');
             } else {
                 Auth::logout();

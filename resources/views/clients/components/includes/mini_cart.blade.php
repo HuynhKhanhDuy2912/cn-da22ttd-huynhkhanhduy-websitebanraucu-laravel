@@ -24,7 +24,7 @@
                 </div>
                 <div class="mini-cart-info">
                     <h6><a href="#">{{$product->name}}</a></h6>
-                    <span class="mini-cart-quantity">{{$quantity}} x {{number_format($product->price, 0, ',', '.')}}</span>
+                    <span class="mini-cart-quantity">{{$quantity}} x {{number_format($product->price, 0, ',', '.')}} VNĐ</span>
                 </div>
             </div>
         @endforeach  

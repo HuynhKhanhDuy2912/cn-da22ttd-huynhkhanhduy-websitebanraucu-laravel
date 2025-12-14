@@ -58,6 +58,12 @@ class CheckoutController extends Controller
             return redirect()->route('cart.index')->with('error', 'Giỏ hàng trống!');
         }
 
+        foreach ($cartItems as $item) {
+            if ($item->product->stock < $item->quantity) {
+                toastr()->error("Sản phẩm {$item->product->name} không đủ hàng trong kho.");
+            }
+        }
+
         DB::beginTransaction();
 
         try {

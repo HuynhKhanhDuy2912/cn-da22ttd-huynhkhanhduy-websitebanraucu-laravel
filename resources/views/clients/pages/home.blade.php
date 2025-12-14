@@ -132,7 +132,7 @@
                         <div class="ltn__category-item ltn__category-item-3 text-center">
                             <div class="ltn__category-item-img">
                                 <a href="{{ route('products.index') }}">
-                                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}">
+                                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" width="268" height="168">
                                 </a>
                             </div>
                             <div class="ltn__category-item-name">

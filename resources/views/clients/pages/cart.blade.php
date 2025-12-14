@@ -66,8 +66,7 @@
                                             <td class="cart-product-info">
                                                 <h4><a href="javascript:void(0)">{{ $item['name'] }}</a></h4>
                                             </td>
-                                            <td class="cart-product-price">{{ number_format($item['price'], 0, ',', '.') }}
-                                                đ</td>
+                                            <td class="cart-product-price">{{ number_format($item['price'], 0, ',', '.') }} VNĐ</td>
                                             <td class="cart-product-quantity">
                                                 <div class="cart-plus-minus">
                                                     <div class="dec qtybutton">-</div>

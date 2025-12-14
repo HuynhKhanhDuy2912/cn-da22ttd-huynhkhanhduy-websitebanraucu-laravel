@@ -122,14 +122,14 @@
                                                                         @if ($order->status == 'pending')
                                                                             <span class="badge bg-warning">Chờ xác nhận</span>
                                                                         @elseif($order->status == 'processing')
-                                                                            <span class="badge bg-primary">Đang xử lý</span>
+                                                                            <span class="badge bg-primary">Đang giao hàng</span>
                                                                         @elseif($order->status == 'completed')
-                                                                            <span class="badge bg-success">Hoàn thành</span>
+                                                                            <span class="badge bg-success">Đã nhận hàng</span>
                                                                         @elseif($order->status == 'canceled')
                                                                             <span class="badge bg-danger">Đã hủy</span>
                                                                         @endif
                                                                     </td>
-                                                                    <td>{{ number_format($order->total_price, 0, ',', '.') }} đ</td>
+                                                                    <td>{{ number_format($order->total_price, 0, ',', '.') }} VNĐ</td>
                                                                     <td><a href="{{ route('order.show', $order->id) }}" class="btn btn-sm btn-view-detail bg-secondary">Xem chi tiết</a></td>
                                                                 </tr>
                                                             @endforeach
@@ -175,7 +175,7 @@
                                                                         <form action="{{route('account.addresses.delete', $address->id)}}" method="POST" class="d-inline">
                                                                             @csrf
                                                                             @method('DELETE')
-                                                                            <button type="submit" class="btn btn-sm px-2 py-1 btn-danger" style="border-radius: 4px"
+                                                                            <button type="submit" class="btn btn-sm px-2 py-1 btn-danger" style="border-radius: 4px; font-size: 12px;"
                                                                                 onclick="return confirm('Bạn có chắc muốn xóa địa chỉ này?')">Xóa</button>
                                                                         </form>
                                                                     </td>

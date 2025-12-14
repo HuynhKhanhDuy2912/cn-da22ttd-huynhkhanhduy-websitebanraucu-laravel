@@ -54,7 +54,7 @@
                                                 </tr>
                                             </thead>
 
-                                            <tbody>
+                                            <tbody class="text-center">
                                                 @foreach ($products as $product)
                                                     <tr id="product-row-{{ $product->id }}">
                                                         <td class="text-center">
@@ -63,8 +63,8 @@
                                                         </td>
                                                         <td>{{ $product->name }}</td>
                                                         <td>{{ $product->category->name }}</td>
-                                                        <td>{{ $product->slug }}</td>
-                                                        <td>{{ $product->description }}</td>
+                                                        <td style="width: 80px;">{{ $product->slug }}</td>
+                                                        <td class="truncate" title="{{ $product->description }}">{{ $product->description }}</td>
                                                         <td>{{ $product->stock }}</td>
                                                         <td>{{ number_format($product->price, 0, ',', '.') }} VNĐ</td>
                                                         <td>{{ $product->unit }}</td>

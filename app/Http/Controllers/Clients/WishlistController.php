@@ -40,10 +40,10 @@ class WishlistController extends Controller
     public function removeWishListItem(Request $request)
     {
         Wishlist::where('user_id', Auth::id())->where('product_id', $request->product_id)->delete();
-
-        toastr()->success("Đã xóa sản phẩm khỏi danh sách yêu thích");
+        
         return response()->json([
-            'status' => true
+            'status' => true,
+            'message' => 'Đã xóa sản phẩm khỏi danh sách yêu thích'
         ]);
     }
 }

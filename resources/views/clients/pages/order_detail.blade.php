@@ -13,9 +13,9 @@
                     @if ($order->status == 'pending')
                         <span class="badge bg-warning order-status-pending text-dark" style="font-size: 14px !important">Chờ xác nhận</span>
                     @elseif($order->status == 'processing')
-                        <span class="badge bg-primary order-status-processing" style="font-size: 14px !important">Đang xử lý</span>
+                        <span class="badge bg-primary order-status-processing" style="font-size: 14px !important">Đang giao hàng</span>
                     @elseif($order->status == 'completed')
-                        <span class="badge bg-success order-status-completed" style="font-size: 14px !important">Hoàn thành</span>
+                        <span class="badge bg-success order-status-completed" style="font-size: 14px !important">Đã nhận hàng</span>
                     @elseif($order->status == 'canceled')
                         <span class="badge bg-danger order-status-canceled" style="font-size: 14px !important">Đã hủy</span>
                     @endif

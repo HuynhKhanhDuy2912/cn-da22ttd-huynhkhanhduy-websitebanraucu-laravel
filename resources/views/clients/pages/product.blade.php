@@ -31,7 +31,20 @@
                             <li>
                                 <div class="showing-product-number text-right text-end">
                                     <span style="font-size: 15px !important">
-                                        Hiển thị {{ $products->lastItem() }} trong tổng số {{ $products->total() }} sản phẩm
+                                        @php
+                                            $currentPage = $products->currentPage();
+                                            $perPage = $products->perPage();
+                                            $total = $products->total();
+
+                                            $from = ($currentPage - 1) * $perPage + 1;
+                                            $to = min($currentPage * $perPage, $total);
+                                        @endphp
+
+                                        @if ($total > 0)
+                                            Hiển thị {{ $from }} đến {{ $to }} của {{ $total }} sản phẩm
+                                        @else
+                                            Không có sản phẩm nào
+                                        @endif
                                     </span>
                                 </div>
                             </li>
@@ -54,8 +67,8 @@
                         <!-- Search Widget -->
                         <div class="widget ltn__search-widget">
                             <h4 class="ltn__widget-title ltn__widget-title-border">Tìm kiếm sản phẩm</h4>
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Nhập tên sản phẩm...">
+                            <form method="GET" action="{{ route('search') }}">
+                                <input type="text" name="keyword" placeholder="Nhập tên sản phẩm...">
                                 <button type="submit"><i class="fas fa-search"></i></button>
                             </form>
                         </div>
@@ -83,41 +96,37 @@
                                 <div class="slider-range"></div>
                             </div>
                         </div>
-                        {{-- <!-- Top Rated Product Widget -->
+                        <!-- Top Rated Product Widget -->
                         <div class="widget ltn__top-rated-product-widget">
                             <h4 class="ltn__widget-title ltn__widget-title-border">Sản phẩm được đánh giá cao nhất</h4>
                             <ul>
-                                <li>
+                                @foreach ($productHighRate as $product)
+                                    <li>
                                     <div class="top-rated-product-item clearfix">
-                                        <div class="top-rated-product-img">
-                                            <a href="{{ route('products.detail', $products->slug) }}"><img src="img/product/1.png"
+                                        <div class="top-rated-product-img me-0">
+                                            <a href="{{ route('products.detail', $product->slug) }}"><img src="{{ $product->image_url }}"
                                                     alt="#"></a>
                                         </div>
-                                        <div class="top-rated-product-info">
+                                        <div class="top-rated-product-info" style="padding-left: 15px">
                                             <div class="product-ratting">
                                                 <ul>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                    @include('clients.components.includes.rating', ['product' => $product])
                                                 </ul>
                                             </div>
-                                            <h6><a href="{{ route('products.detail', $products->slug) }}">Mixel Solid Seat Cover</a></h6>
+                                            <h6><a href="{{ route('products.detail', $product->slug) }}">{{ $product->name }}</a></h6>
                                             <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
+                                                <span>{{ number_format($product->price, 0, ',', '.') }} VNĐ/{{ $product->unit }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
+                                @endforeach
                             </ul>
-                        </div> --}}
-                        <!-- Banner Widget -->
-                        <div class="widget ltn__banner-widget">
-                            <a href="{{route('products.index')}}"><img src="{{asset('assets/clients/img/banner/banner-1.jpg')}}" alt="#"></a>
                         </div>
-
+                        <!-- Banner Widget -->
+                        <div class="widget ltn__banner-widget mt-45">
+                            <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/banner/banner-1.jpg')}}" alt="#"></a>
+                        </div>
                     </aside>
                 </div>
             </div>

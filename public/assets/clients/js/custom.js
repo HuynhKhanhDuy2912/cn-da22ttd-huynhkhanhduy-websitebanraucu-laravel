@@ -861,6 +861,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.status) {
+                    toastr.success(response.message);
                     row.fadeOut(300, function() {
                         $(this).remove();
                     });

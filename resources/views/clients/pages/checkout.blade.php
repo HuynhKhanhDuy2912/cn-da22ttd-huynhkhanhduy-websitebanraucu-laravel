@@ -104,17 +104,17 @@
                                 @foreach ($cartItems as $item)
                                     <tr>
                                     <td><strong>{{ $item->product->name }} x {{ $item->quantity }}</strong></td>
-                                    <td>{{ number_format( $item->product->price * $item->quantity, 0, ',', '.') }} đ</td>
+                                    <td>{{ number_format( $item->product->price * $item->quantity, 0, ',', '.') }} VNĐ</td>
                                 </tr>
                                 @endforeach
                                 
                                 <tr>
                                     <td>Vận chuyển và xử lý</td>
-                                    <td>{{ number_format( 25000, 0, ',', '.') }} đ</td>
+                                    <td>{{ number_format( 25000, 0, ',', '.') }} VNĐ</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Tổng tiền đơn hàng</strong></td>
-                                    <td><strong  class="totalPrice_Checkout">{{ number_format( $totalPrice + 25000, 0, ',', '.') }} đ</strong></td>
+                                    <td><strong  class="totalPrice_Checkout">{{ number_format( $totalPrice + 25000, 0, ',', '.') }} VNĐ</strong></td>
                                 </tr>
                             </tbody>
                         </table>
