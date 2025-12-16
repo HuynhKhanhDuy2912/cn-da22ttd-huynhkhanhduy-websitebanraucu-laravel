@@ -99,7 +99,11 @@
                     <div class="ltn__drop-menu user-menu">
                         <ul>
                             <li>
-                                <a href="javascript:void(0)"><i class="icon-user"></i></a>
+                                @if (Auth::check())
+                                    <img src="{{ asset('storage/' . $userClient->avatar) }}" style="width: 50px; height: 50px;">
+                                @else
+                                    <a href="javascript:void(0)"><i class="icon-user"></i></a>
+                                @endif
                                 <ul>
                                     @if (Auth::check())
                                         <li><a href="{{ route('account') }}"><i class="far fa-user"></i> Tài khoản</a></li>

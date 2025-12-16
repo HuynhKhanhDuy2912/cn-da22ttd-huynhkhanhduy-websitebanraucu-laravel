@@ -13,9 +13,10 @@ use App\Http\Controllers\Clients\ResetPasswordController;
 use App\Http\Controllers\Clients\ReviewController;
 use App\Http\Controllers\Clients\SearchController;
 use App\Http\Controllers\Clients\WishlistController;
+use App\Http\Middleware\DefaultClientData;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/')->group(function () {
+Route::prefix('/')->middleware([DefaultClientData::class])->group(function () {
     
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
