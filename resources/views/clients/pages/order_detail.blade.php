@@ -85,7 +85,16 @@
                                 </td>
                                 <td>{{ $item->product->name }}</td>
                                 <td>
-                                    <a href="{{ route('products.detail', $item->product->slug) }}" class="theme-btn-1 btn btn-effect-1">Đánh giá</a>
+                                    @php
+                                        $hasReviewed = \App\Models\Review::where('user_id', Auth::id())
+                                            ->where('product_id', $item->product->id)
+                                            ->exists();
+                                    @endphp
+                                    @if (Auth::check() && !$hasReviewed)
+                                        <a href="{{ route('products.detail', $item->product->slug) }}" class="theme-btn-1 btn btn-effect-1">Đánh giá</a>
+                                    @else
+                                        <span class="text-success">Đã đánh giá</span>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -68,10 +68,10 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/2.jpg')}}" alt="Giao hàng tận nơi"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/3.jpg')}}" alt="Giao hàng tận nơi"></a>
                     </div>
                     <div class="service-item-brief">
-                        <h3><a href="service-details.html">Giao Hàng Tận Nơi Nhanh Chóng</a></h3>
+                        <h3><a href="javascript:void(0)">Giao Hàng Tận Nơi Nhanh Chóng</a></h3>
                         <p>Chúng tôi giao hàng tận nhà, giúp bạn luôn có rau củ tươi ngon mỗi ngày mà không cần ra chợ.</p>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/3.jpg')}}" alt="Đặt hàng online dễ dàng"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/21.jpg')}}" alt="Đặt hàng online dễ dàng"></a>
                     </div>
                     <div class="service-item-brief">
                         <h3><a href="javascript:void(0)">Đặt Hàng Online Dễ Dàng</a></h3>
@@ -94,7 +94,7 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/3.jpg')}}" alt="Đóng gói an toàn"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/4.jpg')}}" alt="Đóng gói an toàn"></a>
                     </div>
                     <div class="service-item-brief">
                         <h3><a href="javascript:void(0)">Đóng Gói An Toàn & Thân Thiện</a></h3>
@@ -107,7 +107,7 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="ltn__service-item-1">
                     <div class="service-item-img">
-                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/1.jpg')}}" alt="Tư vấn dinh dưỡng miễn phí"></a>
+                        <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/service/22.jpg')}}" alt="Tư vấn dinh dưỡng miễn phí"></a>
                     </div>
                     <div class="service-item-brief">
                         <h3><a href="javascript:void(0)">Tư Vấn Dinh Dưỡng Miễn Phí</a></h3>

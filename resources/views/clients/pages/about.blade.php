@@ -60,7 +60,7 @@
                         <div class="ltn__feature-icon">
                             <span><img src="{{asset('assets/clients/img/icons/icon-img/21.png')}}" alt="#"></span>
                         </div>
-                        <h3><a href="service-details.html">Đa dạng thương hiệu</a></h3>
+                        <h3><a href="{{route('service')}}">Đa dạng thương hiệu</a></h3>
                     </div>
                     <div class="ltn__feature-info">
                         <p>Chúng tôi cung cấp nhiều thương hiệu uy tín, đảm bảo chất lượng và nguồn gốc rõ ràng.</p>
@@ -73,7 +73,7 @@
                         <div class="ltn__feature-icon">
                             <span><img src="{{asset('assets/clients/img/icons/icon-img/22.png')}}" alt="#"></span>
                         </div>
-                        <h3><a href="service-details.html">Sản phẩm tuyển chọn</a></h3>
+                        <h3><a href="{{route('service')}}">Sản phẩm tuyển chọn</a></h3>
                     </div>
                     <div class="ltn__feature-info">
                         <p>Mỗi sản phẩm đều được chọn lọc kỹ lưỡng, mang đến sự an tâm và hài lòng cho khách hàng.</p>
@@ -86,7 +86,7 @@
                         <div class="ltn__feature-icon">
                             <span><img src="{{asset('assets/clients/img/icons/icon-img/23.png')}}" alt="#"></span>
                         </div>
-                        <h3><a href="service-details.html">Không chứa thuốc trừ sâu</a></h3>
+                        <h3><a href="{{route('service')}}">Không chứa thuốc trừ sâu</a></h3>
                     </div>
                     <div class="ltn__feature-info">
                         <p>Cam kết cung cấp sản phẩm sạch, an toàn, không hóa chất độc hại hay thuốc trừ sâu</p>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="team-info">
                         <h6 class="ltn__secondary-color">// founder //</h6>
-                        <h4><a href="team-details.html">Rosalina D. William</a></h4>
+                        <h4><a href="{{route('contact.index')}}">Rosalina D. William</a></h4>
                         <div class="ltn__social-media">
                             <ul>
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="team-info">
                         <h6 class="ltn__secondary-color">// founder //</h6>
-                        <h4><a href="team-details.html">Rosalina D. William</a></h4>
+                        <h4><a href="{{route('contact.index')}}">Rosalina D. William</a></h4>
                         <div class="ltn__social-media">
                             <ul>
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -152,7 +152,7 @@
                     </div>
                     <div class="team-info">
                         <h6 class="ltn__secondary-color">// founder //</h6>
-                        <h4><a href="team-details.html">Rosalina D. William</a></h4>
+                        <h4><a href="{{route('contact.index')}}">Rosalina D. William</a></h4>
                         <div class="ltn__social-media">
                             <ul>
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -170,7 +170,7 @@
                     </div>
                     <div class="team-info">
                         <h6 class="ltn__secondary-color">// founder //</h6>
-                        <h4><a href="team-details.html">Rosalina D. William</a></h4>
+                        <h4><a href="{{route('contact.index')}}">Rosalina D. William</a></h4>
                         <div class="ltn__social-media">
                             <ul>
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

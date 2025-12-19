@@ -7,7 +7,7 @@
                 <div class="col-md-7">
                     <div class="ltn__top-bar-menu">
                         <ul>
-                            <li><a href="locations.html"><i class="icon-placeholder"></i>Thành Thới, Vĩnh Long</a></li>
+                            <li><a href="javascript:void(0)"><i class="icon-placeholder"></i>Thành Thới, Vĩnh Long</a></li>
                             <li><a href="mailto:duy2912wwww@gmail.com?Subject=Contact%20with%20to%20you"><i class="icon-mail"></i> duy2912wwww@gmail.com</a></li>
                         </ul>
                     </div>

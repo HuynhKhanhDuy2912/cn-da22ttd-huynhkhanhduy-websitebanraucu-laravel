@@ -247,3 +247,8 @@
 #voice-search:hover{
     color: #28a745;
 }
+
+.service-item-img{
+    width: 370px;
+    height: 220px;
+}

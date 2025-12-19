@@ -139,7 +139,7 @@
                     </div>
                     <!-- Banner Widget -->
                     <div class="widget ltn__banner-widget">
-                        <a href="{{ route('products.index') }}"><img src="{{ asset('assets/clients/img/banner/banner-3.jpg') }}" alt="Banner Quảng Cáo"></a>
+                        <a href="{{ route('products.index') }}"><img src="{{ asset('assets/clients/img/banner/banner-1.jpg') }}" alt="Banner Quảng Cáo"></a>
                     </div>
                 </aside>
             </div>

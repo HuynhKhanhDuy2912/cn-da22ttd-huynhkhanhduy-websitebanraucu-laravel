@@ -117,7 +117,7 @@
 
     <!-- CATEGORY AREA START -->
     <div class="ltn__category-area section-bg-1-- ltn__primary-bg before-bg-1 bg-image bg-overlay-theme-black-5--0 pt-70 pb-50"
-        data-bg="{{ asset('assets/clients/img/bg/5.jpg') }}">
+        data-bg="{{ asset('assets/clients/img/bg/9.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -391,7 +391,7 @@
                         </div>
                         <div class="btn-wrapper">
                             <a href="tel:+123456789" class="theme-btn-1 btn btn-effect-1">Gọi điện</a>
-                            <a href="contact.html" class="btn btn-transparent btn-effect-4 white-color">Liên hệ</a>
+                            <a href="{{ route('contact.index') }}" class="btn btn-transparent btn-effect-4 white-color">Liên hệ</a>
                         </div>
                     </div>
                 </div>
