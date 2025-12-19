@@ -138,7 +138,7 @@
                                             <tr>
                                                 <td>
                                                     <p><i class="fa fa-square"
-                                                            style="color: {{ ['#22D015', '#8E44AD', '#FF1800', '#F8E802', '#3498DB'][$index % 5] }};"></i>
+                                                            style="color: {{ ['#22D015', '#E87F0F', '#FF1800', '#3498DB', '#8E44AD', '#F8E802'][$index % 6] }};"></i>
                                                         {{ $category->name }}</p>
                                                 </td>
                                                 <td>{{ $category->products->count() }}</td>

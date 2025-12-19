@@ -31,20 +31,7 @@
                             <li>
                                 <div class="showing-product-number text-right text-end">
                                     <span style="font-size: 15px !important">
-                                        @php
-                                            $currentPage = $products->currentPage();
-                                            $perPage = $products->perPage();
-                                            $total = $products->total();
-
-                                            $from = ($currentPage - 1) * $perPage + 1;
-                                            $to = min($currentPage * $perPage, $total);
-                                        @endphp
-
-                                        @if ($total > 0)
-                                            Hiển thị {{ $from }} đến {{ $to }} của {{ $total }} sản phẩm
-                                        @else
-                                            Không có sản phẩm nào
-                                        @endif
+                                        Hiển thị {{ $products->count() }} trong tổng số {{ $products->total() }} sản phẩm
                                     </span>
                                 </div>
                             </li>
@@ -76,6 +63,7 @@
                         <div class="widget ltn__menu-widget">
                             <h4 class="ltn__widget-title ltn__widget-title-border">Danh mục sản phẩm</h4>
                             <ul>
+                                <li><a href="{{ route('products.index') }}">Tất cả<span><i class="fas fa-long-arrow-alt-right"></i></span></a></li>
                                 @foreach ($categories as $category)
                                 <li>
                                     <a href="#" class="category-filter" data-id="{{$category->id}}">{{{$category->name}}} 

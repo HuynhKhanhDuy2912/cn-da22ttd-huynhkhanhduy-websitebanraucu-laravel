@@ -136,7 +136,11 @@
                                 </a>
                             </div>
                             <div class="ltn__category-item-name">
-                                <h5><a href="{{ route('products.index') }}">{{ $category->name }}</a></h5>
+                                <h5>
+                                    <a href="{{ route('products.index') }}">
+                                        {{ $category->name }}
+                                    </a>
+                                </h5>
                                 <h6>({{ $category->products->count() }} sản phẩm)</h6>
                             </div>
                         </div>

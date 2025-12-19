@@ -384,6 +384,43 @@ $(document).ready(function () {
         });
     });
 
+    // Confirm payment
+    $(document).on("click", ".confirm-payment", function (e) {
+        e.preventDefault();
+        let button = $(this);
+        let orderId = button.data("id");
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({    
+            url: "/admin/order/confirm-payment/",
+            type: "POST",
+            data: {
+                id: orderId,
+            },
+            success: function (response) {
+                if (response.status) {
+                    toastr.success(response.message);
+                    button
+                        .closest("tr")
+                        .find(".order-payment-status")
+                        .html(
+                            '<span class="custom-badge badge badge-success">Đã thanh toán</span>'
+                        );
+                    button.hide();
+                } else {
+                    toastr.error(response.error);
+                }   
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi khi xác nhận thanh toán!");
+            },
+        });
+    });
+
     // Send mail to customer
     $(document).on("click", ".send-invoice-mail", function (e) {
         e.preventDefault();

@@ -702,21 +702,21 @@ function init_chart_doughnut() {
                 datasets: [{
                     data: categoryCounts,
                     backgroundColor: [
-                        "#22D015",                         
-                        "#8E44AD", 
-                        "#FF1800", 
+                        "#22D015",  
+                        "#FF7600",                   
+                        "#FF1800",
+                        "#3498DB", 
+                        "#8E44AD",
                         "#F8E802", 
-                        "#3498DB",
-                        // "#E67E22", 
                         // "#FF6F91"  
                     ],
                     hoverBackgroundColor: [
                         "#1E8C4D", 
-                        "#732D91",                         
+                        "#CA6C1A",                 
                         "#C0392B", 
-                        "#D4AC0D", 
                         "#2A80B9", 
-                        // "#CA6C1A", 
+                        "#732D91",
+                        "#D4AC0D",
                         // "#E0557D"  
                     ]
                 }]

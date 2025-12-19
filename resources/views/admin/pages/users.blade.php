@@ -91,6 +91,31 @@
                                                     </button>
                                                 @endif
                                             @endif
+                                            @if ($user->role->name == 'staff')
+                                                    @if ($user->status == 'banned')
+                                                    <button type="button" class="btn btn-success btn-sm changeStatus"
+                                                        data-userid="{{ $user->id }}" data-status="active">
+                                                        <i class="fa fa-unlock"> </i> Bỏ chặn
+                                                    </button>
+                                                @else
+                                                    <button type="button" class="btn btn-warning btn-sm changeStatus"
+                                                        data-userid="{{ $user->id }}" data-status="banned">
+                                                        <i class="fa fa-lock"> </i> Chặn
+                                                    </button>
+                                                @endif
+
+                                                @if ($user->status == 'deleted')
+                                                    <button type="button" class="btn btn-success btn-sm changeStatus"
+                                                        data-userid="{{ $user->id }}" data-status="active">
+                                                        <i class="fa fa-undo"> </i> Khôi phục
+                                                    </button>
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm changeStatus"
+                                                        data-userid="{{ $user->id }}" data-status="deleted">
+                                                        <i class="fa fa-trash"> </i> Xóa
+                                                    </button>
+                                                @endif
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

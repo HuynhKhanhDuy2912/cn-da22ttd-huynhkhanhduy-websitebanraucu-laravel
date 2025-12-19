@@ -59,6 +59,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/order-detail/{id}', [OrderController::class, 'orderDetail'])->name('admin.order.detail');
             Route::post('/order-detail/send-invoice', [OrderController::class, 'sendMail']);
             Route::post('/order-detail/cancel-order', [OrderController::class, 'cancelOrder']);
+            Route::post('/order/confirm-payment', [OrderController::class, 'confirmPayment']);
         });
 
         Route::middleware(['permission:manage_contacts'])->group(function () {

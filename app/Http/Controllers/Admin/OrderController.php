@@ -36,6 +36,25 @@ class OrderController extends Controller
         ]);
     }
 
+    public function confirmPayment(Request $request)
+    {
+        $order = Order::find($request->id);
+
+        if ($order) {
+            $order->payment->status = 'completed';
+            $order->payment->save();
+            return response()->json([
+                'status' => true,
+                'message' => 'Xác nhận thanh toán thành công!'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Đơn hàng không tồn tại.'
+        ]);
+    }
+    
     public function orderDetail($id)
     {
         $order = Order::with('orderItems.product', 'shippingAddress', 'user', 'payment')->find($id);

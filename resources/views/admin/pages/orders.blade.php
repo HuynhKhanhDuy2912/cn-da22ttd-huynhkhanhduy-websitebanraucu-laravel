@@ -74,7 +74,7 @@
                                                                 <span class="custom-badge badge badge-danger">Đã hủy</span>
                                                             @endif
                                                         </td>
-                                                        <td>
+                                                        <td class="order-payment-status">
                                                             @if ($order->payment->status == 'completed')
                                                                 <span class="custom-badge badge badge-success">Đã thanh
                                                                     toán</span>
@@ -101,7 +101,12 @@
                                                                             class="dropdown-item confirm-order"
                                                                             data-id="{{ $order->id }}"> Xác nhận</a>
                                                                     @endif
-                                                                    <a class="dropdown-item" target="_blank"
+                                                                    @if ($order->status == 'completed' && $order->payment->status == 'pending')
+                                                                        <a href="#"
+                                                                            class="dropdown-item confirm-payment"
+                                                                            data-id="{{ $order->id }}"> Đã thanh toán</a>
+                                                                    @endif
+                                                                    <a class="dropdown-item"
                                                                         href="{{ route('admin.order.detail', ['id' => $order->id]) }}">Xem chi tiết</a>
                                                                 </div>
                                                             </div>
