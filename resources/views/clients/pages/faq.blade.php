@@ -29,19 +29,11 @@
                         <!-- card -->
                         <div class="card">
                             <h6 class="ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-2"
-                                aria-expanded="true">
+                                aria-expanded="false">
                                 Làm sao để yêu cầu hoàn tiền?
                             </h6>
-                            <div id="faq-item-2-2" class="collapse show" data-parent="#accordion_2">
+                            <div id="faq-item-2-2" class="collapse" data-parent="#accordion_2">
                                 <div class="card-body">
-                                    <div class="ltn__video-img alignleft">
-                                        <img src="{{ asset('assets/clients/img/bg/17.jpg') }}" alt="video popup bg image">
-                                        <a class="ltn__video-icon-2 ltn__video-icon-2-small ltn__video-icon-2-border----"
-                                            href="https://www.youtube.com/embed/LjCzPp-MK48?autoplay=1&amp;showinfo=0"
-                                            data-rel="lightcase:myCollection">
-                                            <i class="fa fa-play"></i>
-                                        </a>
-                                    </div>
                                     <p>Nếu sản phẩm bị hư hỏng, sai loại hoặc không đạt chất lượng như cam kết,
                                         bạn có thể liên hệ với chúng tôi trong vòng 24 giờ kể từ khi nhận hàng để được hỗ trợ hoàn tiền hoặc đổi sản phẩm mới.</p>
                                 </div>
@@ -139,7 +131,7 @@
                     </div>
                     <!-- Banner Widget -->
                     <div class="widget ltn__banner-widget">
-                        <a href="{{ route('products.index') }}"><img src="{{ asset('assets/clients/img/banner/banner-1.jpg') }}" alt="Banner Quảng Cáo"></a>
+                        <a href="{{ route('products.index') }}"><img src="{{ asset('assets/clients/img/banner/banner1.jpeg') }}" alt="Banner Quảng Cáo"></a>
                     </div>
                 </aside>
             </div>

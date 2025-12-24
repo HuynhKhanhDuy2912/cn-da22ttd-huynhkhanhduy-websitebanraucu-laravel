@@ -6,7 +6,7 @@
 @section('content')
 
 <!-- TEAM AREA START (Team - 3) -->
-<div class="ltn__team-area pt-110--- pb-90">
+<div class="ltn__team-area pt-110">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-3 col-lg-4 col-sm-6">
@@ -159,7 +159,7 @@
 <!-- TEAM AREA END -->
 
 <!-- CALL TO ACTION START ( Service Form ) -->
-<div class="ltn__service-form-wrap-area plr--5">
+{{-- <div class="ltn__service-form-wrap-area plr--5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
@@ -180,12 +180,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- CALL TO ACTION END -->
 
 <!-- PROGRESS BAR AREA START -->
-<div class="ltn__progress-bar-area pt-115 pb-80">
+<div class="ltn__progress-bar-area pt-50 pb-80">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">

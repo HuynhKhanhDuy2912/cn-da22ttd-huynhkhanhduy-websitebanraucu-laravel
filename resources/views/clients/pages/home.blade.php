@@ -86,7 +86,7 @@
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
                             <a href="{{ route('products.index') }}"><img
-                                    src="{{ asset('assets/clients/img/banner/13.png') }}" alt="Banner Image"></a>
+                                    src="{{ asset('assets/clients/img/banner/banner4.jpg') }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                             <div class="ltn__banner-item">
                                 <div class="ltn__banner-img">
                                     <a href="{{ route('products.index') }}"><img
-                                            src="{{ asset('assets/clients/img/banner/14.png') }}" alt="Banner Image"></a>
+                                            src="{{ asset('assets/clients/img/banner/banner2.jpg') }}" alt="Banner Image"></a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                             <div class="ltn__banner-item">
                                 <div class="ltn__banner-img">
                                     <a href="{{ route('products.index') }}"><img
-                                            src="{{ asset('assets/clients/img/banner/15.png') }}" alt="Banner Image"></a>
+                                            src="{{ asset('assets/clients/img/banner/banner3.jpg') }}" alt="Banner Image"></a>
                                 </div>
                             </div>
                         </div>

@@ -113,7 +113,7 @@
                         </div>
                         <!-- Banner Widget -->
                         <div class="widget ltn__banner-widget mt-45">
-                            <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/banner/banner-1.jpg')}}" alt="#"></a>
+                            <a href="javascript:void(0)"><img src="{{asset('assets/clients/img/banner/banner4.jpg')}}" alt="#"></a>
                         </div>
                     </aside>
                 </div>
