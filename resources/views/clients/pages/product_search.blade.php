@@ -55,22 +55,31 @@
                                                                             <i class="far fa-eye"></i>
                                                                         </a>
                                                                     </li>
-                                                                    <li>
-                                                                        @if (Auth::check())
-                                                                            <a href="#" class="add-to-cart-btn"
-                                                                                title="Thêm vào giỏ hàng"
-                                                                                data-bs-toggle="modal"
-                                                                                data-id="{{ $product->id }}"
-                                                                                data-bs-target="#add_to_cart_modal-{{ $product->id }}">
-                                                                                <i class="fas fa-shopping-cart"></i>
-                                                                            </a>
-                                                                        @else
+                                                                    @if (Auth::check())
+                                                                        <li>
+                                                                            @if ($product->stock > 0)
+                                                                                <a href="#" class="add-to-cart-btn"
+                                                                                    title="Thêm vào giỏ hàng"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-id="{{ $product->id }}"
+                                                                                    data-bs-target="#add_to_cart_modal-{{ $product->id }}">
+                                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                                </a>
+                                                                            @else
+                                                                                <a href="javascript:void(0)"
+                                                                                    onclick="showOutOfStockWarning()">
+                                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                                </a>
+                                                                            @endif
+                                                                        </li>
+                                                                    @else
+                                                                        <li>
                                                                             <a href="javascript:void(0)"
                                                                                 onclick="showLoginWarning()">
                                                                                 <i class="fas fa-shopping-cart"></i>
                                                                             </a>
-                                                                        @endif
-                                                                    </li>
+                                                                        </li>
+                                                                    @endif
                                                                     <li>
                                                                         @if (Auth::check())
                                                                             @if (in_array($product->id, $likedProduct ?? []))

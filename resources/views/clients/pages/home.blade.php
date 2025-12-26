@@ -96,7 +96,8 @@
                             <div class="ltn__banner-item">
                                 <div class="ltn__banner-img">
                                     <a href="{{ route('products.index') }}"><img
-                                            src="{{ asset('assets/clients/img/banner/banner2.jpg') }}" alt="Banner Image"></a>
+                                            src="{{ asset('assets/clients/img/banner/banner2.jpg') }}"
+                                            alt="Banner Image"></a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +105,8 @@
                             <div class="ltn__banner-item">
                                 <div class="ltn__banner-img">
                                     <a href="{{ route('products.index') }}"><img
-                                            src="{{ asset('assets/clients/img/banner/banner3.jpg') }}" alt="Banner Image"></a>
+                                            src="{{ asset('assets/clients/img/banner/banner3.jpg') }}"
+                                            alt="Banner Image"></a>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +134,8 @@
                         <div class="ltn__category-item ltn__category-item-3 text-center">
                             <div class="ltn__category-item-img">
                                 <a href="{{ route('products.index') }}">
-                                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" width="268" height="168">
+                                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
+                                        width="268" height="168">
                                 </a>
                             </div>
                             <div class="ltn__category-item-name">
@@ -208,18 +211,22 @@
                                                                 <li>
                                                                     @if (Auth::check())
                                                                         @if (in_array($product->id, $likedProduct))
-                                                                            <a href="javascript:void(0)" style="cursor: default;">
-                                                                                <i class="fas fa-heart" style="color: red;"></i>
+                                                                            <a href="javascript:void(0)"
+                                                                                style="cursor: default;">
+                                                                                <i class="fas fa-heart"
+                                                                                    style="color: red;"></i>
                                                                             </a>
                                                                         @else
-                                                                            <a href="#" class="add-to-wishlist" title="Yêu thích" 
-                                                                            data-bs-toggle="modal" data-id = "{{ $product->id }}"
-                                                                            data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
-                                                                            <i class="far fa-heart"></i></a>
+                                                                            <a href="#" class="add-to-wishlist"
+                                                                                title="Yêu thích" data-bs-toggle="modal"
+                                                                                data-id = "{{ $product->id }}"
+                                                                                data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
+                                                                                <i class="far fa-heart"></i></a>
                                                                         @endif
                                                                     @else
-                                                                        <a href="javascript:void(0)" onclick="showLoginWarning()">
-                                                                            <i class="far fa-heart"></i> 
+                                                                        <a href="javascript:void(0)"
+                                                                            onclick="showLoginWarning()">
+                                                                            <i class="far fa-heart"></i>
                                                                         </a>
                                                                     @endif
                                                                 </li>
@@ -325,19 +332,27 @@
                                                 <i class="far fa-eye"></i>
                                             </a>
                                         </li>
-                                        <li>
-                                            @if (Auth::check())
-                                                <a href="#" class="add-to-cart-btn" title="Thêm vào giỏ hàng"
-                                                    data-bs-toggle="modal" data-id="{{ $product->id }}"
-                                                    data-bs-target="#add_to_cart_modal-{{ $product->id }}">
-                                                    <i class="fas fa-shopping-cart"></i>
-                                                </a>
-                                            @else
+                                        @if (Auth::check() )
+                                            <li>
+                                                @if ($product->stock > 0)
+                                                    <a href="#" class="add-to-cart-btn" title="Thêm vào giỏ hàng"
+                                                        data-bs-toggle="modal" data-id="{{ $product->id }}"
+                                                        data-bs-target="#add_to_cart_modal-{{ $product->id }}">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0)" onclick="showOutOfStockWarning()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </a>
+                                                @endif
+                                            </li>
+                                        @else
+                                            <li>
                                                 <a href="javascript:void(0)" onclick="showLoginWarning()">
                                                     <i class="fas fa-shopping-cart"></i>
                                                 </a>
-                                            @endif
-                                        </li>
+                                            </li>
+                                        @endif
                                         <li>
                                             @if (Auth::check())
                                                 @if (in_array($product->id, $likedProduct))
@@ -345,14 +360,14 @@
                                                         <i class="fas fa-heart" style="color: red;"></i>
                                                     </a>
                                                 @else
-                                                    <a href="#" class="add-to-wishlist" title="Yêu thích" 
-                                                    data-bs-toggle="modal" data-id = "{{ $product->id }}"
-                                                    data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
-                                                    <i class="far fa-heart"></i></a>
+                                                    <a href="#" class="add-to-wishlist" title="Yêu thích"
+                                                        data-bs-toggle="modal" data-id = "{{ $product->id }}"
+                                                        data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
+                                                        <i class="far fa-heart"></i></a>
                                                 @endif
                                             @else
                                                 <a href="javascript:void(0)" onclick="showLoginWarning()">
-                                                    <i class="far fa-heart"></i> 
+                                                    <i class="far fa-heart"></i>
                                                 </a>
                                             @endif
                                         </li>
@@ -391,7 +406,8 @@
                         </div>
                         <div class="btn-wrapper">
                             <a href="tel:+123456789" class="theme-btn-1 btn btn-effect-1">Gọi điện</a>
-                            <a href="{{ route('contact.index') }}" class="btn btn-transparent btn-effect-4 white-color">Liên hệ</a>
+                            <a href="{{ route('contact.index') }}"
+                                class="btn btn-transparent btn-effect-4 white-color">Liên hệ</a>
                         </div>
                     </div>
                 </div>

@@ -385,6 +385,10 @@ $(document).ready(function () {
         }, 1300);
     };
 
+    window.showOutOfStockWarning = function () {
+        toastr.error("Sản phẩm hiện tại đã hết hàng!");
+    };
+
     /********************************
             PAGE PRODUCT DETAIL
     ********************************/
