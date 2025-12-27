@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hóa đơn đặt hàng - Veggie Shop</title>
+    <title>Hóa đơn đặt hàng - Broccoli Shop</title>
 </head>
 
 <body style="background:#f5f5f5; padding:20px; font-family:Arial, sans-serif;">
@@ -13,7 +13,7 @@
         <!-- Header -->
         <tr>
             <td style="background:#28a745; padding:20px; color:#fff; text-align:center;">
-                <h2 style="margin:0;">VEGGIE SHOP</h2>
+                <h2 style="margin:0;">BROCCOLI SHOP</h2>
                 <p style="margin:0;">Hóa đơn mua hàng</p>
             </td>
         </tr>
@@ -23,7 +23,7 @@
                 <p>Xin chào <strong>{{ $order->shippingAddress->full_name }}</strong>,</p>
 
                 <p>
-                    Cảm ơn bạn đã tin tưởng và đặt hàng tại <strong>Veggie Shop</strong>.
+                    Cảm ơn bạn đã tin tưởng và đặt hàng tại <strong>Broccoli Shop</strong>.
                     Chúng tôi gửi đến bạn thông tin chi tiết đơn hàng bên dưới.
                     Nếu có bất kỳ thắc mắc nào, bạn có thể trả lời email này hoặc liên hệ bộ phận hỗ trợ của chúng tôi.
                 </p>
@@ -131,7 +131,7 @@
         <!-- Footer -->
         <tr>
             <td style="background:#fff; text-align:center; padding:15px; color:#333; font-size:13px;">
-                Cảm ơn bạn đã mua hàng tại Veggie Shop! <br>
+                Cảm ơn bạn đã mua hàng tại Broccoli Shop! <br>
                 Mọi thắc mắc xin liên hệ: 0999 999 999 - Email: duy2912www@gmail.com
             </td>
         </tr>

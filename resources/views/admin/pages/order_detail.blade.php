@@ -56,7 +56,7 @@
                                     <div class="col-sm-4 invoice-col">
                                         Đến
                                         <address>
-                                            <strong>Veggie Shop</strong>
+                                            <strong>Broccoli Shop</strong>
                                             <br>Địa chỉ: Thành Thới, Vĩnh Long, Việt Nam
                                             <br>Số điện thoại: 0999999999
                                             <br>Email: duy2912www@gmail.com

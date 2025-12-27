@@ -87,14 +87,14 @@
             <!-- Header -->
             <div class="header">
                 {{-- <img src="" alt="Logo Website" onerror="this.style.display='none'"> --}}
-                <h1>Veggie Shop</h1>
+                <h1>Broccoli Shop</h1>
             </div>
 
             <!-- Body -->
             <div class="body">
                 <h2>Xin chào, {{ $user->name }} 🌿</h2>
                 <p>
-                    Cảm ơn bạn đã đăng ký tài khoản tại <strong>Veggie Shop</strong>.<br>
+                    Cảm ơn bạn đã đăng ký tài khoản tại <strong>Broccoli Shop</strong>.<br>
                     Để kích hoạt tài khoản của bạn, vui lòng nhấn vào nút bên dưới:
                 </p>
 
@@ -111,7 +111,7 @@
 
             <!-- Footer -->
             <div class="footer">
-                © {{ date('Y') }} Veggie Shop.
+                © {{ date('Y') }} Broccoli Shop.
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Đăng nhập quản trị | Veggie</title>
+    <title>Đăng nhập quản trị | Broccoli</title>
 
     <!-- Place favicon.png in the root directory -->
     <link rel="shortcut icon" href="{{ asset('assets/clients/img/favicon.png') }}" type="image/x-icon" />
@@ -45,7 +45,7 @@
                     </div>
                     <div class="separator">
                         <div class="veggie-logo">
-                            <i class="fa fa-leaf"></i> VEGGIE!
+                            <i class="fa fa-leaf"></i> BROCCOLI!
                         </div>
                         <p class="copyright">©2025 All Rights Reserved. <br> Privacy and Terms</p>
                     </div>

@@ -13,7 +13,7 @@
 
         <!-- Header -->
         <div style="background: #28a745; padding: 18px 25px; color: #fff; font-size: 20px; font-weight: bold; text-align: center;">
-            Phản hồi từ quản trị viên Veggie Shop
+            Phản hồi từ quản trị viên Broccoli Shop
         </div>
 
         <!-- Body -->
