@@ -1,0 +1,148 @@
+/* --- GLOBAL STYLES --- */
+body {
+    background: #f0f4f3; /* Màu nền xám xanh rất nhạt, dịu mắt */
+    background-image: radial-gradient(#dcfce7 1px, transparent 1px);
+    background-size: 20px 20px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- LOGIN CARD --- */
+.login_wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+}
+
+.login_form {
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(40, 167, 69, 0.15); /* Bóng đổ màu xanh nhẹ */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Trang trí một chút ở góc thẻ */
+.login_form::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: rgba(40, 167, 69, 0.1);
+    border-radius: 50%;
+}
+
+.login_content h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #2e7d32; /* Xanh lá đậm hơn cho chữ */
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- INPUT GROUPS CUSTOMIZATION --- */
+/* Sửa lỗi lệch dòng: Xóa margin của form-control bên trong input-group */
+.input-group {
+    margin-bottom: 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s;
+}
+
+/* Style cho icon bên trái */
+.input-group-text {
+    background: #fff;
+    border: 1px solid #e1e5e8;
+    border-right: none; /* Xóa viền phải để nối liền với input */
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    color: #28a745;
+    padding-left: 20px;
+    width: 50px;
+}
+
+/* Style cho ô input */
+.form-control {
+    border: 1px solid #e1e5e8;
+    border-left: none; /* Xóa viền trái */
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 15px;
+    color: #555;
+    /* Quan trọng: Xóa margin gây vỡ layout cũ */
+    margin: 0 !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #e1e5e8;
+}
+
+/* Hiệu ứng khi focus vào cả cụm input */
+.input-group:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.15);
+}
+
+.input-group:focus-within .input-group-text,
+.input-group:focus-within .form-control {
+    border-color: #28a745;
+}
+
+/* --- BUTTON --- */
+.btn-submit {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    border: none;
+    border-radius: 50px;
+    height: 50px;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    color: white;
+}
+
+/* --- FOOTER / SEPARATOR --- */
+.separator {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px dashed #e1e5e8;
+    padding-top: 20px;
+}
+
+.veggie-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #999;
+}
